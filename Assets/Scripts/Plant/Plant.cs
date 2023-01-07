@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tile : MonoBehaviour
+public class Plant : MonoBehaviour
 {
-    Plant plant = null;
+    
 }
