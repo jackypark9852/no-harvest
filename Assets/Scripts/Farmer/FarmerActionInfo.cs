@@ -15,7 +15,7 @@ public struct FarmerActionInfo
         this.plantType = plantType;
     }
 
-    public string ToString()
+    public override string ToString()
     {
 
         return ("FarmerActionInfo: centerTileCoordinate: " + centerTileCoordinate + ", shapeData: " + shapeData + ", plantType: " + plantType);

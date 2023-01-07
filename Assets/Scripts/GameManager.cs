@@ -11,12 +11,13 @@ public class GameManager : Singleton<GameManager>
     public UnityEvent Farming;
     public UnityEvent Destroying;
     public UnityEvent RoundTransition;
-    public UnityEvent GameOver; 
+    public UnityEvent GameOver;
+    public UnityEvent StateChanged; 
 
     FarmerActionInfo farmerActionInfo;
-    PlayerActionInfo playerActionInfo; 
+    PlayerActionInfo playerActionInfo;
 
-    GameState state = GameState.NotStarted;
+    public GameState state = GameState.NotStarted;
     public GameState State
     {
         get { return state; }
@@ -35,6 +36,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         state = newState;
+        HandleStateChanged();
         switch (newState)
         {
             case GameState.Starting:
@@ -51,6 +53,9 @@ public class GameManager : Singleton<GameManager>
                 break;
             case GameState.RoundTransition:
                 HandleRoundTransition(); 
+                break;
+            case GameState.GameOver:
+                HandleGameOver();
                 break;
         }
     }
@@ -87,6 +92,11 @@ public class GameManager : Singleton<GameManager>
         GameOver.Invoke();
         return;
     }
+    private void HandleStateChanged()
+    {
+        StateChanged.Invoke();
+        return;
+    }
     public void EndPlayerTurn()
     {
         ChangeState(GameState.Destroying);
@@ -95,6 +105,7 @@ public class GameManager : Singleton<GameManager>
     {
         this.farmerActionInfo = farmerActionInfo;
     }
+
 }
 
 public enum GameState
@@ -105,4 +116,5 @@ public enum GameState
     Destroying,
     Farming,
     RoundTransition,  // FarmValue calculations, animations done here
+    GameOver, 
 }
