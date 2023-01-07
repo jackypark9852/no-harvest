@@ -13,4 +13,8 @@ public enum ShapeType
     SquareLarge, 
     CrossSmall,
     CrossMedium,
+    HorizontalLine,
+    HorizontalLine3Wide,
+    VerticalLine,
+    VerticalLine3Wide,
 }
