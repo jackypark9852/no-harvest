@@ -35,6 +35,10 @@ public class Grid : MonoBehaviour
 
     public TileInput GetTileInput(Tile tile)
     {
+        if (tile is null)
+        {
+            return null;
+        }
         return tileInputs[tile.GetCoords()];
     }
 
