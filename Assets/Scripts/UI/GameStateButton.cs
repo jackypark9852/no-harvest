@@ -9,7 +9,7 @@ public class GameStateButton : MonoBehaviour
     public void UpdateText()
     {
         GameState state = GameManager.Instance.State;
-        string stateString = state.ToString();
+        string stateString = $"GameState: {state.ToString()}";
         buttonText.text = stateString;
     }
 }
