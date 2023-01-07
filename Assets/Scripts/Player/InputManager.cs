@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.VirtualTexturing;
 using UnityEngineInternal;
 
 public class InputManager : Singleton<InputManager>
@@ -66,6 +67,7 @@ public class InputManager : Singleton<InputManager>
     {
         PlayerActionInfo confirmedAction = new PlayerActionInfo(selectedTile.GetCoords(),naturalDisasterType,true);
         confirmedActions.Add(confirmedAction);
+        grid.ApplyConfirmedActionOnTiles(confirmedActions);
         selectedTile = null;
     }
 }
