@@ -2,9 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : Singleton<GameManager>
 {
+    public UnityEvent Starting;
+    public UnityEvent PlayerTurn;
+    public UnityEvent Farming;
+    public UnityEvent Destroying;
+    public UnityEvent RoundTransition;
+    public UnityEvent GameOver; 
+
+    FarmerActionInfo farmerActionInfo;
+    PlayerActionInfo playerActionInfo; 
+
     GameState state;
     public GameState State
     {
@@ -30,18 +41,50 @@ public class GameManager : Singleton<GameManager>
                 HandleStarting();
                 break;
             case GameState.PlayerTurn:
+                HandlePlayerTurn();
                 break;
             case GameState.Farming:
+                HandleFarming();
                 break;
             case GameState.Destroying:
+                HandleDestroying();
                 break;
             case GameState.RoundTransition:
+                HandleRoundTransition(); 
                 break;
         }
     }
 
     private void HandleStarting()
     {
+        Debug.Log("Starting");
+        Starting.Invoke();
+        return;
+    }
+    private void HandlePlayerTurn()
+    {
+        PlayerTurn.Invoke();
+        
+        return;
+    }
+    private void HandleFarming()
+    {
+        Farming.Invoke();
+        return;
+    }
+    private void HandleDestroying()
+    {
+        Destroying.Invoke();
+        return;
+    }
+    private void HandleRoundTransition()
+    {
+        RoundTransition.Invoke();
+        return;
+    }
+    private void HandleGameOver()
+    {
+        GameOver.Invoke();
         return;
     }
 }
