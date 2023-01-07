@@ -7,6 +7,7 @@ public enum ShapeType
     CircleSmall,
     CircleMedium, 
     CircleLarge, 
+    SquareOne, 
     SquareSmall, 
     SquareMedium, 
     SquareLarge, 
