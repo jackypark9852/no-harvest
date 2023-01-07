@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteAlways]
+[ExecuteInEditMode]
 public class TileName : MonoBehaviour
 {
-    Vector2Int coords;
+    Tile tile;
+
+    void Start()
+    {
+        tile = GetComponent<Tile>();
+    }
 
     void Update()
     {
-        coords.x = Mathf.RoundToInt(transform.position.x / transform.localScale.x);
-        coords.y = Mathf.RoundToInt(transform.position.y / transform.localScale.y);
-        name = coords.ToString();
+        name = tile.GetCoords().ToString();
     }
 }
