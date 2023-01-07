@@ -73,11 +73,15 @@ public class InputManager : Singleton<InputManager>
 
     public void Reset()
     {
+<<<<<<< HEAD
         Debug.Log("InputManager Reset");      
     }
 
     public void EndTurn()
     {
         GameManager.Instance.EndPlayerTurn();
+=======
+        Debug.Log("InputManager Reset")        
+>>>>>>> e0cf3bf72516176f2f4d222c84a794f22b8122f5
     }
 }
