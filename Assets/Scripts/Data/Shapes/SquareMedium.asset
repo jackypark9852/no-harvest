@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04012f8f0c95e534c98b58259a2bd7fc, type: 3}
   m_Name: SquareMedium
   m_EditorClassIdentifier: 
-  shapeType: 0
+  shapeType: 4
   affectedTiles:
   - {x: -1, y: -1}
   - {x: 0, y: -1}

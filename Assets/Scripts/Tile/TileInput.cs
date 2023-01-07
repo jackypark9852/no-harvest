@@ -37,8 +37,8 @@ public class TileInput : MonoBehaviour
     
     public Dictionary<InputType, Color> inputToColor { get; private set; } = new Dictionary<InputType, Color> {
         [InputType.None] = Color.clear,
-        [InputType.HoveredButNotSelected] = new Color(0.5f, 0.5f, 0.5f, 0.2f),
-        [InputType.Selected] = new Color(0.5f, 0.5f, 0.5f, 0.4f),
+        [InputType.HoveredButNotSelected] = new Color(0.5f, 0.5f, 0.5f, 0.3f),
+        [InputType.Selected] = new Color(0.5f, 0.5f, 0.5f, 0.6f),
     };
 
     [SerializeField] SpriteRenderer effectSpriteRenderer;
@@ -62,7 +62,20 @@ public class TileInput : MonoBehaviour
         {
             effectSpriteRenderer.color = effectToColor[effectType];
         }
-        // inputSpriteRenderer.color = inputToColor[];
+        inputSpriteRenderer.color = inputToColor[GetInputType()];
+    }
+
+    private InputType GetInputType()
+    {
+        if (isSelected)
+        {
+            return InputType.Selected;
+        }
+        if (isHovered)
+        {
+            return InputType.HoveredButNotSelected;
+        }
+        return InputType.None;
     }
 
     void OnMouseDown()
