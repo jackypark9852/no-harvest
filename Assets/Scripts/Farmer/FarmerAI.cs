@@ -6,10 +6,11 @@ using UnityEngine;
 public class FarmerAI : MonoBehaviour
 {
     public Grid grid;
-    
-    List<Vector2Int> FindEmptyTileCoordinates()
+    public List<ShapeData> shapeDataList;
+
+    List<Vector2Int> GetEmptyTileCoordinates()
     {
-        Dictionary<Vector2Int, Tile> tiles = grid.Tiles
+        Dictionary<Vector2Int, Tile> tiles = grid.Tiles; 
         List<Vector2Int> emptyTileCoordinates = new List<Vector2Int>();
         // Write a loop that iterates through the dictionary and check plant property
         foreach (KeyValuePair<Vector2Int, Tile> entry in tiles)
