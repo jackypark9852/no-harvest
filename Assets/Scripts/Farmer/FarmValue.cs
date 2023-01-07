@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class FarmValue : MonoBehaviour
 {
+    [SerializeField] int losingFarmValue = 50;
+    [SerializeField] ProgressBar progressBar;
+    [SerializeField] Grid grid;
+
     public int GetFarmValue(Grid grid)
     {
         List<Tile> tiles = grid.GetTiles();
@@ -23,5 +27,10 @@ public class FarmValue : MonoBehaviour
             return 0;
         }
         return 1;
+    }
+    
+    public void UpdateFarmValueProgressBar()
+    {
+        progressBar.BarValue = (float)GetFarmValue(grid) / losingFarmValue;
     }
 }
