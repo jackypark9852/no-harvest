@@ -77,4 +77,9 @@ public class Grid : MonoBehaviour
             tileInput.isBlinking = confirmedAction.actionInputType == ActionInputType.Hovered;
         }
     }
+
+    public void ApplyFarmerActionOnTiles(FarmerActionInfo farmerActionInfo)
+    {
+        
+    }
 }
