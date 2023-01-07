@@ -210,6 +210,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb0f14b80d3ebe4792d63a64571460a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alphaMinMultiplier: 0.25
+  alphaMaxMultiplier: 1.25
+  blinkPeriod: 1
   spriteRenderer: {fileID: 6898067113346394868}
 --- !u!114 &8147064788602652855
 MonoBehaviour:
