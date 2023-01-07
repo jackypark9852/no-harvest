@@ -12,7 +12,6 @@ public static class TileUtil
     [RuntimeInitializeOnLoadMethod]
     static void OnRuntimeMethodLoad()
     {
-        Debug.Log("After Scene is loaded and game is running");
         // TODO: Find a better way to do this
         grid = GameObject.Find("Grid").GetComponent<Grid>();
     }

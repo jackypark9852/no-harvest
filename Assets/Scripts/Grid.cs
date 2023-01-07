@@ -61,7 +61,6 @@ public class Grid : MonoBehaviour
         List<Tile> affectedTiles = TileUtil.GetAffectedTiles(centerTileCoordinate, shapeData);
         foreach (Tile tile in affectedTiles)
         {
-            Debug.Log(tile.GetCoords());
             TileInput tileInput = GetTileInput(tile);
             if(tile.plant)
             {
