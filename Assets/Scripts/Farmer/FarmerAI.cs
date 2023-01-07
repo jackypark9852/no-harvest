@@ -16,6 +16,10 @@ public class FarmerAI : MonoBehaviour
         int randomIndex = Random.Range(0, shapeDataList.Count);
         return shapeDataList[randomIndex];
     }
+    public void SubmitFarmerActionInfo()
+    {
+        GameManager.Instance.SetFarmerActionInfo(GenerateFarmerActionInfo());
+    }
 
     List<Vector2Int> GetEmptyTileCoordinates()
     {

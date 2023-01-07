@@ -70,4 +70,14 @@ public class InputManager : Singleton<InputManager>
         grid.ApplyConfirmedActionOnTiles(confirmedActions);
         selectedTile = null;
     }
+
+    public void Reset()
+    {
+        Debug.Log("InputManager Reset");      
+    }
+
+    public void EndTurn()
+    {
+        GameManager.Instance.EndPlayerTurn();
+    }
 }
