@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NaturalDisasterData", menuName = "NaturalDisasterData")]
 public class NaturalDisasterData : ScriptableObject
 {
-    NaturalDisasterType type { get; set; }
-    ShapeData shapeData { get; set; }
-    uint manaCost { get; set; }
+    public NaturalDisasterType type { get; set; }
+    public ShapeData shapeData { get; set; }
+    public uint manaCost { get; set; }
 }

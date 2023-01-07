@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TileInput : MonoBehaviour
 {
-    EffectType effectType = EffectType.None;
-    bool isBlinking = false;
+    public EffectType effectType { get; set; } = EffectType.None;
+    public bool isBlinking { get; set; } = false;
 
     [SerializeField] float alphaMinMultiplier = 0.25f;
     [SerializeField] float alphaMaxMultiplier = 1.25f;
@@ -19,7 +19,7 @@ public class TileInput : MonoBehaviour
         Neutral,
     }
 
-    Dictionary<EffectType, Color> effectToColor = new Dictionary<EffectType, Color> {
+    public Dictionary<EffectType, Color> effectToColor { get; private set; } = new Dictionary<EffectType, Color> {
         [EffectType.None] = Color.clear,
         [EffectType.Destroyed] = new Color(1f, 0f, 0f, 0.5f),
         [EffectType.Growth] = new Color(0f, 1f, 0f, 0.5f),

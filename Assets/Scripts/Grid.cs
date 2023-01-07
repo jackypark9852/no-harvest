@@ -8,8 +8,9 @@ public class Grid : MonoBehaviour
     Dictionary<Vector2Int, Tile> tiles = new Dictionary<Vector2Int, Tile>();
     public Dictionary<Vector2Int, Tile> Tiles
     {
-       get { return tiles; }
+        get { return tiles; }
     }
+    Dictionary<Vector2Int, TileInput> tileInputs = new Dictionary<Vector2Int, TileInput>();
 
     void Awake()
     {
@@ -18,10 +19,11 @@ public class Grid : MonoBehaviour
         foreach (Tile tile in tiles1D)
         {
             tiles[tile.GetCoords()] = tile;
+            tileInputs[tile.GetCoords()] = tile.GetComponent<TileInput>();
         }
     }
 
-    public Tile getTile(int x, int y)
+    public Tile GetTile(int x, int y)
     {
         return tiles[new Vector2Int(x, y)];
     }
@@ -29,5 +31,35 @@ public class Grid : MonoBehaviour
     public List<Tile> GetTiles()
     {
         return tiles.Values.ToList();
+    }
+
+    public TileInput GetTileInput(Tile tile)
+    {
+        return tileInputs[tile.GetCoords()];
+    }
+
+    // TODO: might overwrite tile highlights incorrectly, fix later
+    public void ApplyConfirmedActionOnTiles(List<PlayerActionInfo> confirmedActions)
+    {
+        foreach (PlayerActionInfo confirmedAction in confirmedActions)
+        {
+            ApplyConfirmedActionOnTiles(confirmedAction);
+        }
+    }
+
+    public void ApplyConfirmedActionOnTiles(PlayerActionInfo confirmedAction)
+    {
+        NaturalDisasterData naturalDisasterData = NaturalDisasterUtil.Instance.NaturalDisasterTypeToData[confirmedAction.naturalDisasterType];
+        Vector2Int centerTileCoordinate = confirmedAction.centerTileCoordinate;
+        ShapeData shapeData = naturalDisasterData.shapeData;
+        
+        List<Tile> affectedTiles = TileUtil.GetAffectedTiles(centerTileCoordinate, shapeData);
+
+        foreach (Tile tile in affectedTiles)
+        {
+            TileInput tileInput = GetTileInput(tile);
+            tileInput.effectType = tile.plant.GetEffectType(confirmedAction.naturalDisasterType);
+            tileInput.isBlinking = !confirmedAction.confirmed;
+        }
     }
 }

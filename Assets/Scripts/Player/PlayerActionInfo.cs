@@ -4,7 +4,7 @@ using UnityEngine;
 
 public struct PlayerActionInfo
 {
-    Vector2Int centerTileCoordinate { get; set; }
-    NaturalDisasterType naturalDisasterType { get; set; }
-    bool confirmed { get; set; }
+    public Vector2Int centerTileCoordinate { get; set; }
+    public NaturalDisasterType naturalDisasterType { get; set; }
+    public bool confirmed { get; set; }
 }

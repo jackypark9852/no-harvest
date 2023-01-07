@@ -40,7 +40,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    void HandleStarting()
+    private void HandleStarting()
     {
         return;
     }
