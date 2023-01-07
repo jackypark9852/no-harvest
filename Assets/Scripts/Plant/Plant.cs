@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class Plant : MonoBehaviour
 {
-    PlantType plantType;
+    protected abstract PlantType plantType { get; set; }
     public virtual TileInput.EffectType GetEffectType(NaturalDisasterType naturalDisasterType) {
         return TileInput.EffectType.Growth;
     }
