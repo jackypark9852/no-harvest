@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
-    Tile[] tiles;
-    public Tile[] Tiles
+    Dictionary<Vector2Int, Tile> tiles = new Dictionary<Vector2Int, Tile>();
+    public Dictionary<Vector2Int, Tile> Tiles
     {
        get { return tiles; }
     }
 
     void Awake()
     {
-        tiles = GetComponentsInChildren<Tile>();
+        Tile[] tiles1D = GetComponentsInChildren<Tile>();
+
+        foreach (Tile tile in tiles1D)
+        {
+            tiles[tile.GetCoords()] = tile;
+        }
+    }
+
+    public Tile getTile(int x, int y)
+    {
+        return tiles[new Vector2Int(x, y)];
     }
 }
