@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee99bddc3a06be44db869e9c1544a673, type: 3}
   m_Name: PlantData
   m_EditorClassIdentifier: 
+  plantsList:
+  - Item1: 0
+    Item2: {fileID: 0}
