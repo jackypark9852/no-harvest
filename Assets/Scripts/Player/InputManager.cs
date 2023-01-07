@@ -14,7 +14,12 @@ public class InputManager : Singleton<InputManager>
         }
         set
         {
+            if (selectedTile is not null)
+            {
+                grid.GetTileInput(selectedTile).isSelected = false;
+            }
             selectedTile = value;
+            grid.GetTileInput(selectedTile).isSelected = true;
             grid.ApplyConfirmedActionOnTiles(confirmedActions);
         }
     }
@@ -27,7 +32,12 @@ public class InputManager : Singleton<InputManager>
         }
         set
         {
+            if (hoveredTile is not null)
+            {
+                grid.GetTileInput(hoveredTile).isHovered = false;
+            }
             hoveredTile = value;
+            grid.GetTileInput(hoveredTile).isHovered = true;
             grid.ApplyConfirmedActionOnTiles(confirmedActions);
         }
     }
