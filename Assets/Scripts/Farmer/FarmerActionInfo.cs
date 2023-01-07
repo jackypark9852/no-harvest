@@ -14,4 +14,10 @@ public struct FarmerActionInfo
         this.shapeData = shapeData;
         this.plantType = plantType;
     }
+
+    public string ToString()
+    {
+
+        return ("FarmerActionInfo: centerTileCoordinate: " + centerTileCoordinate + ", shapeData: " + shapeData + ", plantType: " + plantType);
+    }
 }

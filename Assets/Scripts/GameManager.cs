@@ -16,7 +16,7 @@ public class GameManager : Singleton<GameManager>
     FarmerActionInfo farmerActionInfo;
     PlayerActionInfo playerActionInfo; 
 
-    GameState state;
+    GameState state = GameState.NotStarted;
     public GameState State
     {
         get { return state; }
@@ -59,12 +59,12 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("Starting");
         Starting.Invoke();
+        ChangeState(GameState.PlayerTurn); 
         return;
     }
     private void HandlePlayerTurn()
     {
         PlayerTurn.Invoke();
-        
         return;
     }
     private void HandleFarming()
@@ -87,10 +87,19 @@ public class GameManager : Singleton<GameManager>
         GameOver.Invoke();
         return;
     }
+    public void EndPlayerTurn()
+    {
+        ChangeState(GameState.Farming);
+    }
+    public void SetFarmerActionInfo(FarmerActionInfo farmerActionInfo)
+    {
+        this.farmerActionInfo = farmerActionInfo;
+    }
 }
 
 public enum GameState
 {
+    NotStarted, 
     Starting,
     PlayerTurn,  // Player input happens here
     Farming,
