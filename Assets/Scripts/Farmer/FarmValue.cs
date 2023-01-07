@@ -18,7 +18,7 @@ public class FarmValue : MonoBehaviour
 
     public int GetTileValue(Tile tile)
     {
-        if (tile is null)
+        if (tile.plant is null)
         {
             return 0;
         }

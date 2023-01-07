@@ -44,8 +44,12 @@ public class Grid : MonoBehaviour
     }
 
     // TODO: might overwrite tile highlights incorrectly, fix later
-    public void ApplyConfirmedActionOnTiles(List<PlayerActionInfo> confirmedActions)
+    public void ApplyConfirmedActionsOnTiles(List<PlayerActionInfo> confirmedActions)
     {
+        foreach (Tile tile in GetTiles())
+        {
+            GetTileInput(tile).ResetEffectType();
+        }
         foreach (PlayerActionInfo confirmedAction in confirmedActions)
         {
             ApplyConfirmedActionOnTiles(confirmedAction);
@@ -62,14 +66,15 @@ public class Grid : MonoBehaviour
         foreach (Tile tile in affectedTiles)
         {
             TileInput tileInput = GetTileInput(tile);
-            if(tile.plant)
+            if (tile.plant)
             {
                 tileInput.effectType = tile.plant.GetEffectType(confirmedAction.naturalDisasterType);
-            } else
+            }
+            else
             {
                 tileInput.effectType = TileInput.EffectType.Destroyed;
             }
-            tileInput.isBlinking = !confirmedAction.confirmed;
+            tileInput.isBlinking = confirmedAction.actionInputType == ActionInputType.Hovered;
         }
     }
 }

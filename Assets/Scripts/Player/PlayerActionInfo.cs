@@ -6,12 +6,19 @@ public struct PlayerActionInfo
 {
     public Vector2Int centerTileCoordinate { get; set; }
     public NaturalDisasterType naturalDisasterType { get; set; }
-    public bool confirmed { get; set; }
+    public ActionInputType actionInputType { get; set; }
 
-    public PlayerActionInfo(Vector2Int centerTileCoordinate, NaturalDisasterType naturalDisasterType, bool confirmed)
+    public PlayerActionInfo(Vector2Int centerTileCoordinate, NaturalDisasterType naturalDisasterType, ActionInputType actionInputType)
     {
         this.centerTileCoordinate = centerTileCoordinate;
         this.naturalDisasterType = naturalDisasterType;
-        this.confirmed = confirmed;
+        this.actionInputType = actionInputType;
     }
+}
+
+public enum ActionInputType
+{
+    Confirmed,
+    Selected,
+    Hovered,
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +22,7 @@ public class InputManager : Singleton<InputManager>
             }
             selectedTile = value;
             grid.GetTileInput(selectedTile).isSelected = true;
-            grid.ApplyConfirmedActionOnTiles(confirmedActions);
+            UpdateSelect();
         }
     }
     Tile hoveredTile = null;
@@ -39,11 +40,11 @@ public class InputManager : Singleton<InputManager>
             }
             hoveredTile = value;
             grid.GetTileInput(hoveredTile).isHovered = true;
-            grid.ApplyConfirmedActionOnTiles(confirmedActions);
+            UpdateHover();
         }
     }
 
-    List<PlayerActionInfo> confirmedActions = new List<PlayerActionInfo>();
+    List<PlayerActionInfo> actions = new List<PlayerActionInfo>();
     NaturalDisasterType naturalDisasterType { get; set; }
 
     Grid grid;
@@ -63,11 +64,88 @@ public class InputManager : Singleton<InputManager>
         }
     }
 
+    private void UpdateHover()
+    {
+        if (hoveredTile is null)
+        {
+            return;
+        }
+        PlayerActionInfo action = new PlayerActionInfo(hoveredTile.GetCoords(), naturalDisasterType, ActionInputType.Hovered);
+        AddAction(action);
+        grid.ApplyConfirmedActionsOnTiles(actions);
+    }
+
+    private void UpdateSelect()
+    {
+        if (selectedTile is null)
+        {
+            return;
+        }
+        PlayerActionInfo action = new PlayerActionInfo(selectedTile.GetCoords(), naturalDisasterType, ActionInputType.Selected);
+        AddAction(action);
+        grid.ApplyConfirmedActionsOnTiles(actions);
+    }
+
     private void Confirm()
     {
-        PlayerActionInfo confirmedAction = new PlayerActionInfo(selectedTile.GetCoords(),naturalDisasterType,true);
-        confirmedActions.Add(confirmedAction);
-        grid.ApplyConfirmedActionOnTiles(confirmedActions);
+        bool confirmed = ConfirmAction();
+        if (!confirmed)
+        {
+            return;
+        }
+        grid.ApplyConfirmedActionsOnTiles(actions);
         selectedTile = null;
+    }
+
+    private void AddAction(PlayerActionInfo action)
+    {
+        ActionInputType actionInputType = action.actionInputType;
+        ActionInputType? prevActionInputType = GetPrevActionInputType();
+        switch (action.actionInputType)
+        {
+            case ActionInputType.Confirmed:
+                throw new ArgumentException("This should not happen?");
+            case ActionInputType.Selected:
+                switch (prevActionInputType)
+                {
+                    case ActionInputType.Hovered or ActionInputType.Selected:
+                        actions[actions.Count - 1] = action;
+                        break;
+                    case ActionInputType.Confirmed or null:
+                        actions.Add(action);
+                        break;
+                }
+                break;
+            case ActionInputType.Hovered:
+                switch (prevActionInputType)
+                {
+                    case ActionInputType.Hovered:
+                        actions[actions.Count - 1] = action;
+                        break;
+                    case ActionInputType.Confirmed or null:
+                        actions.Add(action);
+                        break;
+                }
+                break;
+        }
+    }
+
+    private ActionInputType? GetPrevActionInputType()
+    {
+        if (actions.Count == 0)
+        {
+            return null;
+        }
+        return actions[actions.Count - 1].actionInputType;
+    }
+
+    private bool ConfirmAction()
+    {
+        if (actions.Count == 0 || actions[actions.Count - 1].actionInputType != ActionInputType.Selected)
+        {
+            return false;
+        }
+        actions[actions.Count - 1] = new PlayerActionInfo(actions[actions.Count - 1].centerTileCoordinate, actions[actions.Count - 1].naturalDisasterType, ActionInputType.Confirmed);
+        return true;
     }
 }

@@ -52,6 +52,13 @@ public class TileInput : MonoBehaviour
 
     void Update()
     {
+        /*
+        if (name.Equals("(0, 0)"))
+        {
+            Debug.Log($"{effectType} | {GetInputType()}");
+        }
+        */
+
         if (isBlinking)
         {
             float alpha = Mathf.Lerp(alphaMinMultiplier * effectToColor[effectType].a, alphaMaxMultiplier * effectToColor[effectType].a, (Mathf.Sin(Time.time * (Mathf.PI / blinkPeriod)) + 1) / 2f);
@@ -63,6 +70,11 @@ public class TileInput : MonoBehaviour
             effectSpriteRenderer.color = effectToColor[effectType];
         }
         inputSpriteRenderer.color = inputToColor[GetInputType()];
+    }
+
+    public void ResetEffectType()
+    {
+        effectType = EffectType.None;
     }
 
     private InputType GetInputType()
