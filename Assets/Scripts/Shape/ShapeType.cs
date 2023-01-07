@@ -10,4 +10,6 @@ public enum ShapeType
     SquareSmall, 
     SquareMedium, 
     SquareLarge, 
+    CrossSmall,
+    CrossMedium,
 }

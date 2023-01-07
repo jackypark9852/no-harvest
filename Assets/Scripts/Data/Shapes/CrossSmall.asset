@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34894b50776005744bc2d61332bcf69e, type: 3}
-  m_Name: Meteorite
+  m_Script: {fileID: 11500000, guid: 04012f8f0c95e534c98b58259a2bd7fc, type: 3}
+  m_Name: CrossSmall
   m_EditorClassIdentifier: 
-  type: 3
-  shapeData: {fileID: 11400000, guid: 773903fd7c4a7a442980e0afaf9278ac, type: 2}
-  manaCost: 1
+  shapeType: 0
+  affectedTiles: []
