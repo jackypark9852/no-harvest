@@ -5,5 +5,8 @@ using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
-    
+    public TileInput.EffectType GetEffectType(NaturalDisasterType naturalDisasterType)
+    {
+        return TileInput.EffectType.Growth;
+    }
 }
