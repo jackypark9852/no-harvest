@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;    
 public class GameStateButton : MonoBehaviour
 {
+    // test
     public TMP_Text buttonText;
 
     public void UpdateText()
