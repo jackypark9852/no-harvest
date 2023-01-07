@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    Plant plant = null;
+    public Plant plant { get; private set; } = null;
+    public bool plantable = true;
 
     public Vector2Int GetCoords()
     {
