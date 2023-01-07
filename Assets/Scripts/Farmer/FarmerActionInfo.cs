@@ -5,6 +5,6 @@ using UnityEngine;
 public struct FarmerActionInfo
 {
     Vector2Int centerTileCoordinate { get; set; }
-    ShapeType shapeType { get; set; }
+    ShapeData shapeData { get; set; }
     PlantType plantType { get; set; }
 }
