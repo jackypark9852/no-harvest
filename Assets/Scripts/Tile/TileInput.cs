@@ -27,6 +27,12 @@ public class TileInput : MonoBehaviour
     };
 
     [SerializeField] SpriteRenderer spriteRenderer;
+    Tile tile;
+
+    void Awake()
+    {
+        tile = GetComponent<Tile>();
+    }
 
     void Update()
     {
@@ -44,7 +50,15 @@ public class TileInput : MonoBehaviour
 
     void OnMouseDown()
     {
+        InputManager.Instance.SelectedTile = tile;
+        /*
         effectType = EffectType.Destroyed;
         isBlinking = true;
+        */
+    }
+
+    void OnMouseEnter()
+    {
+        InputManager.Instance.HoveredTile = tile;
     }
 }

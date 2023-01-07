@@ -54,9 +54,9 @@ public class Grid : MonoBehaviour
         ShapeData shapeData = naturalDisasterData.shapeData;
         
         List<Tile> affectedTiles = TileUtil.GetAffectedTiles(centerTileCoordinate, shapeData);
-
         foreach (Tile tile in affectedTiles)
         {
+            Debug.Log(tile.GetCoords());
             TileInput tileInput = GetTileInput(tile);
             tileInput.effectType = tile.plant.GetEffectType(confirmedAction.naturalDisasterType);
             tileInput.isBlinking = !confirmedAction.confirmed;

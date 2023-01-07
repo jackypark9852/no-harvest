@@ -16,7 +16,7 @@ public enum NaturalDisasterType
 public class NaturalDisasterUtil : Singleton<NaturalDisasterUtil>
 {
     [SerializeField] List<NaturalDisasterData> naturalDisasters;
-    public Dictionary<NaturalDisasterType, NaturalDisasterData> NaturalDisasterTypeToData { get; private set; }
+    public Dictionary<NaturalDisasterType, NaturalDisasterData> NaturalDisasterTypeToData { get; private set; } = new Dictionary<NaturalDisasterType, NaturalDisasterData>();
 
     void Awake()
     {
