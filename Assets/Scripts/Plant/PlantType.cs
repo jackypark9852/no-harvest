@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum PlantType {
-    SunFlower, 
-    Kalp, 
+    SunFlower,
+    WaterMellon, 
     FlyTrap,
 }

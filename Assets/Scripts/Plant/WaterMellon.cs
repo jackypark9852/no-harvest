@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
-public class SunFlower : Plant
+public class WaterMellon : Plant
 {
-    protected override PlantType plantType { get => PlantType.SunFlower; set => plantType = value; }
+    protected override PlantType plantType { get => PlantType.WaterMellon; set => plantType = value;}
+
     public override TileInput.EffectType OnNaturalDisaster(NaturalDisasterType naturalDisasterType)
     {
         switch(naturalDisasterType)
-        {
-            case NaturalDisasterType.Fire:
+        { 
+            case NaturalDisasterType.Tsunami:
                 return TileInput.EffectType.Growth;
             default:
-                return TileInput.EffectType.Destroyed; 
+                return TileInput.EffectType.Destroyed;
         }
     }
 }
