@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TileInput : MonoBehaviour
 {
-    EffectType effectType = EffectType.NONE;
+    EffectType effectType = EffectType.None;
     bool isBlinking = false;
 
     [SerializeField] float alphaMinMultiplier = 0.25f;
@@ -13,17 +13,17 @@ public class TileInput : MonoBehaviour
 
     public enum EffectType
     {
-        NONE,
-        DESTROYED,
-        GROWTH,
-        NEUTRAL,
+        None,
+        Destroyed,
+        Growth,
+        Neutral,
     }
 
     Dictionary<EffectType, Color> effectToColor = new Dictionary<EffectType, Color> {
-        [EffectType.NONE] = Color.clear,
-        [EffectType.DESTROYED] = new Color(1f, 0f, 0f, 0.5f),
-        [EffectType.GROWTH] = new Color(0f, 1f, 0f, 0.5f),
-        [EffectType.NEUTRAL] = new Color(0.5f, 0.5f, 0.5f, 0.5f),
+        [EffectType.None] = Color.clear,
+        [EffectType.Destroyed] = new Color(1f, 0f, 0f, 0.5f),
+        [EffectType.Growth] = new Color(0f, 1f, 0f, 0.5f),
+        [EffectType.Neutral] = new Color(0.5f, 0.5f, 0.5f, 0.5f),
     };
 
     [SerializeField] SpriteRenderer spriteRenderer;
@@ -44,7 +44,7 @@ public class TileInput : MonoBehaviour
 
     void OnMouseDown()
     {
-        effectType = EffectType.DESTROYED;
+        effectType = EffectType.Destroyed;
         isBlinking = true;
     }
 }

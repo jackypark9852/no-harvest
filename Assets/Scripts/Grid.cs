@@ -5,6 +5,10 @@ using UnityEngine;
 public class Grid : MonoBehaviour
 {
     Tile[] tiles;
+    public Tile[] Tiles
+    {
+       get { return tiles; }
+    }
 
     void Awake()
     {
