@@ -7,7 +7,7 @@ public class FarmValue : MonoBehaviour
 {
     public int GetFarmValue(Grid grid)
     {
-        Tile[] tiles = null;  // = grid.Tiles.Values.ToList();
+        List<Tile> tiles = grid.GetTiles();
         int value = 0;
         foreach (Tile tile in tiles)
         {
