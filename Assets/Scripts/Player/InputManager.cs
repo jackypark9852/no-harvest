@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngineInternal;
 
 public class InputManager : Singleton<InputManager>
 {
@@ -53,12 +54,7 @@ public class InputManager : Singleton<InputManager>
 
     private void Confirm()
     {
-        PlayerActionInfo confirmedAction = new PlayerActionInfo
-        {
-            centerTileCoordinate = selectedTile.GetCoords(),
-            naturalDisasterType = naturalDisasterType,
-            confirmed = true
-        };
+        PlayerActionInfo confirmedAction = new PlayerActionInfo(selectedTile.GetCoords(),naturalDisasterType,true);
         confirmedActions.Add(confirmedAction);
         selectedTile = null;
     }

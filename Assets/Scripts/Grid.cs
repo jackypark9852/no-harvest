@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,13 +53,19 @@ public class Grid : MonoBehaviour
         NaturalDisasterData naturalDisasterData = NaturalDisasterUtil.Instance.NaturalDisasterTypeToData[confirmedAction.naturalDisasterType];
         Vector2Int centerTileCoordinate = confirmedAction.centerTileCoordinate;
         ShapeData shapeData = naturalDisasterData.shapeData;
-        
+
         List<Tile> affectedTiles = TileUtil.GetAffectedTiles(centerTileCoordinate, shapeData);
         foreach (Tile tile in affectedTiles)
         {
             Debug.Log(tile.GetCoords());
             TileInput tileInput = GetTileInput(tile);
-            tileInput.effectType = tile.plant.GetEffectType(confirmedAction.naturalDisasterType);
+            if(tile.plant)
+            {
+                tileInput.effectType = tile.plant.GetEffectType(confirmedAction.naturalDisasterType);
+            } else
+            {
+                tileInput.effectType = TileInput.EffectType.Destroyed;
+            }
             tileInput.isBlinking = !confirmedAction.confirmed;
         }
     }
