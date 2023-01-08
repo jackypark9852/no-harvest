@@ -78,3 +78,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c5a8cd6c49cc646ba8a640f642bc9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlantDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  PlantCreated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
