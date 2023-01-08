@@ -120,3 +120,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swayPeriod: 1.2
   swayAmount: 7
+  blinkMaterial: {fileID: 2100000, guid: 037e5594f3418094dbbf073378db90fd, type: 2}
+  blinkCount: 5
+  blinkIntervalMillieSecond: 100

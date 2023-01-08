@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -20,9 +21,10 @@ public abstract class Plant : MonoBehaviour
         return effectType;
     }
 
-    public virtual void OnPlantDestroyed()
+    public virtual async void OnPlantDestroyed()
     {
-        PlantDestroyed.Invoke(); 
+        PlantDestroyed.Invoke();
+        await Task.Delay(1000);
         Destroy(gameObject);
     }
 }

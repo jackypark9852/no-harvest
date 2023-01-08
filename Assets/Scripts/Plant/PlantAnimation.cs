@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.VisualScripting.FullSerializer;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
@@ -15,15 +16,22 @@ public enum PlantAnimationTrigger
 public class PlantAnimation : MonoBehaviour
 {
     Animator animator;
+    SpriteRenderer renderer; 
+
     Vector3 startingRotation;
     Vector3 targetVector;
     public float swayPeriod = 1.0f;
     public float swayAmount = 50f;
     float elapsedTime = 0.0f;
 
+    public Material blinkMaterial;
+    public int blinkCount = 3;
+    public int blinkIntervalMillieSecond = 50; 
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        renderer = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -44,5 +52,23 @@ public class PlantAnimation : MonoBehaviour
     public void PlaySpawnAnimation()
     {
         animator.SetTrigger(PlantAnimationTrigger.Spawn.ToString());
+    }
+
+    public void PlayDeathAnimation() 
+    {
+        PlayDeathBlinks(); 
+    }
+
+    async void PlayDeathBlinks()
+    {
+        Material original = renderer.material;
+        for (int i = 0; i < blinkCount; i++)
+        {
+            Debug.Log("Blink"); 
+            renderer.material = blinkMaterial;
+            await Task.Delay(blinkIntervalMillieSecond);
+            renderer.material = original;
+            await Task.Delay(blinkIntervalMillieSecond); 
+        }
     }
 }
