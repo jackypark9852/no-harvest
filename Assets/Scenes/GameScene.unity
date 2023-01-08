@@ -1653,6 +1653,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 840699964}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: AddManaForTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   Farming:
     m_PersistentCalls:
       m_Calls:
@@ -3346,6 +3358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61990195679e69b4bb2f87784ae47b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manaIncreasePerTurn: 1
 --- !u!1001 &848786206
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -57,6 +57,9 @@ public class InputManager : Singleton<InputManager>
 
     Grid grid;
 
+    public int mana { get; private set; }
+    [SerializeField] int manaIncreasePerTurn = 1;  // May not be constant per turn?
+
     void Awake()
     {
         grid = FindObjectOfType<Grid>();
@@ -66,10 +69,12 @@ public class InputManager : Singleton<InputManager>
 
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Confirm();
         }
+        */
     }
 
     private void UpdateHover()
@@ -101,8 +106,30 @@ public class InputManager : Singleton<InputManager>
         {
             return;
         }
+        NaturalDisasterType confirmedNaturalDisasterType = actions[actions.Count - 1].naturalDisasterType;
+        if (GetManaCost(confirmedNaturalDisasterType) < mana)
+        {
+            Debug.Log("Not enough mana, display message");
+            return;
+        }
         grid.ApplyConfirmedActionsOnTiles(actions);
         selectedTile = null;
+    }
+    
+    private uint GetManaCost(NaturalDisasterType naturalDisasterType)
+    {
+        return NaturalDisasterUtil.Instance.NaturalDisasterTypeToData[naturalDisasterType].manaCost;
+    }
+
+    private void IncreaseMana(int incAmount)
+    {
+        mana += incAmount;
+        // Update mana bar
+    }
+
+    public void AddManaForTurn()
+    {
+        IncreaseMana(manaIncreasePerTurn);
     }
 
     public void Reset()
