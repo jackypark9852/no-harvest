@@ -10,7 +10,7 @@ public abstract class ItemSelectionManager<T> : Singleton<ItemSelectionManager<T
 
     void Awake()
     {
-        items = GetComponentsInChildren<T>(itemsParent);
+        // items = GetComponentsInChildren<T>(itemsParent);
     }
 
     public void SelectItem(T item)
