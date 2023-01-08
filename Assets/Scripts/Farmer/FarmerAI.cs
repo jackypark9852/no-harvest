@@ -20,7 +20,6 @@ public class FarmerAI : MonoBehaviour
     {
         GameManager.Instance.SetFarmerActionInfo(GenerateFarmerActionInfos());
     }
-
     List<Vector2Int> GetEmptyTileCoordinates()
     {
         Dictionary<Vector2Int, Tile> tiles = grid.Tiles; 
@@ -40,7 +39,6 @@ public class FarmerAI : MonoBehaviour
         }
         return emptyTileCoordinates; 
     }
-
     Vector2Int FindOptimalPlacementCoordinate(ShapeData shapeData)
     {
         List<Vector2Int> emptyTileCoordinates = GetEmptyTileCoordinates();
@@ -70,7 +68,6 @@ public class FarmerAI : MonoBehaviour
         }
         return optimalPlacementCoordinate; 
     }
-        
     int GetPlaceableTileCount(ShapeData shapeData, Vector2Int placementCoordinate, List<Vector2Int> emptyTileCoordinates)
     {
         int placeableTileCount = 0;
@@ -85,13 +82,11 @@ public class FarmerAI : MonoBehaviour
         }
         return placeableTileCount;
     }
-
     PlantType GetRandomPlantType()
     {
         int randomIndex = Random.Range(0, System.Enum.GetNames(typeof(PlantType)).Length);
         return (PlantType)randomIndex;
     }
-
     public List<FarmerActionInfo> GenerateFarmerActionInfos()
     {
         List<FarmerActionInfo> actionInfos = new List<FarmerActionInfo>(); 

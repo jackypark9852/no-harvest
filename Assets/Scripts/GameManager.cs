@@ -14,10 +14,9 @@ public class GameManager : Singleton<GameManager>
     public UnityEvent GameOver;
     public UnityEvent StateChanged; 
 
-    public  List<FarmerActionInfo> farmerActionInfos { get; private set;}
-    
+    public List<FarmerActionInfo> farmerActionInfos { get; private set;}
     public List<PlayerActionInfo> playerActionInfos = new List<PlayerActionInfo>();
-
+    
     public GameState state = GameState.NotStarted;
     public GameState State
     {
@@ -87,7 +86,7 @@ public class GameManager : Singleton<GameManager>
     private void HandleRoundTransition()
     {
         RoundTransition.Invoke();
-        ChangeState(GameState.PlayerTurn);
+        
         return;
     }
     private void HandleGameOver()
@@ -108,6 +107,15 @@ public class GameManager : Singleton<GameManager>
     public void EndFarming()
     {
         ChangeState(GameState.RoundTransition);
+    }
+    public void EndGame()
+    {
+        ChangeState(GameState.GameOver);
+    }
+
+    public void EndRoundTransition()
+    {
+        ChangeState(GameState.PlayerTurn); 
     }
     public void SetFarmerActionInfo(List<FarmerActionInfo> farmerActionInfos)
     {

@@ -28,9 +28,22 @@ public class FarmValue : MonoBehaviour
         }
         return 1;
     }
+
+    public void CheckGameEnd()
+    {
+        if (GetFarmValue(grid) >= losingFarmValue)
+        {
+            GameManager.Instance.EndGame(); 
+        } else
+        {
+            GameManager.Instance.EndRoundTransition();
+        }
+    }
     
     public void UpdateFarmValueProgressBar()
     {
-        progressBar.BarValue = (float)GetFarmValue(grid) / losingFarmValue;
+        // ceiling between float and 1 
+        progressBar.BarValue = Mathf.Min(1, (float)GetFarmValue(grid) / losingFarmValue); 
     }
+
 }

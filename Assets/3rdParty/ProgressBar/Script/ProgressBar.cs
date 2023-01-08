@@ -79,7 +79,7 @@ public class ProgressBar : MonoBehaviour
 
     void UpdateValue(float val)
     {
-        text.text = $"{Mathf.RoundToInt(val * losingFarmValue)} / {losingFarmValue} planted";  //| Hard-coded
+        text.text = $"{Mathf.Min(losingFarmValue, Mathf.RoundToInt(val * losingFarmValue))} / {losingFarmValue} planted";  //| Hard-coded
         val *= 100;  //|
         bar.fillAmount = val / 100;
         txtTitle.text = Title + " " + val + "%";
