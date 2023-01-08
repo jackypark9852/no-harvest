@@ -33,6 +33,7 @@ public class Tile : MonoBehaviour
     {
         GameObject plantPrefab = PlantUtil.Instance.PlantTypeToPrefab(plantType);
         plant = Object.Instantiate(plantPrefab, transform.position, Quaternion.identity).GetComponent<Plant>();
+        plant.gameObject.transform.parent = gameObject.transform; 
         plant.PlantDestroyed.AddListener(OnPlantDestroyed);
     }
 

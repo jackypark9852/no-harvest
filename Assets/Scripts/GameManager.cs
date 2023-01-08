@@ -106,6 +106,7 @@ public class GameManager : Singleton<GameManager>
     }
     public void EndFarming()
     {
+        Debug.Log("Farming Ended");
         ChangeState(GameState.RoundTransition);
     }
     public void EndGame()
