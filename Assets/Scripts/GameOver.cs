@@ -11,6 +11,6 @@ public class GameOver : MonoBehaviour
     public void StartGameOver()
     {
         gameOverMenu.SetActive(true);
-        scoreText.text = $"You said no to {GameManager.Instance.roundNum} days of harvest";
+        scoreText.text = $"You said no to {RoundManager.Instance.roundNum} days of harvest";
     }
 }
