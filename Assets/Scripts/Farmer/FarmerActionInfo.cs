@@ -4,9 +4,9 @@ using UnityEngine;
 
 public struct FarmerActionInfo
 {
-    Vector2Int centerTileCoordinate { get; set; }
-    ShapeData shapeData { get; set; }
-    PlantType plantType { get; set; }
+    public Vector2Int centerTileCoordinate { get; set; }
+    public ShapeData shapeData { get; set; }
+    public PlantType plantType { get; set; }
 
     public FarmerActionInfo(Vector2Int centerTileCoordinate, ShapeData shapeData, PlantType plantType)
     {

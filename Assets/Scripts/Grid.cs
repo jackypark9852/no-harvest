@@ -66,9 +66,9 @@ public class Grid : MonoBehaviour
         foreach (Tile tile in affectedTiles)
         {
             TileInput tileInput = GetTileInput(tile);
-            if (tile.plant)
+            if (tile.Plant)
             {
-                tileInput.effectType = tile.plant.GetEffectType(confirmedAction.naturalDisasterType);
+                tileInput.effectType = tile.Plant.GetEffectType(confirmedAction.naturalDisasterType);
             }
             else
             {
@@ -78,8 +78,21 @@ public class Grid : MonoBehaviour
         }
     }
 
-    public void ApplyFarmerActionOnTiles(FarmerActionInfo farmerActionInfo)
+    public void ApplyFarmerActionOnTiles()
     {
-        
+        FarmerActionInfo farmerActionInfo = GameManager.Instance.farmerActionInfo;
+        Vector2Int centerTile = farmerActionInfo.centerTileCoordinate;
+        ShapeData shapeData = farmerActionInfo.shapeData;
+        PlantType plantType = farmerActionInfo.plantType;
+
+        List<Tile> affectedTiles = TileUtil.GetAffectedTiles(centerTile, shapeData);
+        foreach (Tile tile in affectedTiles)
+        {
+            if (tile.plantable && tile.Plant == null)
+            {
+                tile.PlantNewPlant(plantType);
+            }
+        }
+        GameManager.Instance.EndFarming();
     }
 }

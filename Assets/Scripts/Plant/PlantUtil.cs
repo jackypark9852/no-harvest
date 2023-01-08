@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
 
-public class PlantUtil : MonoBehaviour
+public class PlantUtil : Singleton<PlantUtil>
 {
+    [SerializeField]
     PlantData plantData;
     public Dictionary<PlantType, GameObject> plantsDict = new Dictionary<PlantType, GameObject>();
 

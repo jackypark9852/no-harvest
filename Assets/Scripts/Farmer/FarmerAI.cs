@@ -32,7 +32,7 @@ public class FarmerAI : MonoBehaviour
             Tile tile = entry.Value;
 
             // Check if the plant property is null
-            if (tile.plant == null)
+            if (tile.Plant == null && tile.plantable)
             {
                 // If it is null, add the key (coordinate) to the list of empty tile coordinates
                 emptyTileCoordinates.Add(entry.Key);

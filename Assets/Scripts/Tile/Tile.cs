@@ -4,7 +4,19 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    public Plant plant { get; private set; } = null;
+    private Plant plant = null;
+    public Plant Plant
+    {
+        get { return plant; }
+        private set {
+            if (plant is not null)
+            {
+                throw new System.Exception("Tile already has a plant");
+            }
+            plant = value;
+        }
+    }
+    
     public bool plantable = true;
 
     public Vector2Int GetCoords()
@@ -12,5 +24,11 @@ public class Tile : MonoBehaviour
         int coords_x = Mathf.RoundToInt(transform.position.x / transform.localScale.x);
         int coords_y = Mathf.RoundToInt(transform.position.y / transform.localScale.y);
         return new Vector2Int(coords_x, coords_y);
+    }
+
+    public void PlantNewPlant(PlantType plantType)
+    {
+        GameObject plantPrefab = PlantUtil.Instance.PlantTypeToPrefab(plantType);
+        plant = Object.Instantiate(plantPrefab, transform.position, Quaternion.identity).GetComponent<Plant>();
     }
 }
