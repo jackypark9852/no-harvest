@@ -16,7 +16,9 @@ public class GameManager : Singleton<GameManager>
 
     public List<FarmerActionInfo> farmerActionInfos { get; private set;}
     public List<PlayerActionInfo> playerActionInfos = new List<PlayerActionInfo>();
-    
+
+    public int roundNum { get; private set; }
+
     public GameState state = GameState.NotStarted;
     public GameState State
     {
@@ -70,6 +72,7 @@ public class GameManager : Singleton<GameManager>
     private void HandlePlayerTurn()
     {
         PlayerTurn.Invoke();
+        roundNum++;
         return;
     }
     private void HandleFarming()
