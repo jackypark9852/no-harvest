@@ -17,4 +17,5 @@ public enum ShapeType
     HorizontalLine3Wide,
     VerticalLine,
     VerticalLine3Wide,
+    Custom,
 }
