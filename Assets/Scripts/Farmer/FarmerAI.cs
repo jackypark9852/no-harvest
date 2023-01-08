@@ -89,7 +89,25 @@ public class FarmerAI : MonoBehaviour
     }
     public List<FarmerActionInfo> GenerateFarmerActionInfos()
     {
-        List<FarmerActionInfo> actionInfos = new List<FarmerActionInfo>(); 
+        if (RoundManager.Instance.roundNum >= RoundManager.Instance.roundInfos.Count)
+        {
+            // Make sure this never happens
+            return Generate1RandomFarmerActionInfos();
+        }
+        List<PlantType> plantsToPlant = RoundManager.Instance.roundInfos[RoundManager.Instance.roundNum].plantsToPlant;
+        List<FarmerActionInfo> farmerActionInfos = new List<FarmerActionInfo>();
+        foreach (PlantType plant in plantsToPlant)
+        {
+            ShapeData shapeData = GetRandomShapeData();
+            Vector2Int centerTileCoordinate = FindOptimalPlacementCoordinate(shapeData);
+            FarmerActionInfo farmerActionInfo = new FarmerActionInfo(centerTileCoordinate, shapeData, plant);
+            farmerActionInfos.Add(farmerActionInfo);
+        }
+        return farmerActionInfos;
+    }
+    public List<FarmerActionInfo> Generate1RandomFarmerActionInfos()
+    {
+        List<FarmerActionInfo> actionInfos = new List<FarmerActionInfo>();
         ShapeData shapeData = GetRandomShapeData();
         Vector2Int placementCoordinate = FindOptimalPlacementCoordinate(shapeData);
         PlantType plantType = GetRandomPlantType();

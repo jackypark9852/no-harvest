@@ -11,10 +11,12 @@ public abstract class Plant : MonoBehaviour
     protected abstract PlantType plantType { get; set; }
 
     ShapeData squareMediumShapeData;
+    ShapeData circleSmallShapeData;
 
     void Awake()
     {
         squareMediumShapeData = CreateSquareMediumShapeData();
+        circleSmallShapeData = CreateCircleSmallShapeData();
     }
 
     private ShapeData CreateSquareMediumShapeData()
@@ -22,6 +24,14 @@ public abstract class Plant : MonoBehaviour
         ShapeData shapeData = ScriptableObject.CreateInstance<ShapeData>();
         shapeData.shapeType = ShapeType.SquareMedium;
         shapeData.affectedTiles = new Vector2Int[] { new Vector2Int(-1, -1), new Vector2Int(0, -1), new Vector2Int(1, -1), new Vector2Int(-1, 0), new Vector2Int(0, 0), new Vector2Int(1, 0), new Vector2Int(-1, 1), new Vector2Int(0, 1), new Vector2Int(1, 1) };
+        return shapeData;
+    }
+
+    private ShapeData CreateCircleSmallShapeData()
+    {
+        ShapeData shapeData = ScriptableObject.CreateInstance<ShapeData>();
+        shapeData.shapeType = ShapeType.SquareMedium;
+        shapeData.affectedTiles = new Vector2Int[] { new Vector2Int(0, -1), new Vector2Int(-1, 0), new Vector2Int(0, 0), new Vector2Int(1, 0), new Vector2Int(0, 1) };
         return shapeData;
     }
 
@@ -51,7 +61,7 @@ public abstract class Plant : MonoBehaviour
     public virtual void OnPlantGrowth()
     {
         Vector2Int coords = GetTileCoords();
-        List<Tile> affectedTiles = TileUtil.GetAffectedTiles(coords, squareMediumShapeData);
+        List<Tile> affectedTiles = TileUtil.GetAffectedTiles(coords, circleSmallShapeData);
         foreach (Tile tile in affectedTiles)
         {
             if (tile.Plant is null)
