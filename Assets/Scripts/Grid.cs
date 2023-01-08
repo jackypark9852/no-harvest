@@ -103,15 +103,11 @@ public class Grid : MonoBehaviour
     public void ApplyPlayerActionOnTiles()
     {
         List<PlayerActionInfo> playerActionInfos = GameManager.Instance.playerActionInfos;
-        Debug.Log($"playerActionInfos count: {playerActionInfos.Count}"); 
-
         foreach(PlayerActionInfo actionInfo in playerActionInfos)
         {
             Vector2Int centerTileCoordinate = actionInfo.centerTileCoordinate;
             NaturalDisasterType naturalDisasterType = actionInfo.naturalDisasterType;
             ActionInputType actionInputType = actionInfo.actionInputType;
-
-            Debug.Log(actionInfo.ToString());
 
             // Don't execute actions that are "hover" or "selected" 
             if(actionInputType == ActionInputType.Confirmed || actionInputType == ActionInputType.Selected)
@@ -123,7 +119,6 @@ public class Grid : MonoBehaviour
                     {
                         if (tile.Plant is not null)
                         {
-                            Debug.Log("Grid called plant.OnNaturalDisaster");
                             tile.Plant.OnNaturalDisaster(naturalDisasterType);
                         }
                     }

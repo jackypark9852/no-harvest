@@ -7,11 +7,17 @@ public abstract class Plant : MonoBehaviour
 {
     public UnityEvent PlantDestroyed; 
     protected abstract PlantType plantType { get; set; }
-    public virtual TileInput.EffectType GetEffectType(NaturalDisasterType naturalDisasterType) {
-        return TileInput.EffectType.Growth;
-    }
+    public abstract TileInput.EffectType GetEffectType(NaturalDisasterType naturalDisasterType); 
 
-    public abstract TileInput.EffectType OnNaturalDisaster(NaturalDisasterType naturalDisasterType);
+    public virtual TileInput.EffectType OnNaturalDisaster(NaturalDisasterType naturalDisasterType)
+    {
+        TileInput.EffectType effectType = GetEffectType(naturalDisasterType);
+        if (effectType == TileInput.EffectType.Destroyed)
+        {
+            OnPlantDestroyed();
+        }
+        return effectType;
+    }
 
     public virtual void OnPlantDestroyed()
     {

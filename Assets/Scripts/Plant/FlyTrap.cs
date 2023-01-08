@@ -6,15 +6,14 @@ public class FlyTrap : Plant
 {
     protected override PlantType plantType { get => PlantType.FlyTrap; set => plantType = value; }
 
-    public override TileInput.EffectType OnNaturalDisaster(NaturalDisasterType naturalDisasterType)
+    public override TileInput.EffectType GetEffectType(NaturalDisasterType naturalDisasterType)
     {
-        switch(naturalDisasterType)
+        switch (naturalDisasterType)
         {
             case NaturalDisasterType.LocustSwarm:
                 return TileInput.EffectType.Growth;
             default:
-                OnPlantDestroyed();
-                return TileInput.EffectType.Destroyed; 
+                return TileInput.EffectType.Destroyed;
         }
     }
 }
