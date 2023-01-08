@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 8988079092455190687}
   - component: {fileID: 8939439203331695395}
   m_Layer: 5
-  m_Name: UI ProgressBar
+  m_Name: Farm ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

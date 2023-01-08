@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,7 +20,7 @@ public class ProgressBar : MonoBehaviour
     public Color BarColor;   
     public Color BarBackGroundColor;
     public Sprite BarBackGroundSprite;
-    [Range(1f, 100f)]
+    [Range(0f, 100f)]  //|
     public int Alert = 20;
     public Color BarAlertColor;
 
@@ -46,7 +47,10 @@ public class ProgressBar : MonoBehaviour
         }
     }
 
-        
+    //|
+    [SerializeField] TMP_Text text;
+    [SerializeField] int losingFarmValue = 50;
+
 
     private void Awake()
     {
@@ -75,6 +79,8 @@ public class ProgressBar : MonoBehaviour
 
     void UpdateValue(float val)
     {
+        text.text = $"{Mathf.RoundToInt(val * losingFarmValue)} / {losingFarmValue} planted";  //| Hard-coded
+        val *= 100;  //|
         bar.fillAmount = val / 100;
         txtTitle.text = Title + " " + val + "%";
 
@@ -86,7 +92,6 @@ public class ProgressBar : MonoBehaviour
         {
             bar.color = BarColor;
         }
-
     }
 
 
@@ -94,7 +99,7 @@ public class ProgressBar : MonoBehaviour
     {
         if (!Application.isPlaying)
         {           
-            UpdateValue(50);
+            UpdateValue(0.5f);  //|
             txtTitle.color = TitleColor;
             txtTitle.font = TitleFont;
             txtTitle.fontSize = TitleFontSize;
