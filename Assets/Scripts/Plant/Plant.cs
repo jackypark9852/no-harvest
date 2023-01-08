@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Plant : MonoBehaviour
+public abstract class Plant : MonoBehaviour
 {
-    public TileInput.EffectType GetEffectType(NaturalDisasterType naturalDisasterType) {
+    protected abstract PlantType plantType { get; set; }
+    public virtual TileInput.EffectType GetEffectType(NaturalDisasterType naturalDisasterType) {
         return TileInput.EffectType.Growth;
     }
+
+    public abstract TileInput.EffectType OnNaturalDisaster(NaturalDisasterType naturalDisasterType);
 }
