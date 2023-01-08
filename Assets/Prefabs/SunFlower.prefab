@@ -78,3 +78,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5242d5c8c6dcf214fa7dc33b83213e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlantDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  PlantCreated:
+    m_PersistentCalls:
+      m_Calls: []
