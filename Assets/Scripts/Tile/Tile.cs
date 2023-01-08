@@ -12,6 +12,9 @@ public class Tile : MonoBehaviour
             if (plant is not null)
             {
                 throw new System.Exception("Tile already has a plant");
+            } else if (plantable == false)
+            {
+                throw new System.Exception("Tile is not plantable");
             }
             plant = value;
         }
@@ -30,5 +33,12 @@ public class Tile : MonoBehaviour
     {
         GameObject plantPrefab = PlantUtil.Instance.PlantTypeToPrefab(plantType);
         plant = Object.Instantiate(plantPrefab, transform.position, Quaternion.identity).GetComponent<Plant>();
+        plant.PlantDestroyed.AddListener(OnPlantDestroyed);
+    }
+
+    public void OnPlantDestroyed()
+    {
+        Destroy(plant.gameObject); 
+        plant = null; 
     }
 }

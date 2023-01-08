@@ -14,6 +14,11 @@ public struct PlayerActionInfo
         this.naturalDisasterType = naturalDisasterType;
         this.actionInputType = actionInputType;
     }
+
+    public override string ToString()
+    {
+        return $"PlayerActionInfo: Center Tile Coordinate: {centerTileCoordinate}, Natural Disaster Type: {naturalDisasterType.ToString()}, Action Input Type: {actionInputType.ToString()}";
+    }
 }
 
 public enum ActionInputType
