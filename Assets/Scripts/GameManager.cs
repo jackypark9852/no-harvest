@@ -15,7 +15,8 @@ public class GameManager : Singleton<GameManager>
     public UnityEvent StateChanged; 
 
     public  FarmerActionInfo farmerActionInfo { get; private set;}
-    public PlayerActionInfo playerActionInfo { get; private set;}
+    
+    public List<PlayerActionInfo> playerActionInfos = new List<PlayerActionInfo>();
 
     public GameState state = GameState.NotStarted;
     public GameState State
@@ -112,6 +113,10 @@ public class GameManager : Singleton<GameManager>
         this.farmerActionInfo = farmerActionInfo;
     }
 
+    public void SetPlayerActionInfo(List<PlayerActionInfo> playerActionInfos)
+    {
+        this.playerActionInfos = playerActionInfos; 
+    }
 }
 
 public enum GameState

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Grid : MonoBehaviour
@@ -94,5 +95,40 @@ public class Grid : MonoBehaviour
             }
         }
         GameManager.Instance.EndFarming();
+    }
+
+    public void ApplyPlayerActionOnTiles()
+    {
+        List<PlayerActionInfo> playerActionInfos = GameManager.Instance.playerActionInfos;
+        Debug.Log($"playerActionInfos count: {playerActionInfos.Count}"); 
+
+        foreach(PlayerActionInfo actionInfo in playerActionInfos)
+        {
+            Vector2Int centerTileCoordinate = actionInfo.centerTileCoordinate;
+            NaturalDisasterType naturalDisasterType = actionInfo.naturalDisasterType;
+            ActionInputType actionInputType = actionInfo.actionInputType;
+
+            Debug.Log(actionInfo.ToString());
+
+            // Don't execute actions that are "hover" or "selected" 
+            if(actionInputType == ActionInputType.Confirmed)
+            {
+                if (NaturalDisasterUtil.Instance.NaturalDisasterTypeToData.ContainsKey(naturalDisasterType)) {
+                    ShapeData shapeData = NaturalDisasterUtil.Instance.NaturalDisasterTypeToData[naturalDisasterType].shapeData;
+                    List<Tile> affectedTiles = TileUtil.GetAffectedTiles(centerTileCoordinate, shapeData);
+                    foreach (Tile tile in affectedTiles)
+                    {
+                        if (tile.Plant is not null)
+                        {
+                            tile.Plant.OnNaturalDisaster(naturalDisasterType);
+                        }
+                    }
+                } else
+                {
+                    throw new Exception($"NaturalDisasterType not found: {naturalDisasterType.ToString()}"); 
+                }
+            }
+        }
+        
     }
 }
