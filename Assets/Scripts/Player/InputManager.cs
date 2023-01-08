@@ -21,6 +21,10 @@ public class InputManager : Singleton<InputManager>
                 grid.GetTileInput(selectedTile).isSelected = false;
             }
             selectedTile = value;
+            if (selectedTile is null)
+            {
+                return;
+            }
             grid.GetTileInput(selectedTile).isSelected = true;
             UpdateSelect();
         }
@@ -39,6 +43,10 @@ public class InputManager : Singleton<InputManager>
                 grid.GetTileInput(hoveredTile).isHovered = false;
             }
             hoveredTile = value;
+            if (hoveredTile is null)
+            {
+                return;
+            }
             grid.GetTileInput(hoveredTile).isHovered = true;
             UpdateHover();
         }
@@ -99,7 +107,10 @@ public class InputManager : Singleton<InputManager>
 
     public void Reset()
     {
-        Debug.Log("InputManager Reset");      
+        actions.Clear();
+        grid.ApplyConfirmedActionsOnTiles(actions);
+        SelectedTile = null;
+        HoveredTile = null;
     }
 
     public void EndTurn()

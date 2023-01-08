@@ -9,6 +9,7 @@ public abstract class ItemSelectionManager<T> : Singleton<ItemSelectionManager<T
 
     ItemDisplay<T> selectedItemDisplay;
     [SerializeField] ItemDisplay<T> defaultSelectedItemDisplay;
+    ItemDisplay<T> prevSelectedItemDisplay;
     // [SerializeField] Transform itemDisplaysParent;
 
     void Awake()
@@ -23,17 +24,31 @@ public abstract class ItemSelectionManager<T> : Singleton<ItemSelectionManager<T
     {
         if (selectedItemDisplay is not null)
         {
-            DeselectItem(selectedItemDisplay);
+            DeselectSelectedItem();
         }
         selectedItemDisplay = itemDisplay;
         selectedItem = selectedItemDisplay.item.item;
         selectedItemDisplay.SetFrameActive(true);
+        prevSelectedItemDisplay = selectedItemDisplay;
     }
 
-    public void DeselectItem(ItemDisplay<T> itemDisplay)
+    public void DeselectSelectedItem()
     {
         selectedItem = default;
+        if (selectedItemDisplay is null)
+        {
+            return;
+        }
+        selectedItemDisplay.SetFrameActive(false);
         selectedItemDisplay = null;
-        itemDisplay.SetFrameActive(false);
+    }
+
+    public virtual void SelectPrevItem()
+    {
+        if (prevSelectedItemDisplay is null)
+        {
+            return;
+        }
+        SelectItem(prevSelectedItemDisplay);
     }
 }
