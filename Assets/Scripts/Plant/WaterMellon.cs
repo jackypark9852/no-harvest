@@ -11,7 +11,7 @@ public class WaterMellon : Plant
     {
         switch (naturalDisasterType)
         {
-            case NaturalDisasterType.Tsunami:
+            case NaturalDisasterType.Tsunami or NaturalDisasterType.Blizzard:
                 return TileInput.EffectType.Growth;
             default:
                 return TileInput.EffectType.Destroyed;

@@ -5,9 +5,11 @@ using UnityEngine;
 public enum NaturalDisasterType
 {
     Fire,
-    Tsunami,
-    Tornado,
     Meteorite,
+    Tsunami,
+    Blizzard,
+    Lightning,
+    Tornado,
     AcidRain,
     LocustSwarm,
     Earthquake,
