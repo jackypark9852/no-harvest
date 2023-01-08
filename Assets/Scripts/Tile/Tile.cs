@@ -38,7 +38,6 @@ public class Tile : MonoBehaviour
 
     public void OnPlantDestroyed()
     {
-        Destroy(plant.gameObject); 
         plant = null; 
     }
 }

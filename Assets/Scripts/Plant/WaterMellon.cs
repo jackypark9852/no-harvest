@@ -14,6 +14,7 @@ public class WaterMellon : Plant
             case NaturalDisasterType.Tsunami:
                 return TileInput.EffectType.Growth;
             default:
+                OnPlantDestroyed();
                 return TileInput.EffectType.Destroyed;
         }
     }

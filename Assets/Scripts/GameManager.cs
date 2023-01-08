@@ -87,6 +87,7 @@ public class GameManager : Singleton<GameManager>
     private void HandleRoundTransition()
     {
         RoundTransition.Invoke();
+        ChangeState(GameState.PlayerTurn);
         return;
     }
     private void HandleGameOver()
@@ -99,11 +100,11 @@ public class GameManager : Singleton<GameManager>
         StateChanged.Invoke();
         return;
     }
+    
     public void EndPlayerTurn()
     {
         ChangeState(GameState.Destroying);
     }
-
     public void EndFarming()
     {
         ChangeState(GameState.RoundTransition);
@@ -112,7 +113,6 @@ public class GameManager : Singleton<GameManager>
     {
         this.farmerActionInfo = farmerActionInfo;
     }
-
     public void SetPlayerActionInfos(List<PlayerActionInfo> playerActionInfos)
     {
         this.playerActionInfos = playerActionInfos; 

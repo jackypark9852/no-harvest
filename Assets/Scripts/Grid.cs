@@ -111,7 +111,7 @@ public class Grid : MonoBehaviour
             Debug.Log(actionInfo.ToString());
 
             // Don't execute actions that are "hover" or "selected" 
-            if(actionInputType == ActionInputType.Confirmed)
+            if(actionInputType == ActionInputType.Confirmed || actionInputType == ActionInputType.Selected)
             {
                 if (NaturalDisasterUtil.Instance.NaturalDisasterTypeToData.ContainsKey(naturalDisasterType)) {
                     ShapeData shapeData = NaturalDisasterUtil.Instance.NaturalDisasterTypeToData[naturalDisasterType].shapeData;
@@ -120,6 +120,7 @@ public class Grid : MonoBehaviour
                     {
                         if (tile.Plant is not null)
                         {
+                            Debug.Log("Grid called plant.OnNaturalDisaster");
                             tile.Plant.OnNaturalDisaster(naturalDisasterType);
                         }
                     }

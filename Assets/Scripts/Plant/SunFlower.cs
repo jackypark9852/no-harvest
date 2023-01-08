@@ -12,7 +12,7 @@ public class SunFlower : Plant
             case NaturalDisasterType.Fire:
                 return TileInput.EffectType.Growth;
             default:
-                
+                OnPlantDestroyed();
                 return TileInput.EffectType.Destroyed; 
         }
     }
