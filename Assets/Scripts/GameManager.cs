@@ -113,7 +113,7 @@ public class GameManager : Singleton<GameManager>
         this.farmerActionInfo = farmerActionInfo;
     }
 
-    public void SetPlayerActionInfo(List<PlayerActionInfo> playerActionInfos)
+    public void SetPlayerActionInfos(List<PlayerActionInfo> playerActionInfos)
     {
         this.playerActionInfos = playerActionInfos; 
     }

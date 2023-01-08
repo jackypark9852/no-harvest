@@ -115,6 +115,7 @@ public class InputManager : Singleton<InputManager>
 
     public void EndTurn()
     {
+        GameManager.Instance.SetPlayerActionInfos(actions);
         GameManager.Instance.EndPlayerTurn();
     }
     private void AddAction(PlayerActionInfo action)
