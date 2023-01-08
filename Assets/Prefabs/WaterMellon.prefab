@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4337215957909412413, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
       propertyPath: m_Name
-      value: Crop Variant
+      value: WaterMellon
       objectReference: {fileID: 0}
     - target: {fileID: 4337215957909412414, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
       propertyPath: m_RootOrder
@@ -61,3 +61,20 @@ PrefabInstance:
       objectReference: {fileID: 793964181, guid: 398aa91c36379f04f93a0588ca210845, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
+--- !u!1 &3435170134047640610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4337215957909412413, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
+  m_PrefabInstance: {fileID: 1413232971911550495}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1481250599095681214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3435170134047640610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8089c4d63fd719549a402fb5dee00742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

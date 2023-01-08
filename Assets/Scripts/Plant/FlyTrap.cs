@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FlyTrap : Plant
 {
-    protected override PlantType plantType { get => PlantType.FlyTrap; set => plantType = value }
+    protected override PlantType plantType { get => PlantType.FlyTrap; set => plantType = value; }
 
     public override TileInput.EffectType OnNaturalDisaster(NaturalDisasterType naturalDisasterType)
     {
