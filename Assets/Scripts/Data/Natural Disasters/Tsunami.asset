@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34894b50776005744bc2d61332bcf69e, type: 3}
   m_Name: Tsunami
   m_EditorClassIdentifier: 
-  type: 1
+  type: 2
   shapeData: {fileID: 11400000, guid: 2ee56eb62b884804da8cf25375fcb983, type: 2}
   manaCost: 1

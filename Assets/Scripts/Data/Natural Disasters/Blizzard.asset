@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34894b50776005744bc2d61332bcf69e, type: 3}
-  m_Name: Meteorite
+  m_Name: Blizzard
   m_EditorClassIdentifier: 
-  type: 1
-  shapeData: {fileID: 11400000, guid: 8f29e0c652cd9a24ba779984c301d90d, type: 2}
+  type: 3
+  shapeData: {fileID: 11400000, guid: 2ee56eb62b884804da8cf25375fcb983, type: 2}
   manaCost: 1

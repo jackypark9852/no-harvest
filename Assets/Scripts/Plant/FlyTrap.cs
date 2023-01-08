@@ -10,7 +10,7 @@ public class FlyTrap : Plant
     {
         switch (naturalDisasterType)
         {
-            case NaturalDisasterType.LocustSwarm:
+            case NaturalDisasterType.Blizzard:
                 return TileInput.EffectType.Growth;
             default:
                 return TileInput.EffectType.Destroyed;
