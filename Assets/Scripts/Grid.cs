@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -79,26 +80,44 @@ public class Grid : MonoBehaviour
         }
     }
 
-    public void ApplyFarmerActionOnTiles()
+    public async void ApplyFarmerActionOnTiles()
     {
-        List<FarmerActionInfo> farmerActionInfos = GameManager.Instance.farmerActionInfos;  
-        foreach(FarmerActionInfo actionInfo in farmerActionInfos)
+        List<FarmerActionInfo> farmerActionInfos = GameManager.Instance.farmerActionInfos;
+        List<Task> plantTasks = new List<Task>();
+        
+        foreach (FarmerActionInfo actionInfo in farmerActionInfos)
         {
             Vector2Int centerTile = actionInfo.centerTileCoordinate;
             ShapeData shapeData = actionInfo.shapeData;
             PlantType plantType = actionInfo.plantType;
 
             List<Tile> affectedTiles = TileUtil.GetAffectedTiles(centerTile, shapeData);
+            
             foreach (Tile tile in affectedTiles)
             {
                 if (tile.plantable && tile.Plant == null)
                 {
-                    tile.PlantNewPlant(plantType);
+                    // generate random value between 400 to 1000
+                    int delaySeconds = UnityEngine.Random.Range(400, 1000);
+                    plantTasks.Add(Plant(tile, plantType, delaySeconds));
                 }
             }
         }
+
+        while (!plantTasks.All(t => t.IsCompleted))
+        {
+            await Task.Delay(10);
+        }
+
         GameManager.Instance.EndFarming();
     }
+    
+    private async Task Plant(Tile tile, PlantType plantType, int delayMillieSeconds) 
+    {
+        await Task.Delay(delayMillieSeconds); 
+        tile.PlantNewPlant(plantType);
+    }
+
 
     public void ApplyPlayerActionOnTiles()
     {

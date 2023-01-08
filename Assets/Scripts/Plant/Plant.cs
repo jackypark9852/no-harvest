@@ -5,7 +5,8 @@ using UnityEngine.Events;
 
 public abstract class Plant : MonoBehaviour
 {
-    public UnityEvent PlantDestroyed; 
+    public UnityEvent PlantDestroyed;
+    public UnityEvent PlantCreated; 
     protected abstract PlantType plantType { get; set; }
     public abstract TileInput.EffectType GetEffectType(NaturalDisasterType naturalDisasterType); 
 
