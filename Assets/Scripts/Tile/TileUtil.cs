@@ -5,16 +5,25 @@ using UnityEditor;
 using UnityEditor.Rendering;
 using UnityEngine;
 
-public static class TileUtil
+public class TileUtil : MonoBehaviour
 {
     static Grid grid;
 
+    /*
     [RuntimeInitializeOnLoadMethod]
     static void OnRuntimeMethodLoad()
     {
         // TODO: Find a better way to do this
+        Debug.Log("here");
         grid = GameObject.Find("Grid").GetComponent<Grid>();
     }
+    */
+
+    void Awake()
+    {
+        grid = GameObject.Find("Grid").GetComponent<Grid>();
+    }
+    
     public static List<Tile> GetEmptyTiles()
     {
         Dictionary<Vector2Int, Tile> tiles = grid.Tiles;
