@@ -16,7 +16,7 @@ public enum PlantAnimationTrigger
 public class PlantAnimation : MonoBehaviour
 {
     Animator animator;
-    SpriteRenderer renderer; 
+    SpriteRenderer spriteRenderer; 
 
     Vector3 startingRotation;
     Vector3 targetVector;
@@ -31,7 +31,7 @@ public class PlantAnimation : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        renderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -39,7 +39,6 @@ public class PlantAnimation : MonoBehaviour
         targetVector = this.transform.position - Camera.main.transform.position;
         transform.rotation = Quaternion.LookRotation(targetVector, Camera.main.transform.rotation * Vector3.up);
         startingRotation = transform.rotation.eulerAngles;
-        Debug.Log(transform.rotation);
     }
 
     private void Update()
@@ -61,13 +60,13 @@ public class PlantAnimation : MonoBehaviour
 
     async void PlayDeathBlinks()
     {
-        Material original = renderer.material;
+        Material original = spriteRenderer.material;
         for (int i = 0; i < blinkCount; i++)
         {
             Debug.Log("Blink"); 
-            renderer.material = blinkMaterial;
+            spriteRenderer.material = blinkMaterial;
             await Task.Delay(blinkIntervalMillieSecond);
-            renderer.material = original;
+            spriteRenderer.material = original;
             await Task.Delay(blinkIntervalMillieSecond); 
         }
     }

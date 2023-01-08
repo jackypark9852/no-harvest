@@ -56,17 +56,12 @@ public class ProgressBar : MonoBehaviour
     {
         bar = transform.Find("Bar").GetComponent<Image>();
         barBackground = GetComponent<Image>();
-        txtTitle = transform.Find("Text").GetComponent<Text>();
         barBackground = transform.Find("BarBackground").GetComponent<Image>();
         audiosource = GetComponent<AudioSource>();
     }
 
     private void Start()
     {
-        txtTitle.text = Title;
-        txtTitle.color = TitleColor;
-        txtTitle.font = TitleFont;
-        txtTitle.fontSize = TitleFontSize;
 
         bar.color = BarColor;
         barBackground.color = BarBackGroundColor; 
@@ -79,10 +74,9 @@ public class ProgressBar : MonoBehaviour
 
     void UpdateValue(float val)
     {
-        text.text = $"{Mathf.Min(losingFarmValue, Mathf.RoundToInt(val * losingFarmValue))} / {losingFarmValue} planted";  //| Hard-coded
+        text.text = $"{Mathf.Min(losingFarmValue, Mathf.RoundToInt(val * losingFarmValue))}/{losingFarmValue} PLANTED";  //| Hard-coded
         val *= 100;  //|
         bar.fillAmount = val / 100;
-        txtTitle.text = Title + " " + val + "%";
 
         if (Alert >= val)
         {
@@ -100,9 +94,6 @@ public class ProgressBar : MonoBehaviour
         if (!Application.isPlaying)
         {           
             UpdateValue(0.5f);  //|
-            txtTitle.color = TitleColor;
-            txtTitle.font = TitleFont;
-            txtTitle.fontSize = TitleFontSize;
 
             bar.color = BarColor;
             barBackground.color = BarBackGroundColor;

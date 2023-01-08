@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Fire
   m_EditorClassIdentifier: 
   item: 0
-  sprite: {fileID: 1483684330, guid: 38102bc6bf67a834c94e7b42823a485b, type: 3}
+  sprite: {fileID: -169232688, guid: 17beb2ef48cb8354d8e6d871bef5de95, type: 3}
