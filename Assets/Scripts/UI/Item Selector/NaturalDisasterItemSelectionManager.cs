@@ -7,6 +7,10 @@ public class NaturalDisasterItemSelectionManager : ItemSelectionManager<NaturalD
     public override void SelectItem(ItemDisplay<NaturalDisasterType> itemDisplay)
     {
         base.SelectItem(itemDisplay);
-        InputManager.Instance.naturalDisasterType = itemDisplay.item.item;
+        if (InputManager.Instance.NaturalDisasterType_ != itemDisplay.item.item)
+        {
+            // InputManager.Instance.SelectedTile = null;
+        }
+        InputManager.Instance.NaturalDisasterType_ = itemDisplay.item.item;
     }
 }

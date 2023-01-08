@@ -53,7 +53,19 @@ public class InputManager : Singleton<InputManager>
     }
 
     List<PlayerActionInfo> actions = new List<PlayerActionInfo>();
-    public NaturalDisasterType naturalDisasterType { get; set; }
+    NaturalDisasterType naturalDisasterType;
+    public NaturalDisasterType NaturalDisasterType_
+    {
+        get
+        {
+            return naturalDisasterType;
+        }
+        set
+        {
+            naturalDisasterType = value;
+            UpdateSelect();
+        }
+    }
 
     Grid grid;
 
@@ -64,7 +76,7 @@ public class InputManager : Singleton<InputManager>
     {
         grid = FindObjectOfType<Grid>();
 
-        naturalDisasterType = NaturalDisasterType.Meteorite;
+        NaturalDisasterType_ = NaturalDisasterType.Meteorite;
     }
 
     void Update()
@@ -79,22 +91,22 @@ public class InputManager : Singleton<InputManager>
 
     private void UpdateHover()
     {
-        if (hoveredTile is null)
+        if (HoveredTile is null)
         {
             return;
         }
-        PlayerActionInfo action = new PlayerActionInfo(hoveredTile.GetCoords(), naturalDisasterType, ActionInputType.Hovered);
+        PlayerActionInfo action = new PlayerActionInfo(HoveredTile.GetCoords(), NaturalDisasterType_, ActionInputType.Hovered);
         AddAction(action);
         grid.ApplyConfirmedActionsOnTiles(actions);
     }
 
     private void UpdateSelect()
     {
-        if (selectedTile is null)
+        if (SelectedTile is null)
         {
             return;
         }
-        PlayerActionInfo action = new PlayerActionInfo(selectedTile.GetCoords(), naturalDisasterType, ActionInputType.Selected);
+        PlayerActionInfo action = new PlayerActionInfo(SelectedTile.GetCoords(), NaturalDisasterType_, ActionInputType.Selected);
         AddAction(action);
         grid.ApplyConfirmedActionsOnTiles(actions);
     }
@@ -113,7 +125,7 @@ public class InputManager : Singleton<InputManager>
             return;
         }
         grid.ApplyConfirmedActionsOnTiles(actions);
-        selectedTile = null;
+        SelectedTile = null;
     }
     
     private uint GetManaCost(NaturalDisasterType naturalDisasterType)
