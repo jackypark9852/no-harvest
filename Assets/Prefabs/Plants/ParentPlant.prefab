@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4337215957909412414}
   - component: {fileID: 4337215957909412415}
   - component: {fileID: -3182735477044875528}
+  - component: {fileID: 8198704157190294550}
   m_Layer: 0
   m_Name: ParentPlant
   m_TagString: Untagged
@@ -105,3 +106,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8198704157190294550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4337215957909412413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02077fd9f65a8b7418684854c38c669f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swayPeriod: 1.2
+  swayAmount: 7
+  blinkMaterial: {fileID: 2100000, guid: 037e5594f3418094dbbf073378db90fd, type: 2}
+  blinkCount: 5
+  blinkIntervalMillieSecond: 100
