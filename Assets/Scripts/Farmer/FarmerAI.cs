@@ -18,7 +18,7 @@ public class FarmerAI : MonoBehaviour
     }
     public void SubmitFarmerActionInfo()
     {
-        GameManager.Instance.SetFarmerActionInfo(GenerateFarmerActionInfo());
+        GameManager.Instance.SetFarmerActionInfo(GenerateFarmerActionInfos());
     }
 
     List<Vector2Int> GetEmptyTileCoordinates()
@@ -92,11 +92,13 @@ public class FarmerAI : MonoBehaviour
         return (PlantType)randomIndex;
     }
 
-    public FarmerActionInfo GenerateFarmerActionInfo()
+    public List<FarmerActionInfo> GenerateFarmerActionInfos()
     {
+        List<FarmerActionInfo> actionInfos = new List<FarmerActionInfo>(); 
         ShapeData shapeData = GetRandomShapeData();
         Vector2Int placementCoordinate = FindOptimalPlacementCoordinate(shapeData);
         PlantType plantType = GetRandomPlantType();
-        return new FarmerActionInfo(placementCoordinate, shapeData, plantType);
+        actionInfos.Add(new FarmerActionInfo(placementCoordinate, shapeData, plantType));
+        return actionInfos;
     }
 }

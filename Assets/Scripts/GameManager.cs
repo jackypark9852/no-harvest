@@ -14,7 +14,7 @@ public class GameManager : Singleton<GameManager>
     public UnityEvent GameOver;
     public UnityEvent StateChanged; 
 
-    public  FarmerActionInfo farmerActionInfo { get; private set;}
+    public  List<FarmerActionInfo> farmerActionInfos { get; private set;}
     
     public List<PlayerActionInfo> playerActionInfos = new List<PlayerActionInfo>();
 
@@ -109,9 +109,9 @@ public class GameManager : Singleton<GameManager>
     {
         ChangeState(GameState.RoundTransition);
     }
-    public void SetFarmerActionInfo(FarmerActionInfo farmerActionInfo)
+    public void SetFarmerActionInfo(List<FarmerActionInfo> farmerActionInfos)
     {
-        this.farmerActionInfo = farmerActionInfo;
+        this.farmerActionInfos = farmerActionInfos;
     }
     public void SetPlayerActionInfos(List<PlayerActionInfo> playerActionInfos)
     {

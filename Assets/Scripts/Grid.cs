@@ -81,17 +81,20 @@ public class Grid : MonoBehaviour
 
     public void ApplyFarmerActionOnTiles()
     {
-        FarmerActionInfo farmerActionInfo = GameManager.Instance.farmerActionInfo;
-        Vector2Int centerTile = farmerActionInfo.centerTileCoordinate;
-        ShapeData shapeData = farmerActionInfo.shapeData;
-        PlantType plantType = farmerActionInfo.plantType;
-
-        List<Tile> affectedTiles = TileUtil.GetAffectedTiles(centerTile, shapeData);
-        foreach (Tile tile in affectedTiles)
+        List<FarmerActionInfo> farmerActionInfos = GameManager.Instance.farmerActionInfos;  
+        foreach(FarmerActionInfo actionInfo in farmerActionInfos)
         {
-            if (tile.plantable && tile.Plant == null)
+            Vector2Int centerTile = actionInfo.centerTileCoordinate;
+            ShapeData shapeData = actionInfo.shapeData;
+            PlantType plantType = actionInfo.plantType;
+
+            List<Tile> affectedTiles = TileUtil.GetAffectedTiles(centerTile, shapeData);
+            foreach (Tile tile in affectedTiles)
             {
-                tile.PlantNewPlant(plantType);
+                if (tile.plantable && tile.Plant == null)
+                {
+                    tile.PlantNewPlant(plantType);
+                }
             }
         }
         GameManager.Instance.EndFarming();
