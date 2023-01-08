@@ -45,7 +45,7 @@ public class InputManager : Singleton<InputManager>
     }
 
     List<PlayerActionInfo> actions = new List<PlayerActionInfo>();
-    NaturalDisasterType naturalDisasterType { get; set; }
+    public NaturalDisasterType naturalDisasterType { get; set; }
 
     Grid grid;
 

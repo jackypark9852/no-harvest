@@ -4,17 +4,36 @@ using UnityEngine;
 
 public abstract class ItemSelectionManager<T> : Singleton<ItemSelectionManager<T>>
 {
-    [SerializeField] GameObject itemsParent;
-    List<T> items;
+    // List<T> items;
     public T selectedItem { get; private set; }
+
+    ItemDisplay<T> selectedItemDisplay;
+    [SerializeField] ItemDisplay<T> defaultSelectedItemDisplay;
+    // [SerializeField] Transform itemDisplaysParent;
 
     void Awake()
     {
-        // items = GetComponentsInChildren<T>(itemsParent);
+        if (defaultSelectedItemDisplay != null)
+        {
+            SelectItem(defaultSelectedItemDisplay);
+        }
     }
 
-    public void SelectItem(T item)
+    public virtual void SelectItem(ItemDisplay<T> itemDisplay)
     {
-        selectedItem = item;
+        if (selectedItemDisplay is not null)
+        {
+            DeselectItem(selectedItemDisplay);
+        }
+        selectedItemDisplay = itemDisplay;
+        selectedItem = selectedItemDisplay.item.item;
+        selectedItemDisplay.SetFrameActive(true);
+    }
+
+    public void DeselectItem(ItemDisplay<T> itemDisplay)
+    {
+        selectedItem = default;
+        selectedItemDisplay = null;
+        itemDisplay.SetFrameActive(false);
     }
 }

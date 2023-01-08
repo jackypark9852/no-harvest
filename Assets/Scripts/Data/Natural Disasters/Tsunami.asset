@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Tsunami
   m_EditorClassIdentifier: 
   type: 1
-  shapeData: {fileID: 0}
+  shapeData: {fileID: 11400000, guid: 2ee56eb62b884804da8cf25375fcb983, type: 2}
   manaCost: 1

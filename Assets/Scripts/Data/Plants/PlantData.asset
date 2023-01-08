@@ -14,4 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plantsList:
   - Item1: 0
-    Item2: {fileID: 0}
+    Item2: {fileID: 1879779955996603835, guid: 75032f4be82b166409dc996845e0f811, type: 3}
+  - Item1: 1
+    Item2: {fileID: 3435170134047640610, guid: da7080ac81ef1214e9f3f8af49bb6139, type: 3}
+  - Item1: 2
+    Item2: {fileID: 5657943034272448964, guid: 426b31f6fd7bc5646af704b85107b2f7, type: 3}

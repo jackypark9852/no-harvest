@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public abstract class ItemDisplay<T> : MonoBehaviour, IPointerDownHandler
+[ExecuteAlways]
+public abstract class ItemDisplay<T> : MonoBehaviour
 {
-    [SerializeField] ItemData<T> item;
+    public ItemData<T> item;
 
     Image image;
+
+    [SerializeField] Image frameImage;
 
     void Awake()
     {
@@ -16,13 +19,13 @@ public abstract class ItemDisplay<T> : MonoBehaviour, IPointerDownHandler
         image.sprite = item.sprite;
     }
 
-    void OnSelect()
+    public void HandleClick()
     {
-        ItemSelectionManager<T>.Instance.SelectItem(item.item);
+        ItemSelectionManager<T>.Instance.SelectItem(this);
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void SetFrameActive(bool active)
     {
-        Debug.Log("here");
+        frameImage.gameObject.SetActive(active);
     }
 }

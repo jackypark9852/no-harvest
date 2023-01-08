@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Meteorite
   m_EditorClassIdentifier: 
   item: 3
-  sprite: {fileID: 21300000, guid: f09eae8c0ea04254b90c5386a034a225, type: 3}
+  sprite: {fileID: 21300000, guid: 58702b682724446469909705bca1de62, type: 3}
