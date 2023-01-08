@@ -134,7 +134,8 @@ public class Grid : MonoBehaviour
                 if (NaturalDisasterUtil.Instance.NaturalDisasterTypeToData.ContainsKey(naturalDisasterType)) {
                     ShapeData shapeData = NaturalDisasterUtil.Instance.NaturalDisasterTypeToData[naturalDisasterType].shapeData;
                     List<Tile> affectedTiles = TileUtil.GetAffectedTiles(centerTileCoordinate, shapeData);
-                    foreach (Tile tile in affectedTiles)
+                    List<Tile> tilesWithPlant = affectedTiles.Where(tile => tile.Plant != null).ToList();
+                    foreach (Tile tile in tilesWithPlant)
                     {
                         if (tile.Plant is not null)
                         {
