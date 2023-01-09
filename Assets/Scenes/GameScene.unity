@@ -5411,6 +5411,8 @@ MonoBehaviour:
     prefab: {fileID: 7262602681487875192, guid: 9b14042596e60d04ca4ac292b3675466, type: 3}
   - type: 3
     prefab: {fileID: 7392957512477289785, guid: 0c4fac633d04a5144841e3b51a2666af, type: 3}
+  - type: 4
+    prefab: {fileID: 3406779260114486931, guid: 8aa6df27fbd4bb044ad3c263a638cc7f, type: 3}
   tsunamiTravelSpeed: 10
   fireDespawnDelaySeconds: 1.1
   meteoriteFallSpeed: 20

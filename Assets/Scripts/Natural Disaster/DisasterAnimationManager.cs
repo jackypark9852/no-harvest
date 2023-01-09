@@ -32,6 +32,9 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
                 break;
             case NaturalDisasterType.Blizzard:
                 await PlayBlizzardAnimation(affectedTiles);
+                break;
+            case NaturalDisasterType.Lightning:
+                await PlayLightningAnimation(affectedTiles);
                 break; 
             default:
                 //throw new System.Exception($"PlayDisasterAnimation: {naturalDisasterType.ToString()} animation not found.");
@@ -151,6 +154,19 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
         animator.SetTrigger("Landed");
         await Task.Delay(300);
         Destroy(blizzard);
+        return;
+    }
+    public async Task PlayLightningAnimation(List<Tile> affectedTiles)
+    {
+        if (!DisasterTypeToPrefab.ContainsKey(NaturalDisasterType.Lightning))
+        {
+            throw new System.Exception("DisasterAnimationManager: missing \"Lightning\" prefab.");
+        }
+        GameObject lightningPrefab = DisasterTypeToPrefab[NaturalDisasterType.Lightning];
+        Vector3 position = new Vector3(TileUtil.GetCenterXCoord(affectedTiles), TileUtil.GetCenterYCoord(affectedTiles), 0);
+        GameObject lightning = Object.Instantiate(lightningPrefab, position, Quaternion.identity);
+        await Task.Delay(700);
+        Destroy(lightning);
         return;
     }
 }
