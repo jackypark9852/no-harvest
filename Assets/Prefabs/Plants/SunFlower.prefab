@@ -101,9 +101,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  PlantDespawned:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5280530890227377622}
+        m_TargetAssemblyTypeName: PlantAudio, Assembly-CSharp
+        m_MethodName: PlayDestroySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   PlantCreated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5280530890227377622}
+        m_TargetAssemblyTypeName: PlantAudio, Assembly-CSharp
+        m_MethodName: PlaySpawnSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   PlantImmune:
     m_PersistentCalls:
       m_Calls:
@@ -117,8 +144,19 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5280530890227377622 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -1193869687621825968, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
+  m_PrefabInstance: {fileID: 2749081461717675910}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879779955996603835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a9d694be6a69ec4d8df3e13c810a5ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6332367806466859920 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8198704157190294550, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
