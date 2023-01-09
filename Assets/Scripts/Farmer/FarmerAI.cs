@@ -2,6 +2,7 @@ using Mono.Cecil;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEditor.U2D.Common;
 using UnityEngine;
 
@@ -96,6 +97,14 @@ public class FarmerAI : MonoBehaviour
         }
         List<PlantType> plantsToPlant = RoundManager.Instance.roundInfos[RoundManager.Instance.roundNum].plantsToPlant;
         List<FarmerActionInfo> farmerActionInfos = new List<FarmerActionInfo>();
+        
+        if (RoundManager.Instance.roundNum == 0 && plantsToPlant.Count == 2)  // Hard-coded
+        {
+            ShapeData shapeData = GetRandomShapeData();
+            FarmerActionInfo farmerActionInfo1 = new FarmerActionInfo(new Vector2Int(2, 6), shapeData, plantsToPlant[0]);
+            FarmerActionInfo farmerActionInfo2 = new FarmerActionInfo(new Vector2Int(6, 2), shapeData, plantsToPlant[1]);
+            return new List<FarmerActionInfo> { farmerActionInfo1, farmerActionInfo2 };
+        }
         foreach (PlantType plant in plantsToPlant)
         {
             ShapeData shapeData = GetRandomShapeData();

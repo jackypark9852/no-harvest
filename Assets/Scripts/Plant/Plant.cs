@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
@@ -33,7 +35,7 @@ public abstract class Plant : MonoBehaviour
     {
         ShapeData shapeData = ScriptableObject.CreateInstance<ShapeData>();
         shapeData.shapeType = ShapeType.SquareMedium;
-        shapeData.affectedTiles = new Vector2Int[] { new Vector2Int(0, -1), new Vector2Int(-1, 0), new Vector2Int(0, 0), new Vector2Int(1, 0), new Vector2Int(0, 1) };
+        shapeData.affectedTiles = new Vector2Int[] { new Vector2Int(0, -1), new Vector2Int(-1, 0), /* new Vector2Int(0, 0), */ new Vector2Int(1, 0), new Vector2Int(0, 1) };
         return shapeData;
     }
 
@@ -65,7 +67,12 @@ public abstract class Plant : MonoBehaviour
         PlantImmune.Invoke();
         Vector2Int coords = GetTileCoords();
         List<Tile> affectedTiles = TileUtil.GetAffectedTiles(coords, circleSmallShapeData);
-        foreach (Tile tile in affectedTiles)
+        
+        // Hard-coded
+        System.Random rnd = new System.Random();
+        var affectedTiles2 = affectedTiles.OrderBy(x => rnd.Next()).Take(2);
+
+        foreach (Tile tile in affectedTiles2)  // Hard-coded
         {
             if (tile.Plant is null)
             {

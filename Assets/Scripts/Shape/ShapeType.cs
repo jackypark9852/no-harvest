@@ -18,5 +18,6 @@ public enum ShapeType
     VerticalLine,
     VerticalLine3Wide,
     Diamond3Away,
+    Diamond4Away,
     Custom,
 }

@@ -10729,7 +10729,7 @@ PrefabInstance:
       objectReference: {fileID: 1121402950}
     - target: {fileID: 3070527109508511238, guid: 485d5900783618b4993ec046e29d376a, type: 3}
       propertyPath: unlockedNaturalDisasterTypes.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3070527109508511239, guid: 485d5900783618b4993ec046e29d376a, type: 3}
       propertyPath: m_RootOrder

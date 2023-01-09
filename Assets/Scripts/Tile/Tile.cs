@@ -31,6 +31,10 @@ public class Tile : MonoBehaviour
 
     public void PlantNewPlant(PlantType plantType)
     {
+        if (plant is not null)
+        {
+            return;
+        }
         GameObject plantPrefab = PlantUtil.Instance.PlantTypeToPrefab(plantType);
         plant = Object.Instantiate(plantPrefab, transform.position, Quaternion.identity).GetComponent<Plant>();
         plant.gameObject.transform.parent = gameObject.transform; 
