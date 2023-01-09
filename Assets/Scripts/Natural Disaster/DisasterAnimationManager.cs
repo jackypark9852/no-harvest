@@ -26,7 +26,9 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
                 await PlayFireAnimation(affectedTiles);
                 break; 
             default:
-                throw new System.Exception($"PlayDisasterAnimation: {naturalDisasterType.ToString()} animation not found.");
+                //throw new System.Exception($"PlayDisasterAnimation: {naturalDisasterType.ToString()} animation not found.");
+                Debug.Log("Disaster animation not found");
+                break; 
         }
         return;
     }

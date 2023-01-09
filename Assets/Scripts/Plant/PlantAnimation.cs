@@ -58,7 +58,6 @@ public class PlantAnimation : MonoBehaviour
         Material original = spriteRenderer.material;
         for (int i = 0; i < blinkCount; i++)
         {
-            Debug.Log("Blink"); 
             spriteRenderer.material = blinkMaterial;
             await Task.Delay(blinkIntervalMillieSecond);
             spriteRenderer.material = original;
