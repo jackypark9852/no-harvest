@@ -8,6 +8,7 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
     public List<NaturalDisasterTypeAndPrefab> prefabs; 
     public float tsunamiTravelSpeed;
     public float fireDespawnDelaySeconds = 2f;
+    public float meteoriteFallSpeed = 6f; 
     Dictionary<NaturalDisasterType, GameObject> DisasterTypeToPrefab = new Dictionary<NaturalDisasterType, GameObject>();
 
 
@@ -24,6 +25,9 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
                 break;
             case NaturalDisasterType.Fire:
                 await PlayFireAnimation(affectedTiles);
+                break;
+            case NaturalDisasterType.Meteorite:
+                await PlayMeteoriteAnimation(affectedTiles);
                 break; 
             default:
                 //throw new System.Exception($"PlayDisasterAnimation: {naturalDisasterType.ToString()} animation not found.");
@@ -67,6 +71,44 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
             await Task.Delay(6);
         }
         Destroy(tsunami);
+        return;
+    }
+    public async Task PlayMeteoriteAnimation(List<Tile> affecetedTiles)
+    {
+        // Clone affectedTiles
+        List<Tile> affectedTilesClone = new List<Tile>(affecetedTiles);
+        List<Task> meteoriteDropTasks = new List<Task>();
+        if (!DisasterTypeToPrefab.ContainsKey(NaturalDisasterType.Meteorite))
+        {
+            throw new System.Exception("DisasterAnimationManager: missing \"Tsunami\" prefab.");
+        }
+        
+        foreach(Tile tile in affecetedTiles)
+        {
+            meteoriteDropTasks.Add(DropMeteorite(tile));
+        }
+        await Task.WhenAll(meteoriteDropTasks);
+        return; 
+    }
+    public async Task DropMeteorite(Tile tile)
+    {
+        GameObject meteoritePrefab = DisasterTypeToPrefab[NaturalDisasterType.Meteorite];
+        float zStart = -5f;
+        float zEnd = 0f;
+        Vector2 position = tile.GetCoords(); 
+        GameObject meteorite = Object.Instantiate(meteoritePrefab, new Vector3(position.x, position.y, zStart), Quaternion.identity);
+        Animator animator = meteorite.GetComponent<Animator>();
+
+        while (meteorite.transform.position.z < zEnd)
+        {
+            meteorite.transform.position = new Vector3(meteorite.transform.position.x,
+                meteorite.transform.position.y,
+                meteorite.transform.position.z + meteoriteFallSpeed * Time.deltaTime);
+            await Task.Delay(6);
+        }
+        animator.SetTrigger("Landed"); 
+        await Task.Delay(300);
+        Destroy(meteorite);
         return;
     }
 }
