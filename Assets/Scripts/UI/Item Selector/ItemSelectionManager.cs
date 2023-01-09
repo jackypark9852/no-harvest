@@ -10,10 +10,14 @@ public abstract class ItemSelectionManager<T> : Singleton<ItemSelectionManager<T
     ItemDisplay<T> selectedItemDisplay;
     [SerializeField] ItemDisplay<T> defaultSelectedItemDisplay;
     ItemDisplay<T> prevSelectedItemDisplay;
-    // [SerializeField] Transform itemDisplaysParent;
+    
+    [SerializeField] Transform itemDisplaysParent;
+    protected Dictionary<T, ItemDisplay<T>> itemToDisplayMap = new Dictionary<T, ItemDisplay<T>>();
 
-    void Awake()
+    protected virtual void Awake()
     {
+        InitItemToDisplayMap();
+        
         if (defaultSelectedItemDisplay != null)
         {
             SelectItem(defaultSelectedItemDisplay);
@@ -50,5 +54,13 @@ public abstract class ItemSelectionManager<T> : Singleton<ItemSelectionManager<T
             return;
         }
         SelectItem(prevSelectedItemDisplay);
+    }
+    
+    private void InitItemToDisplayMap()
+    {
+        foreach (ItemDisplay<T> itemDisplay in itemDisplaysParent.GetComponentsInChildren<ItemDisplay<T>>())
+        {
+            itemToDisplayMap.Add(itemDisplay.item.item, itemDisplay);
+        }
     }
 }

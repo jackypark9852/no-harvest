@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,7 @@ public abstract class ItemDisplay<T> : MonoBehaviour
 
     [SerializeField] Image frameImage;
 
-    void Awake()
+    protected virtual void Awake()
     {
         image = GetComponent<Image>();
         image.sprite = item.sprite;

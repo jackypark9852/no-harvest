@@ -1723,6 +1723,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1376331879}
+        m_TargetAssemblyTypeName: NaturalDisasterItemSelectionManager, Assembly-CSharp
+        m_MethodName: UnlockRoundNaturalDisasterTypes
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 840699964}
         m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
         m_MethodName: AddManaForTurn
@@ -6117,6 +6129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSelectedItemDisplay: {fileID: 1121402950}
+  itemDisplaysParent: {fileID: 1172155095}
+  unlockedNaturalDisasterTypes: 00000000
 --- !u!1001 &1382685954
 PrefabInstance:
   m_ObjectHideFlags: 0
