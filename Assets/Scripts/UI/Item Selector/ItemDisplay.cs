@@ -20,7 +20,7 @@ public abstract class ItemDisplay<T> : MonoBehaviour
         image.sprite = item.sprite;
     }
 
-    public void HandleClick()
+    public virtual void HandleClick()
     {
         ItemSelectionManager<T>.Instance.SelectItem(this);
     }

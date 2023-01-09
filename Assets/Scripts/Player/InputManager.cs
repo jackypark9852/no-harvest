@@ -16,6 +16,11 @@ public class InputManager : Singleton<InputManager>
         }
         set
         {
+            if (GameManager.Instance.state != GameState.PlayerTurn)
+            {
+                return;
+            }
+
             if (selectedTile is not null)
             {
                 grid.GetTileInput(selectedTile).isSelected = false;
@@ -38,6 +43,11 @@ public class InputManager : Singleton<InputManager>
         }
         set
         {
+            if (GameManager.Instance.state != GameState.PlayerTurn)
+            {
+                return;
+            }
+            
             if (hoveredTile is not null)
             {
                 grid.GetTileInput(hoveredTile).isHovered = false;
@@ -154,6 +164,10 @@ public class InputManager : Singleton<InputManager>
 
     public void EndTurn()
     {
+        if (GameManager.Instance.state != GameState.PlayerTurn)
+        {
+            return;
+        }
         Confirm();
         GameManager.Instance.SetPlayerActionInfos(actions);
         GameManager.Instance.EndPlayerTurn();

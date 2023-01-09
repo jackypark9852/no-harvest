@@ -69,7 +69,7 @@ public class TileInput : MonoBehaviour
         {
             effectSpriteRenderer.color = effectToColor[effectType];
         }
-        inputSpriteRenderer.color = inputToColor[GetInputType()];
+        // inputSpriteRenderer.color = inputToColor[GetInputType()];  // Disabled nipple
     }
 
     public void ResetEffectType()

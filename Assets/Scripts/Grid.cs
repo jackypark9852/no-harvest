@@ -121,7 +121,7 @@ public class Grid : MonoBehaviour
 
     public async void ApplyPlayerActionOnTiles()
     {
-        List<PlayerActionInfo> playerActionInfos = GameManager.Instance.playerActionInfos;
+        List<PlayerActionInfo> playerActionInfos = new List<PlayerActionInfo>(GameManager.Instance.playerActionInfos);
         foreach (PlayerActionInfo actionInfo in playerActionInfos)
         {
             Vector2Int centerTileCoordinate = actionInfo.centerTileCoordinate;
