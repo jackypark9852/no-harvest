@@ -58,7 +58,23 @@ PrefabInstance:
     - target: {fileID: 4337215957909412415, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 2065672109, guid: 398aa91c36379f04f93a0588ca210845, type: 3}
+      objectReference: {fileID: -1749083022, guid: 398aa91c36379f04f93a0588ca210845, type: 3}
+    - target: {fileID: 4337215957909412415, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337215957909412415, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337215957909412415, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337215957909412415, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 8198704157190294550, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
       propertyPath: immuneSpriteGO
       value: 
@@ -108,6 +124,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  PlantDespawned:
+    m_PersistentCalls:
+      m_Calls: []
   PlantCreated:
     m_PersistentCalls:
       m_Calls: []
