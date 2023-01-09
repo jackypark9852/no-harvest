@@ -135,9 +135,7 @@ public class Grid : MonoBehaviour
                     ShapeData shapeData = NaturalDisasterUtil.Instance.NaturalDisasterTypeToData[naturalDisasterType].shapeData;
                     List<Tile> affectedTiles = TileUtil.GetAffectedTiles(centerTileCoordinate, shapeData);
                     List<Tile> tilesWithPlant = affectedTiles.Where(tile => tile.Plant != null).ToList();
-                    Debug.Log("Call animation");
                     await DisasterAnimationManager.Instance.PlayDisasterAnimation(naturalDisasterType, affectedTiles);
-                    Debug.Log("End Animation"); 
                     foreach (Tile tile in tilesWithPlant)
                     {
                         if (tile.Plant is not null)
