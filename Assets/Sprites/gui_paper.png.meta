@@ -1233,13 +1233,13 @@ TextureImporter:
       name: gui_paper_53
       rect:
         serializedVersion: 2
-        x: 388
+        x: 392
         y: 34
-        width: 24
+        width: 20
         height: 27
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 8, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0

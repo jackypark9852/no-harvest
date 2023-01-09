@@ -12,5 +12,7 @@ public class SpriteFaceCamera : MonoBehaviour
         float rotationX = Quaternion.LookRotation(targetVector, Camera.main.transform.rotation * Vector3.up).x;
         transform.Rotate(-35f, 0, 0); 
     }
+
+
 }
 
