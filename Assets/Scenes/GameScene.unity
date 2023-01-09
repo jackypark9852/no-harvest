@@ -1389,7 +1389,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1291549001}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &320158008
 MonoBehaviour:
@@ -1403,6 +1403,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2716bf32e0a6ddc4fb8f09b4b7465e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &371440380 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3070527109508511239, guid: 485d5900783618b4993ec046e29d376a, type: 3}
+  m_PrefabInstance: {fileID: 1885774209}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &376529472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1723,7 +1728,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 0
-      - m_Target: {fileID: 1376331879}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ItemSelectionManager`1[[NaturalDisasterType, Assembly-CSharp
         m_MethodName: SelectPrevItem
         m_Mode: 1
@@ -1735,7 +1740,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1376331879}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NaturalDisasterItemSelectionManager, Assembly-CSharp
         m_MethodName: UnlockRoundNaturalDisasterTypes
         m_Mode: 1
@@ -1798,7 +1803,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1376331879}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ItemSelectionManager`1[[NaturalDisasterType, Assembly-CSharp
         m_MethodName: DeselectSelectedItem
         m_Mode: 1
@@ -3004,8 +3009,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667624557}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 4.05, y: 4, z: 0}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -5343,7 +5348,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1205131716
@@ -5492,7 +5497,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1291549001}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1231469673
 MonoBehaviour:
@@ -5511,8 +5516,16 @@ MonoBehaviour:
     prefab: {fileID: 2080567608787846864, guid: c242f65d482906e4fa357cd139741cdd, type: 3}
   - type: 2
     prefab: {fileID: 8268910444504116128, guid: b6e859ed34532a04e915b0edc9858ac4, type: 3}
+  - type: 1
+    prefab: {fileID: 7262602681487875192, guid: 9b14042596e60d04ca4ac292b3675466, type: 3}
+  - type: 3
+    prefab: {fileID: 7392957512477289785, guid: 0c4fac633d04a5144841e3b51a2666af, type: 3}
+  - type: 4
+    prefab: {fileID: 3406779260114486931, guid: 8aa6df27fbd4bb044ad3c263a638cc7f, type: 3}
   tsunamiTravelSpeed: 10
   fireDespawnDelaySeconds: 1.1
+  meteoriteFallSpeed: 20
+  blizzardFallSpeed: 12
 --- !u!1001 &1231935102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5796,10 +5809,10 @@ Transform:
   m_Children:
   - {fileID: 419080894}
   - {fileID: 840699963}
-  - {fileID: 1376331878}
   - {fileID: 320158007}
   - {fileID: 1448953207}
   - {fileID: 1231469672}
+  - {fileID: 371440380}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6257,53 +6270,6 @@ Transform:
   m_Father: {fileID: 1205131717}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1376331877
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1376331878}
-  - component: {fileID: 1376331879}
-  m_Layer: 0
-  m_Name: Natural Disaster Selection Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1376331878
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1376331877}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1291549001}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1376331879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1376331877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35d0424920bbc3c479f5918eea404c5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultSelectedItemDisplay: {fileID: 1121402950}
-  itemDisplaysParent: {fileID: 1172155095}
-  unlockedNaturalDisasterTypes: 00000000
 --- !u!1001 &1382685954
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6830,7 +6796,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1291549001}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1448953208
 MonoBehaviour:
@@ -8761,6 +8727,71 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3624454943297639007, guid: 640875338330cee4890419eff1305399, type: 3}
   m_PrefabInstance: {fileID: 1879222690}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1885774209
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1291549001}
+    m_Modifications:
+    - target: {fileID: 3070527109508511236, guid: 485d5900783618b4993ec046e29d376a, type: 3}
+      propertyPath: m_Name
+      value: Debug Natural Disaster Selection Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070527109508511238, guid: 485d5900783618b4993ec046e29d376a, type: 3}
+      propertyPath: itemDisplaysParent
+      value: 
+      objectReference: {fileID: 1172155095}
+    - target: {fileID: 3070527109508511238, guid: 485d5900783618b4993ec046e29d376a, type: 3}
+      propertyPath: defaultSelectedItemDisplay
+      value: 
+      objectReference: {fileID: 1121402950}
+    - target: {fileID: 3070527109508511239, guid: 485d5900783618b4993ec046e29d376a, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070527109508511239, guid: 485d5900783618b4993ec046e29d376a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070527109508511239, guid: 485d5900783618b4993ec046e29d376a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070527109508511239, guid: 485d5900783618b4993ec046e29d376a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070527109508511239, guid: 485d5900783618b4993ec046e29d376a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070527109508511239, guid: 485d5900783618b4993ec046e29d376a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070527109508511239, guid: 485d5900783618b4993ec046e29d376a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070527109508511239, guid: 485d5900783618b4993ec046e29d376a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070527109508511239, guid: 485d5900783618b4993ec046e29d376a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070527109508511239, guid: 485d5900783618b4993ec046e29d376a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070527109508511239, guid: 485d5900783618b4993ec046e29d376a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 485d5900783618b4993ec046e29d376a, type: 3}
 --- !u!1 &1889606694
 GameObject:
   m_ObjectHideFlags: 0
