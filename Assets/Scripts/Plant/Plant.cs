@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public abstract class Plant : MonoBehaviour
 {
     public UnityEvent PlantDestroyed;
+    public UnityEvent PlantDespawned; 
     public UnityEvent PlantCreated;
     public UnityEvent PlantImmune;
     protected abstract PlantType plantType { get; set; }
