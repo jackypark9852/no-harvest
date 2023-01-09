@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Unity.VisualScripting.FullSerializer;
-using UnityEditor.ShaderGraph.Internal;
+// using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public enum PlantAnimationTrigger
