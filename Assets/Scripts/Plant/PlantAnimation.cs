@@ -19,14 +19,14 @@ public class PlantAnimation : MonoBehaviour
     SpriteRenderer spriteRenderer; 
 
     Vector3 startingRotation;
-    Vector3 targetVector;
     public float swayPeriod = 1.0f;
     public float swayAmount = 50f;
     float elapsedTime = 0.0f;
 
     public Material blinkMaterial;
     public int blinkCount = 3;
-    public int blinkIntervalMillieSecond = 50; 
+    public int blinkIntervalMillieSecond = 50;
+    public float startingRotationZ; 
 
     private void Awake()
     {
@@ -34,18 +34,13 @@ public class PlantAnimation : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void Start()
-    {
-        targetVector = this.transform.position - Camera.main.transform.position;
-        transform.rotation = Quaternion.LookRotation(targetVector, Camera.main.transform.rotation * Vector3.up);
-        startingRotation = transform.rotation.eulerAngles;
-    }
-
     private void Update()
     {
         elapsedTime += Time.deltaTime; 
         float sway = Mathf.Sin(elapsedTime * Mathf.PI * 2 / swayPeriod) * swayAmount;
-        transform.eulerAngles = new Vector3(startingRotation.x, startingRotation.y, startingRotation.z + sway);
+        float x = transform.rotation.eulerAngles.x;
+        float y = transform.rotation.eulerAngles.y; 
+        transform.eulerAngles = new Vector3(x, y, startingRotationZ + sway);
     }
 
     public void PlaySpawnAnimation()

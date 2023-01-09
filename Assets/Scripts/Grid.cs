@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class Grid : MonoBehaviour
-{
+{ 
     Dictionary<Vector2Int, Tile> tiles = new Dictionary<Vector2Int, Tile>();
     public Dictionary<Vector2Int, Tile> Tiles
     {
@@ -119,7 +119,7 @@ public class Grid : MonoBehaviour
     }
 
 
-    public void ApplyPlayerActionOnTiles()
+    public async void ApplyPlayerActionOnTiles()
     {
         List<PlayerActionInfo> playerActionInfos = GameManager.Instance.playerActionInfos;
         foreach(PlayerActionInfo actionInfo in playerActionInfos)
@@ -135,6 +135,9 @@ public class Grid : MonoBehaviour
                     ShapeData shapeData = NaturalDisasterUtil.Instance.NaturalDisasterTypeToData[naturalDisasterType].shapeData;
                     List<Tile> affectedTiles = TileUtil.GetAffectedTiles(centerTileCoordinate, shapeData);
                     List<Tile> tilesWithPlant = affectedTiles.Where(tile => tile.Plant != null).ToList();
+                    Debug.Log("Call animation");
+                    await DisasterAnimationManager.Instance.PlayDisasterAnimation(naturalDisasterType, affectedTiles);
+                    Debug.Log("End Animation"); 
                     foreach (Tile tile in tilesWithPlant)
                     {
                         if (tile.Plant is not null)
@@ -148,6 +151,6 @@ public class Grid : MonoBehaviour
                 }
             }
         }
-        
+        GameManager.Instance.EndDestroying(); 
     }
 }
