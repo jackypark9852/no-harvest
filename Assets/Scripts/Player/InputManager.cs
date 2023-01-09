@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.VirtualTexturing;
-using UnityEngineInternal;
 
 public class InputManager : Singleton<InputManager>
 {

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using UnityEngine;
 using Cysharp.Threading.Tasks; 
 
@@ -17,7 +17,7 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
     {
         prefabs.ForEach((prefab) => DisasterTypeToPrefab.Add(prefab.type, prefab.prefab));
     }
-    public async Task PlayDisasterAnimation(NaturalDisasterType naturalDisasterType, List<Tile> affectedTiles)
+    public async UniTask PlayDisasterAnimation(NaturalDisasterType naturalDisasterType, List<Tile> affectedTiles)
     {
         switch (naturalDisasterType)
         {
@@ -43,7 +43,7 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
         }
         return;
     }
-    public async Task PlayFireAnimation(List<Tile> affectedTiles)
+    public async UniTask PlayFireAnimation(List<Tile> affectedTiles)
     {
         if (!DisasterTypeToPrefab.ContainsKey(NaturalDisasterType.Fire))
         {
@@ -57,7 +57,7 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
         Destroy(fire); 
         return;
     }
-    public async Task PlayTsunamiAnimation(List<Tile> affectedTiles)
+    public async UniTask PlayTsunamiAnimation(List<Tile> affectedTiles)
     {
         if (!DisasterTypeToPrefab.ContainsKey(NaturalDisasterType.Tsunami))
         {
@@ -80,11 +80,11 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
         Destroy(tsunami);
         return;
     }
-    public async Task PlayMeteoriteAnimation(List<Tile> affecetedTiles)
+    public async UniTask PlayMeteoriteAnimation(List<Tile> affecetedTiles)
     {
         // Clone affectedTiles
         List<Tile> affectedTilesClone = new List<Tile>(affecetedTiles);
-        List<Task> meteoriteDropTasks = new List<Task>();
+        List<UniTask> meteoriteDropTasks = new List<UniTask>();
         if (!DisasterTypeToPrefab.ContainsKey(NaturalDisasterType.Meteorite))
         {
             throw new System.Exception("DisasterAnimationManager: missing \"Tsunami\" prefab.");
@@ -94,10 +94,10 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
         {
             meteoriteDropTasks.Add(DropMeteorite(tile));
         }
-        await Task.WhenAll(meteoriteDropTasks);
+        await UniTask.WhenAll(meteoriteDropTasks);
         return; 
     }
-    public async Task DropMeteorite(Tile tile)
+    public async UniTask DropMeteorite(Tile tile)
     {
         GameObject meteoritePrefab = DisasterTypeToPrefab[NaturalDisasterType.Meteorite];
         float zStart = -5f;
@@ -118,11 +118,11 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
         Destroy(meteorite);
         return;
     }
-    public async Task PlayBlizzardAnimation(List<Tile> affecetedTiles)
+    public async UniTask PlayBlizzardAnimation(List<Tile> affecetedTiles)
     {
         // Clone affectedTiles
         List<Tile> affectedTilesClone = new List<Tile>(affecetedTiles);
-        List<Task> blizzardDropTasks = new List<Task>();
+        List<UniTask> blizzardDropTasks = new List<UniTask>();
         if (!DisasterTypeToPrefab.ContainsKey(NaturalDisasterType.Blizzard))
         {
             throw new System.Exception("DisasterAnimationManager: missing \"Blizzard\" prefab.");
@@ -132,10 +132,10 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
         {
             blizzardDropTasks.Add(DropBlizzard(tile));
         }
-        await Task.WhenAll(blizzardDropTasks);
+        await UniTask.WhenAll(blizzardDropTasks);
         return;
     }
-    public async Task DropBlizzard(Tile tile)
+    public async UniTask DropBlizzard(Tile tile)
     {
         GameObject blizzardPrefab = DisasterTypeToPrefab[NaturalDisasterType.Blizzard];
         float zStart = -5f;
@@ -154,9 +154,8 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
         animator.SetTrigger("Landed");
         await UniTask.Delay(300);
         Destroy(blizzard);
-        return;
     }
-    public async Task PlayLightningAnimation(List<Tile> affectedTiles)
+    public async UniTask PlayLightningAnimation(List<Tile> affectedTiles)
     {
         if (!DisasterTypeToPrefab.ContainsKey(NaturalDisasterType.Lightning))
         {

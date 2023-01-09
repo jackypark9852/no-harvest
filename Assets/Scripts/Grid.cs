@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 
@@ -82,7 +82,7 @@ public class Grid : MonoBehaviour
     public async void ApplyFarmerActionOnTiles()
     {
         List<FarmerActionInfo> farmerActionInfos = GameManager.Instance.farmerActionInfos;
-        List<Task> plantTasks = new List<Task>();
+        List<UniTask> plantTasks = new List<UniTask>();
         
         foreach (FarmerActionInfo actionInfo in farmerActionInfos)
         {
@@ -103,15 +103,12 @@ public class Grid : MonoBehaviour
             }
         }
 
-        while (!plantTasks.All(t => t.IsCompleted))
-        {
-            await UniTask.Delay(10);
-        }
+        await UniTask.WhenAll(plantTasks);
 
         GameManager.Instance.EndFarming();
     }
     
-    private async Task Plant(Tile tile, PlantType plantType, int delayMillieSeconds) 
+    private async UniTask Plant(Tile tile, PlantType plantType, int delayMillieSeconds) 
     {
         await UniTask.Delay(delayMillieSeconds); 
         tile.PlantNewPlant(plantType);
