@@ -7,7 +7,8 @@ using UnityEngine.Events;
 public abstract class Plant : MonoBehaviour
 {
     public UnityEvent PlantDestroyed;
-    public UnityEvent PlantCreated; 
+    public UnityEvent PlantCreated;
+    public UnityEvent PlantImmune;
     protected abstract PlantType plantType { get; set; }
 
     ShapeData squareMediumShapeData;
@@ -60,6 +61,7 @@ public abstract class Plant : MonoBehaviour
 
     public virtual void OnPlantGrowth()
     {
+        PlantImmune.Invoke();
         Vector2Int coords = GetTileCoords();
         List<Tile> affectedTiles = TileUtil.GetAffectedTiles(coords, circleSmallShapeData);
         foreach (Tile tile in affectedTiles)
