@@ -24,7 +24,7 @@ public class PlantAnimation : MonoBehaviour
     float elapsedTime = 0.0f;
 
     public Material blinkMaterial;
-    public int blinkCount = 3;
+    public int blinkCount = 2;
     public int blinkIntervalMillieSecond = 50;
     public float startingRotationZ; 
 
