@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Fire
   m_EditorClassIdentifier: 
   type: 0
-  shapeData: {fileID: 11400000, guid: c1dbc16ce3df0a34994fe86f7f52c444, type: 2}
+  shapeData: {fileID: 11400000, guid: 9b2012a181de03a4d8d74f1ebe218c24, type: 2}
   manaCost: 1

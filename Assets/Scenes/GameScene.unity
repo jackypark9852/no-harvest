@@ -1660,8 +1660,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 419080894}
-  - component: {fileID: 419080893}
   - component: {fileID: 419080895}
+  - component: {fileID: 419080893}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1710,7 +1710,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 1376331879}
         m_TargetAssemblyTypeName: ItemSelectionManager`1[[NaturalDisasterType, Assembly-CSharp
         m_MethodName: SelectPrevItem
@@ -1741,6 +1741,18 @@ MonoBehaviour:
       - m_Target: {fileID: 840699964}
         m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
         m_MethodName: Reset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 742768798}
+        m_TargetAssemblyTypeName: FarmerAI, Assembly-CSharp
+        m_MethodName: SubmitFarmerActionInfo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4897,6 +4909,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3624454943297639007, guid: 640875338330cee4890419eff1305399, type: 3}
   m_PrefabInstance: {fileID: 1093999082}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1121402950 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4752881945973362838, guid: f164fe8b47cbf8f46bc1e8fccbfcd855, type: 3}
+  m_PrefabInstance: {fileID: 4752881945914799451}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 782d29a043e05b846907d834c5a31963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1164272353
 GameObject:
   m_ObjectHideFlags: 0
@@ -6093,7 +6116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d0424920bbc3c479f5918eea404c5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultSelectedItemDisplay: {fileID: 1532774480}
+  defaultSelectedItemDisplay: {fileID: 1121402950}
 --- !u!1001 &1382685954
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7075,17 +7098,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4752881945973362839, guid: f164fe8b47cbf8f46bc1e8fccbfcd855, type: 3}
   m_PrefabInstance: {fileID: 1532774478}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1532774480 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4752881945973362838, guid: f164fe8b47cbf8f46bc1e8fccbfcd855, type: 3}
-  m_PrefabInstance: {fileID: 1532774478}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 782d29a043e05b846907d834c5a31963, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1535837403
 PrefabInstance:
   m_ObjectHideFlags: 0

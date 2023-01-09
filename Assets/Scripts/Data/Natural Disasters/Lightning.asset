@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Lightning
   m_EditorClassIdentifier: 
   type: 4
-  shapeData: {fileID: 11400000, guid: 2ee56eb62b884804da8cf25375fcb983, type: 2}
+  shapeData: {fileID: 11400000, guid: bd14e84f38b0e514dbf151f145de5b4c, type: 2}
   manaCost: 1

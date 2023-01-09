@@ -11,8 +11,7 @@ public class RoundManager : Singleton<RoundManager>
     internal List<RoundInfo> roundInfos = new List<RoundInfo>
     {
         new RoundInfo(new List<int> {0, 0}, new List<NaturalDisasterType> {}),
-        new RoundInfo(new List<int> {0}, new List<NaturalDisasterType> {NaturalDisasterType.Fire}),
-        new RoundInfo(new List<int> {0}, new List<NaturalDisasterType> {}),
+        new RoundInfo(new List<int> {}, new List<NaturalDisasterType> {NaturalDisasterType.Fire}),
         new RoundInfo(new List<int> {1}, new List<NaturalDisasterType> {NaturalDisasterType.Tsunami}),
         new RoundInfo(new List<int> {0}, new List<NaturalDisasterType> {}),
         new RoundInfo(new List<int> {2}, new List<NaturalDisasterType> {NaturalDisasterType.Meteorite}),
@@ -30,7 +29,7 @@ public class RoundManager : Singleton<RoundManager>
         new RoundInfo(new List<int> {0}, new List<NaturalDisasterType> {}),
         new RoundInfo(new List<int> {3}, new List<NaturalDisasterType> {}),
         
-        // Round 19+
+        // Round 18+
         new RoundInfo(new List<int> {0, 1}, new List<NaturalDisasterType> {}),
         new RoundInfo(new List<int> {0, 2}, new List<NaturalDisasterType> {}),
         new RoundInfo(new List<int> {3}, new List<NaturalDisasterType> {}),
