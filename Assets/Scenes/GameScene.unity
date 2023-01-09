@@ -1843,9 +1843,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 0
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ItemSelectionManager`1[[NaturalDisasterType, Assembly-CSharp
-        m_MethodName: SelectPrevItem
+      - m_Target: {fileID: 1836122891}
+        m_TargetAssemblyTypeName: NaturalDisasterItemSelectionManager, Assembly-CSharp
+        m_MethodName: UnlockRoundNaturalDisasterTypes
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3485,7 +3485,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -380, y: -176}
+  m_SizeDelta: {x: -480, y: -176}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &776580278
 MonoBehaviour:
@@ -3562,6 +3562,12 @@ MonoBehaviour:
 
     [<color=#FF4400>Wildfire</color> | <color=#0000FF>Tsunami</color>
     | <color=#FFFF00>Lightning</color>]
+
+
+    [Welcome to Serialize Field]
+
+    [Get
+    off my private property]
 
 
     >> Press anywhere to continue <<'
@@ -6223,7 +6229,7 @@ MonoBehaviour:
     prefab: {fileID: 7392957512477289785, guid: 0c4fac633d04a5144841e3b51a2666af, type: 3}
   - type: 4
     prefab: {fileID: 3406779260114486931, guid: 8aa6df27fbd4bb044ad3c263a638cc7f, type: 3}
-  tsunamiTravelSpeed: 20
+  tsunamiTravelSpeed: 75
   fireDespawnDelaySeconds: 1.1
   meteoriteFallSpeed: 20
   blizzardFallSpeed: 12
@@ -9280,6 +9286,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1836122891 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3070527109508511238, guid: 485d5900783618b4993ec046e29d376a, type: 3}
+  m_PrefabInstance: {fileID: 1885774209}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35d0424920bbc3c479f5918eea404c5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1839814474
 GameObject:
   m_ObjectHideFlags: 0
@@ -9694,6 +9711,10 @@ PrefabInstance:
       propertyPath: defaultSelectedItemDisplay
       value: 
       objectReference: {fileID: 1121402950}
+    - target: {fileID: 3070527109508511238, guid: 485d5900783618b4993ec046e29d376a, type: 3}
+      propertyPath: unlockedNaturalDisasterTypes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3070527109508511239, guid: 485d5900783618b4993ec046e29d376a, type: 3}
       propertyPath: m_RootOrder
       value: 5
