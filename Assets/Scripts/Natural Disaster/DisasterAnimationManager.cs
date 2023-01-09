@@ -8,7 +8,8 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
     public List<NaturalDisasterTypeAndPrefab> prefabs; 
     public float tsunamiTravelSpeed;
     public float fireDespawnDelaySeconds = 2f;
-    public float meteoriteFallSpeed = 6f; 
+    public float meteoriteFallSpeed = 6f;
+    public float blizzardFallSpeed = 5f; 
     Dictionary<NaturalDisasterType, GameObject> DisasterTypeToPrefab = new Dictionary<NaturalDisasterType, GameObject>();
 
 
@@ -28,6 +29,9 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
                 break;
             case NaturalDisasterType.Meteorite:
                 await PlayMeteoriteAnimation(affectedTiles);
+                break;
+            case NaturalDisasterType.Blizzard:
+                await PlayBlizzardAnimation(affectedTiles);
                 break; 
             default:
                 //throw new System.Exception($"PlayDisasterAnimation: {naturalDisasterType.ToString()} animation not found.");
@@ -109,6 +113,44 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
         animator.SetTrigger("Landed"); 
         await Task.Delay(300);
         Destroy(meteorite);
+        return;
+    }
+    public async Task PlayBlizzardAnimation(List<Tile> affecetedTiles)
+    {
+        // Clone affectedTiles
+        List<Tile> affectedTilesClone = new List<Tile>(affecetedTiles);
+        List<Task> blizzardDropTasks = new List<Task>();
+        if (!DisasterTypeToPrefab.ContainsKey(NaturalDisasterType.Blizzard))
+        {
+            throw new System.Exception("DisasterAnimationManager: missing \"Blizzard\" prefab.");
+        }
+
+        foreach (Tile tile in affecetedTiles)
+        {
+            blizzardDropTasks.Add(DropBlizzard(tile));
+        }
+        await Task.WhenAll(blizzardDropTasks);
+        return;
+    }
+    public async Task DropBlizzard(Tile tile)
+    {
+        GameObject blizzardPrefab = DisasterTypeToPrefab[NaturalDisasterType.Blizzard];
+        float zStart = -5f;
+        float zEnd = 0f;
+        Vector2 position = tile.GetCoords();
+        GameObject blizzard = Object.Instantiate(blizzardPrefab, new Vector3(position.x, position.y, zStart), Quaternion.identity);
+        Animator animator = blizzard.GetComponent<Animator>();
+
+        while (blizzard.transform.position.z < zEnd)
+        {
+            blizzard.transform.position = new Vector3(blizzard.transform.position.x,
+                blizzard.transform.position.y,
+                blizzard.transform.position.z + blizzardFallSpeed * Time.deltaTime);
+            await Task.Delay(6);
+        }
+        animator.SetTrigger("Landed");
+        await Task.Delay(300);
+        Destroy(blizzard);
         return;
     }
 }
