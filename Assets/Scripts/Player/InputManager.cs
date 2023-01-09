@@ -154,6 +154,7 @@ public class InputManager : Singleton<InputManager>
 
     public void EndTurn()
     {
+        Confirm();
         GameManager.Instance.SetPlayerActionInfos(actions);
         GameManager.Instance.EndPlayerTurn();
     }
@@ -161,6 +162,7 @@ public class InputManager : Singleton<InputManager>
     {
         ActionInputType actionInputType = action.actionInputType;
         ActionInputType? prevActionInputType = GetPrevActionInputType();
+        ActionInputType? prevPrevActionInputType = GetPrevPrevActionInputType();
         switch (action.actionInputType)
         {
             case ActionInputType.Confirmed:
@@ -169,6 +171,12 @@ public class InputManager : Singleton<InputManager>
                 switch (prevActionInputType)
                 {
                     case ActionInputType.Hovered or ActionInputType.Selected:
+                        switch (prevPrevActionInputType)  // Added to have hover after select
+                        {
+                            case ActionInputType.Selected:
+                                actions.RemoveAt(actions.Count - 2);
+                                break;
+                        }
                         actions[actions.Count - 1] = action;
                         break;
                     case ActionInputType.Confirmed or null:
@@ -182,6 +190,9 @@ public class InputManager : Singleton<InputManager>
                     case ActionInputType.Hovered:
                         actions[actions.Count - 1] = action;
                         break;
+                    case ActionInputType.Selected:  // Added to have hover after select
+                        actions.Add(action);
+                        break;
                     case ActionInputType.Confirmed or null:
                         actions.Add(action);
                         break;
@@ -192,15 +203,30 @@ public class InputManager : Singleton<InputManager>
 
     private ActionInputType? GetPrevActionInputType()
     {
-        if (actions.Count == 0)
+        if (actions.Count <= 0)
         {
             return null;
         }
         return actions[actions.Count - 1].actionInputType;
     }
+    private ActionInputType? GetPrevPrevActionInputType()
+    {
+        if (actions.Count <= 1)
+        {
+            return null;
+        }
+        return actions[actions.Count - 2].actionInputType;
+    }
 
     private bool ConfirmAction()
     {
+        if (actions.Count >= 2)  // Added to have hover after select
+        {
+            if (actions[actions.Count - 2].actionInputType == ActionInputType.Selected && actions[actions.Count - 1].actionInputType == ActionInputType.Hovered)
+            {
+                actions.RemoveAt(actions.Count - 1);
+            }
+        }
         if (actions.Count == 0 || actions[actions.Count - 1].actionInputType != ActionInputType.Selected)
         {
             return false;

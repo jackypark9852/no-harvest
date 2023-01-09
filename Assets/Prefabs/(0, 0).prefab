@@ -212,8 +212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb0f14b80d3ebe4792d63a64571460a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alphaMinMultiplier: 0.25
-  alphaMaxMultiplier: 1.25
+  alphaMinMultiplier: 0.375
+  alphaMaxMultiplier: 0.875
   blinkPeriod: 1
   effectSpriteRenderer: {fileID: 6898067113346394868}
   inputSpriteRenderer: {fileID: 6748875250936658290}
