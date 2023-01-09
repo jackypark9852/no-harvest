@@ -29,11 +29,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4337215957909412414, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.953717
       objectReference: {fileID: 0}
     - target: {fileID: 4337215957909412414, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.30070576
       objectReference: {fileID: 0}
     - target: {fileID: 4337215957909412414, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
       propertyPath: m_LocalRotation.y
@@ -45,7 +45,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4337215957909412414, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -35
       objectReference: {fileID: 0}
     - target: {fileID: 4337215957909412414, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -59,6 +59,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 2065672109, guid: 398aa91c36379f04f93a0588ca210845, type: 3}
+    - target: {fileID: 8198704157190294550, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
+      propertyPath: immuneSpriteGO
+      value: 
+      objectReference: {fileID: 7681433847927477682, guid: d2303c450cd13d64c848b888ca1a201b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
 --- !u!114 &3023987116603189455 stripped
@@ -107,3 +111,18 @@ MonoBehaviour:
   PlantCreated:
     m_PersistentCalls:
       m_Calls: []
+  PlantImmune:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3023987116603189455}
+        m_TargetAssemblyTypeName: PlantAnimation, Assembly-CSharp
+        m_MethodName: InstantiateImmuneSprite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

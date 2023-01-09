@@ -137,3 +137,4 @@ MonoBehaviour:
   blinkCount: 5
   blinkIntervalMillieSecond: 100
   startingRotationZ: 0
+  immuneSpriteGO: {fileID: 7681433847927477682, guid: d2303c450cd13d64c848b888ca1a201b, type: 3}
