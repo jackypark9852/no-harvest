@@ -85,8 +85,6 @@ public class InputManager : Singleton<InputManager>
     void Awake()
     {
         grid = FindObjectOfType<Grid>();
-
-        NaturalDisasterType_ = NaturalDisasterType.Meteorite;
     }
 
     void Update()
