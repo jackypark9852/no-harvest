@@ -10317,20 +10317,12 @@ PrefabInstance:
       value: AudioManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8238857500978582288, guid: acb6ccad09a73c14f8293d06a4a17756, type: 3}
-      propertyPath: m_text
-      value: You survived X days
+      propertyPath: m_fontSizeBase
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 8238857500978582288, guid: acb6ccad09a73c14f8293d06a4a17756, type: 3}
       propertyPath: m_textAlignment
       value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 8238857500978582288, guid: acb6ccad09a73c14f8293d06a4a17756, type: 3}
-      propertyPath: m_TextStyleHashCode
-      value: -1183493901
-      objectReference: {fileID: 0}
-    - target: {fileID: 8238857500978582288, guid: acb6ccad09a73c14f8293d06a4a17756, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8238857500272902371, guid: acb6ccad09a73c14f8293d06a4a17756, type: 3}
