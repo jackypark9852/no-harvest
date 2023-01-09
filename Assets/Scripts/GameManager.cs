@@ -64,7 +64,7 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("Starting");
         Starting.Invoke();
-        ChangeState(GameState.Farming); 
+        // ChangeState(GameState.Farming); 
         return;
     }
     private void HandlePlayerTurn()
@@ -98,7 +98,11 @@ public class GameManager : Singleton<GameManager>
         StateChanged.Invoke();
         return;
     }
-    
+
+    public void StartGame()
+    {
+        ChangeState(GameState.Farming);
+    }
     public void EndPlayerTurn()
     {
         ChangeState(GameState.Destroying);
