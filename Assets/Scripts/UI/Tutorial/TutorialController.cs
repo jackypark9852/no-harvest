@@ -14,6 +14,15 @@ public class TutorialController : MonoBehaviour
         tutorialScreens = GetChildGameObjects(tutorialScreenParent);
     }
 
+    void Start()
+    {
+        if (GameManager.numPlays > 1)
+        {
+            GameManager.Instance.StartGame();
+            gameObject.SetActive(false);
+        }
+    }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))

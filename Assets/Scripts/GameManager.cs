@@ -17,6 +17,8 @@ public class GameManager : Singleton<GameManager>
     public List<FarmerActionInfo> farmerActionInfos { get; private set;}
     public List<PlayerActionInfo> playerActionInfos = new List<PlayerActionInfo>();
 
+    public static int numPlays { get; private set; } = 0;
+
     public GameState state = GameState.NotStarted;
     public GameState State
     {
@@ -64,7 +66,8 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("Starting");
         Starting.Invoke();
-        // ChangeState(GameState.Farming); 
+        // ChangeState(GameState.Farming);
+        numPlays++;
         return;
     }
     private void HandlePlayerTurn()
