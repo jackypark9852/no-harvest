@@ -77,4 +77,54 @@ public class TileUtil : MonoBehaviour
         }
         return validAffectedTiles;
     }
+    public static float GetMinYCoord(List<Tile> tiles)
+    {
+        float min = float.MaxValue;
+        foreach (Tile tile in tiles)
+        {
+            min = Mathf.Min(min, tile.GetCoords().y);
+        }
+        return min;
+    }
+    public static float GetMaxYCoord(List<Tile> tiles)
+    {
+        float max = float.MinValue;
+        foreach (Tile tile in tiles)
+        {
+            max = Mathf.Max(max, tile.GetCoords().y);
+        }
+        return max;
+    }
+    public static float GetMinXCoord(List<Tile> tiles)
+    {
+        float min = float.MaxValue;
+        foreach (Tile tile in tiles)
+        {
+            min = Mathf.Min(min, tile.GetCoords().x);
+        }
+        return min;
+    }
+    public static float GetMaxXCoord(List<Tile> tiles)
+    {
+        float max = float.MinValue;
+        foreach (Tile tile in tiles)
+        {
+            max = Mathf.Max(max, tile.GetCoords().x);
+        }
+        return max;
+    }
+    public static float GetCenterXCoord(List<Tile> tiles)
+    {
+        {
+            float min = GetMinXCoord(tiles);
+            float max = GetMaxXCoord(tiles);
+            return (min + max) / 2;
+        }
+    }
+    public static float GetCenterYCoord(List<Tile> tiles)
+    {
+        float min = GetMinYCoord(tiles);
+        float max = GetMaxYCoord(tiles);
+        return (min + max) / 2;
+    }
 }

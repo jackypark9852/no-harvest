@@ -1870,7 +1870,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  state: 0
+  state: 5
 --- !u!4 &419080894
 Transform:
   m_ObjectHideFlags: 0
@@ -5341,6 +5341,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3624454943297639007, guid: 640875338330cee4890419eff1305399, type: 3}
   m_PrefabInstance: {fileID: 1210054249}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1231469671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1231469672}
+  - component: {fileID: 1231469673}
+  m_Layer: 0
+  m_Name: DisasterAnimatinManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1231469672
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231469671}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1291549001}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1231469673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231469671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ca17a3da122d3e4f83e31c8e3ae7a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+  - type: 0
+    prefab: {fileID: 2080567608787846864, guid: c242f65d482906e4fa357cd139741cdd, type: 3}
+  - type: 2
+    prefab: {fileID: 8268910444504116128, guid: b6e859ed34532a04e915b0edc9858ac4, type: 3}
+  tsunamiTravelSpeed: 10
+  fireDespawnDelaySeconds: 1.1
 --- !u!1001 &1231935102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5627,6 +5678,7 @@ Transform:
   - {fileID: 1376331878}
   - {fileID: 320158007}
   - {fileID: 1448953207}
+  - {fileID: 1231469672}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6671,6 +6723,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eaeecd813afb3d40b24b8dbe62ff779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roundInfos2:
+  - plantsToPlant: 0000000000000000
+    naturalDisasterUnlocks: 
+  - plantsToPlant: 
+    naturalDisasterUnlocks: 00000000
+  - plantsToPlant: 
+    naturalDisasterUnlocks: 
+  - plantsToPlant: 01000000
+    naturalDisasterUnlocks: 02000000
+  - plantsToPlant: 00000000
+    naturalDisasterUnlocks: 
+  - plantsToPlant: 02000000
+    naturalDisasterUnlocks: 01000000
+  - plantsToPlant: 0100000002000000
+    naturalDisasterUnlocks: 03000000
+  - plantsToPlant: 00000000
+    naturalDisasterUnlocks: 
+  - plantsToPlant: 03000000
+    naturalDisasterUnlocks: 04000000
+  - plantsToPlant: 0000000000000000
+    naturalDisasterUnlocks: 
+  - plantsToPlant: 01000000
+    naturalDisasterUnlocks: 
+  - plantsToPlant: 0000000000000000
+    naturalDisasterUnlocks: 
+  - plantsToPlant: 02000000
+    naturalDisasterUnlocks: 
+  - plantsToPlant: 0000000000000000
+    naturalDisasterUnlocks: 
+  - plantsToPlant: 03000000
+    naturalDisasterUnlocks: 
+  - plantsToPlant: 00000000
+    naturalDisasterUnlocks: 
+  - plantsToPlant: 0100000002000000
+    naturalDisasterUnlocks: 
+  - plantsToPlant: 00000000
+    naturalDisasterUnlocks: 
+  - plantsToPlant: 03000000
+    naturalDisasterUnlocks: 
+  - plantsToPlant: 0000000001000000
+    naturalDisasterUnlocks: 
+  - plantsToPlant: 0000000002000000
+    naturalDisasterUnlocks: 
+  - plantsToPlant: 03000000
+    naturalDisasterUnlocks: 
 --- !u!1001 &1459742994
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -80,7 +80,6 @@ public class GameManager : Singleton<GameManager>
     private void HandleDestroying()
     {
         Destroying.Invoke();
-        ChangeState(GameState.Farming);
         return;
     }
     private void HandleRoundTransition()
@@ -116,6 +115,11 @@ public class GameManager : Singleton<GameManager>
     public void EndRoundTransition()
     {
         ChangeState(GameState.PlayerTurn); 
+    }
+
+    public void EndDestroying()
+    {
+        ChangeState(GameState.Farming);
     }
     public void SetFarmerActionInfo(List<FarmerActionInfo> farmerActionInfos)
     {
