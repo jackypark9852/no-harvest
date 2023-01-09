@@ -78,7 +78,7 @@ public class ProgressBar : MonoBehaviour
         val *= 100;  //|
         bar.fillAmount = val / 100;
 
-        if (Alert >= val)
+        if (Alert <= val)  //| Flipped direction
         {
             bar.color = BarAlertColor;
         }

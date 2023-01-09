@@ -9638,7 +9638,7 @@ PrefabInstance:
       objectReference: {fileID: 288231393}
     - target: {fileID: 8988079092455190687, guid: efc19a5e9ade3b64a92697123f366bc9, type: 3}
       propertyPath: Alert
-      value: 0
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 8988079092455190687, guid: efc19a5e9ade3b64a92697123f366bc9, type: 3}
       propertyPath: BarColor.b
