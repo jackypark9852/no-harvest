@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Unity.VisualScripting.FullSerializer;
-using UnityEditor.ShaderGraph.Internal;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public enum PlantAnimationTrigger
@@ -61,9 +56,9 @@ public class PlantAnimation : MonoBehaviour
         for (int i = 0; i < blinkCount; i++)
         {
             spriteRenderer.material = blinkMaterial;
-            await Task.Delay(blinkIntervalMillieSecond);
+            await UniTask.Delay(blinkIntervalMillieSecond);
             spriteRenderer.material = original;
-            await Task.Delay(blinkIntervalMillieSecond); 
+            await UniTask.Delay(blinkIntervalMillieSecond); 
         }
     }
 

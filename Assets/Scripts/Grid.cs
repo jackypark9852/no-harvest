@@ -1,10 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 public class Grid : MonoBehaviour
 { 
@@ -106,7 +105,7 @@ public class Grid : MonoBehaviour
 
         while (!plantTasks.All(t => t.IsCompleted))
         {
-            await Task.Delay(10);
+            await UniTask.Delay(10);
         }
 
         GameManager.Instance.EndFarming();
@@ -114,7 +113,7 @@ public class Grid : MonoBehaviour
     
     private async Task Plant(Tile tile, PlantType plantType, int delayMillieSeconds) 
     {
-        await Task.Delay(delayMillieSeconds); 
+        await UniTask.Delay(delayMillieSeconds); 
         tile.PlantNewPlant(plantType);
     }
 

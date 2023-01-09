@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
+using Cysharp.Threading.Tasks; 
 
 public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
 {
@@ -53,7 +53,7 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
         Vector3 position = new Vector3(TileUtil.GetCenterXCoord(affectedTiles), TileUtil.GetMinYCoord(affectedTiles) - 1, 0);
         Debug.Log(position);
         GameObject fire = Object.Instantiate(firePrefab, position, Quaternion.identity);
-        await Task.Delay(Mathf.RoundToInt(fireDespawnDelaySeconds * 1000));
+        await UniTask.Delay(Mathf.RoundToInt(fireDespawnDelaySeconds * 1000));
         Destroy(fire); 
         return;
     }
@@ -75,7 +75,7 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
             tsunami.transform.position = new Vector3(tsunami.transform.position.x - tsunamiTravelSpeed * Time.deltaTime,
                 tsunami.transform.position.y,
                 tsunami.transform.position.z);
-            await Task.Delay(6);
+            await UniTask.Delay(6);
         }
         Destroy(tsunami);
         return;
@@ -111,10 +111,10 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
             meteorite.transform.position = new Vector3(meteorite.transform.position.x,
                 meteorite.transform.position.y,
                 meteorite.transform.position.z + meteoriteFallSpeed * Time.deltaTime);
-            await Task.Delay(6);
+            await UniTask.Delay(6);
         }
         animator.SetTrigger("Landed"); 
-        await Task.Delay(300);
+        await UniTask.Delay(300);
         Destroy(meteorite);
         return;
     }
@@ -149,10 +149,10 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
             blizzard.transform.position = new Vector3(blizzard.transform.position.x,
                 blizzard.transform.position.y,
                 blizzard.transform.position.z + blizzardFallSpeed * Time.deltaTime);
-            await Task.Delay(6);
+            await UniTask.Delay(6);
         }
         animator.SetTrigger("Landed");
-        await Task.Delay(300);
+        await UniTask.Delay(300);
         Destroy(blizzard);
         return;
     }
@@ -165,7 +165,7 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
         GameObject lightningPrefab = DisasterTypeToPrefab[NaturalDisasterType.Lightning];
         Vector3 position = new Vector3(TileUtil.GetCenterXCoord(affectedTiles), TileUtil.GetCenterYCoord(affectedTiles), 0);
         GameObject lightning = Object.Instantiate(lightningPrefab, position, Quaternion.identity);
-        await Task.Delay(700);
+        await UniTask.Delay(700);
         Destroy(lightning);
         return;
     }

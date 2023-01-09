@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -58,7 +56,7 @@ public abstract class Plant : MonoBehaviour
     public virtual async void OnPlantDestroyed()
     {
         PlantDestroyed.Invoke();
-        await Task.Delay(1000);
+        await UniTask.Delay(1000);
         Destroy(gameObject);
     }
 

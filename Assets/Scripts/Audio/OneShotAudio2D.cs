@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 public class OneShotAudio2D : MonoBehaviour
 {
@@ -13,7 +10,7 @@ public class OneShotAudio2D : MonoBehaviour
     {
         audioSource.spatialBlend = 0f; 
         audioSource.Play();
-        await Task.Delay(Mathf.RoundToInt(clipLengthSeconds * 1000));
+        await UniTask.Delay(Mathf.RoundToInt(clipLengthSeconds * 1000));
         Destroy(gameObject);
         return; 
     }
