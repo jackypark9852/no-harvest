@@ -14,6 +14,15 @@ public class NaturalDisasterItemSelectionManager : ItemSelectionManager<NaturalD
 
     void Start()
     {
+        // InitNaturalDisasterUnlocks()
+    }
+
+    public void InitNaturalDisasterUnlocks()
+    {
+        if (RoundManager.Instance.roundNum != 0)  // Hard-coded
+        {
+            return;
+        }
         foreach (NaturalDisasterType naturalDisasterType in itemToDisplayMap.Keys)
         {
             LockNaturalDisasterType(naturalDisasterType);
