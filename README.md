@@ -1,5 +1,5 @@
 # no-harvest
-![Title.gif](///raw/389/d4/z/551cb.gif)
+![Title](https://user-images.githubusercontent.com/81858354/211456802-1207da7b-c4bc-431d-b118-0b0c774029e2.gif)
 
 ## STORY
 There is a **secret** lurking in the private properties of the **Fields of Serialization**...
@@ -18,6 +18,6 @@ The fate of the force of the harvest lies in your hands. How long can you keep t
 Comment below what day you reached!
 
 ## Screenshots
-![Fire.gif](///raw/389/d4/z/551c6.gif)
+![Fire](https://user-images.githubusercontent.com/81858354/211456822-4f737f75-3c00-4198-8cf1-6b5b444f3317.gif)
 
-![Lightning.gif](///raw/389/d4/z/551f1.gif)
+![Lightning](https://user-images.githubusercontent.com/81858354/211456830-0ad62f02-ef0d-4d23-b44b-e52bf7a4a191.gif)
