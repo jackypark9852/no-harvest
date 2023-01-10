@@ -1,4 +1,4 @@
-# no-harvest
+# No Harvest
 ![Title](https://user-images.githubusercontent.com/81858354/211456802-1207da7b-c4bc-431d-b118-0b0c774029e2.gif)
 
 ## STORY
@@ -15,7 +15,7 @@ The fate of the force of the harvest lies in your hands. How long can you keep t
 - If more than half of the entire board is half full of plants, you lose!
 - Beware! Some plants are immune to certain elements and can spawn additional plant copies, so plan your attack wisely with the right natural disasters every turn!
 
-Comment below what day you reached!
+[Click here to play](https://jackypark9852.itch.io/no-harvest) and Comment below what day you reached!
 
 ## Screenshots
 ![Fire](https://user-images.githubusercontent.com/81858354/211456822-4f737f75-3c00-4198-8cf1-6b5b444f3317.gif)
