@@ -21,3 +21,19 @@ The fate of the force of the harvest lies in your hands. How long can you keep t
 ![Fire](https://user-images.githubusercontent.com/81858354/211456822-4f737f75-3c00-4198-8cf1-6b5b444f3317.gif)
 
 ![Lightning](https://user-images.githubusercontent.com/81858354/211456830-0ad62f02-ef0d-4d23-b44b-e52bf7a4a191.gif)
+
+## Credits 
+#### Programming:
+  - Roger Wang (Github [@Compsciler](https://github.com/Compsciler))  
+  - Jacky Park (Github [@jackypark9852](https://github.com/jackypark9852))
+#### Music:
+  - Kevin He (Instagram [@rth.mp3](https://www.instagram.com/rth.mp3/)
+#### Asset Pack: 
+  - Pixel Farm Asset Pack by [HelloRumin](https://hellorumin.itch.io/pixel-farm-asset-pack) 
+  - Fire Ball, Ice Shard by [@nyk_nck](https://nyknck.itch.io/)
+  - Pixel UI Pack by Kenney Vleugels for [Kenney](www.kenney.nl)
+  - GUI Essential by [Crusenho](https://crusenho.itch.io/)
+  - Crops by [SnoopethDuckDuck](https://snoopethduckduck.itch.io/crops)
+  - Magic Pack by [ansimuz](https://ansimuz.itch.io/)
+  - Sound Effects by [Gregor Quendel](https://gregor-quendel.itch.io/free-cinematic-sound-effects)
+  - I pixel u font by [rodrigosrtz](https://www.dafont.com/rodrigosrtz.d6051)
