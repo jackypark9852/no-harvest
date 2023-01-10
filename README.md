@@ -22,13 +22,14 @@ The fate of the force of the harvest lies in your hands. How long can you keep t
 
 ![Lightning](https://user-images.githubusercontent.com/81858354/211456830-0ad62f02-ef0d-4d23-b44b-e52bf7a4a191.gif)
 
-## Credits 
+## Team
 #### Programming:
   - Roger Wang (Github [@Compsciler](https://github.com/Compsciler))  
   - Jacky Park (Github [@jackypark9852](https://github.com/jackypark9852))
 #### Music:
   - Kevin He (Instagram [@rth.mp3](https://www.instagram.com/rth.mp3/)
-#### Asset Pack: 
+
+## Credits
   - Pixel Farm Asset Pack by [HelloRumin](https://hellorumin.itch.io/pixel-farm-asset-pack) 
   - Fire Ball, Ice Shard by [@nyk_nck](https://nyknck.itch.io/)
   - Pixel UI Pack by Kenney Vleugels for [Kenney](www.kenney.nl)
