@@ -27,7 +27,7 @@ The fate of the force of the harvest lies in your hands. How long can you keep t
   - Roger Wang (Github [@Compsciler](https://github.com/Compsciler))  
   - Jacky Park (Github [@jackypark9852](https://github.com/jackypark9852))
 #### Music:
-  - Kevin He (Instagram [@rth.mp3](https://www.instagram.com/rth.mp3/)
+  - Benisu (Instagram [@rth.mp3](https://www.instagram.com/rth.mp3/)
 
 ## Credits
   - Pixel Farm Asset Pack by [HelloRumin](https://hellorumin.itch.io/pixel-farm-asset-pack) 
