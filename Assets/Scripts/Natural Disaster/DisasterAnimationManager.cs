@@ -51,7 +51,6 @@ public class DisasterAnimationManager : Singleton<DisasterAnimationManager>
         }
         GameObject firePrefab = DisasterTypeToPrefab[NaturalDisasterType.Fire];
         Vector3 position = new Vector3(TileUtil.GetCenterXCoord(affectedTiles), TileUtil.GetMinYCoord(affectedTiles) - 1, 0);
-        Debug.Log(position);
         GameObject fire = Object.Instantiate(firePrefab, position, Quaternion.identity);
         await UniTask.Delay(Mathf.RoundToInt(fireDespawnDelaySeconds * 1000));
         Destroy(fire); 

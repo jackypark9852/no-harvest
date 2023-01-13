@@ -27,7 +27,6 @@ public class TutorialController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("here");
             NextScreen();
         }
     }
