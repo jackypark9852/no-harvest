@@ -17,7 +17,7 @@ public abstract class ItemDisplay<T> : MonoBehaviour
     protected virtual void Awake()
     {
         image = GetComponent<Image>();
-        image.sprite = item.sprite;
+        image.sprite = item.sprite; 
     }
 
     public virtual void HandleClick()

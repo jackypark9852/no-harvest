@@ -14,15 +14,6 @@ public class NaturalDisasterDisplay : ItemDisplay<NaturalDisasterType>
         button = GetComponent<Button>();
     }
 
-    public override void HandleClick()
-    {
-        if (GameManager.Instance.state != GameState.PlayerTurn)
-        {
-            return;
-        }
-        base.HandleClick();
-    }
-
     public void UnlockOrLockDisplay(bool locked)
     {
         button.interactable = !locked;
