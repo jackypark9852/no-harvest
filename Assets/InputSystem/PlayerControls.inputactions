@@ -6,9 +6,45 @@
             "id": "cf7e3f52-8638-4e2f-9e8d-4205eb35bd44",
             "actions": [
                 {
-                    "name": "SelectSkill",
+                    "name": "SelectSkill1",
                     "type": "Button",
                     "id": "67dd1198-1a29-4b4a-bf8b-48c3d2746d71",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SelectSkill2",
+                    "type": "Button",
+                    "id": "16e63e1a-a6bf-4c2a-9353-5c0f70debad9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SelectSkill3",
+                    "type": "Button",
+                    "id": "9b545a49-9875-445b-9f3a-fd6a12006ab9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SelectSkill4",
+                    "type": "Button",
+                    "id": "fb562bde-b11b-41a2-b934-242fbbdf471e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SelectSkill5",
+                    "type": "Button",
+                    "id": "cbfe5eb3-4ff2-4440-8ec8-8766e237bad0",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -23,51 +59,51 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SelectSkill",
+                    "action": "SelectSkill1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "6d576dda-a68e-44dc-b663-1a97a51ca28f",
+                    "id": "39e66fb6-cd37-423a-8f21-316fd236417e",
                     "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SelectSkill",
+                    "action": "SelectSkill2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "08d57dc0-9974-4e9e-9a0c-ecf1b3a66b9e",
+                    "id": "7dc53c74-d360-4427-a121-90ac7630a7c9",
                     "path": "<Keyboard>/3",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SelectSkill",
+                    "action": "SelectSkill3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "1c9e0fa1-4b62-4cec-b3bd-6b8e32bd1edf",
+                    "id": "4ae9b943-0559-4274-9a4a-a1e3e223f455",
                     "path": "<Keyboard>/4",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SelectSkill",
+                    "action": "SelectSkill4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "ef08cd3d-06c7-4dd8-8f14-b1f840e980ba",
+                    "id": "69eea00a-882b-46ba-ba49-7eaa319c971b",
                     "path": "<Keyboard>/5",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SelectSkill",
+                    "action": "SelectSkill5",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

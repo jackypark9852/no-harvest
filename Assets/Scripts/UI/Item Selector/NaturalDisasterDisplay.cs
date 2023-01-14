@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class NaturalDisasterDisplay : ItemDisplay<NaturalDisasterType>
 {
     Button button;
+    bool locked = true; 
     [SerializeField] GameObject lockGO;
 
     protected override void Awake()
@@ -18,5 +19,10 @@ public class NaturalDisasterDisplay : ItemDisplay<NaturalDisasterType>
     {
         button.interactable = !locked;
         lockGO.SetActive(locked);
+        this.locked = locked; 
+    }
+
+    public bool IsLocked() {
+        return locked; 
     }
 }

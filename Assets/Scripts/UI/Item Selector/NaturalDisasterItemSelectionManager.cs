@@ -34,13 +34,13 @@ public class NaturalDisasterItemSelectionManager : ItemSelectionManager<NaturalD
     }
 
     public override void SelectItem(ItemDisplay<NaturalDisasterType> itemDisplay)
-    {
-        base.SelectItem(itemDisplay);
-        if (InputManager.Instance.NaturalDisasterType_ != itemDisplay.item.item)
-        {
-            // InputManager.Instance.SelectedTile = null;
+    { 
+        NaturalDisasterDisplay naturalDisasterDisplay = itemDisplay as NaturalDisasterDisplay; // Polymorphism to access locked property
+        if(GameManager.Instance.state == GameState.PlayerTurn && !naturalDisasterDisplay.IsLocked()){
+            base.SelectItem(itemDisplay);
+            InputManager.Instance.NaturalDisasterType_ = naturalDisasterDisplay.item.item;
+            InputManager.Instance.UpdateHover();
         }
-        InputManager.Instance.NaturalDisasterType_ = itemDisplay.item.item;
     }
     
     public void UnlockRoundNaturalDisasterTypes()
