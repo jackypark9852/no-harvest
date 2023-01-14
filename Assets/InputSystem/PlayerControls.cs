@@ -28,9 +28,45 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
             ""id"": ""cf7e3f52-8638-4e2f-9e8d-4205eb35bd44"",
             ""actions"": [
                 {
-                    ""name"": ""SelectSkill"",
+                    ""name"": ""SelectSkill1"",
                     ""type"": ""Button"",
                     ""id"": ""67dd1198-1a29-4b4a-bf8b-48c3d2746d71"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectSkill2"",
+                    ""type"": ""Button"",
+                    ""id"": ""16e63e1a-a6bf-4c2a-9353-5c0f70debad9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectSkill3"",
+                    ""type"": ""Button"",
+                    ""id"": ""9b545a49-9875-445b-9f3a-fd6a12006ab9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectSkill4"",
+                    ""type"": ""Button"",
+                    ""id"": ""fb562bde-b11b-41a2-b934-242fbbdf471e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectSkill5"",
+                    ""type"": ""Button"",
+                    ""id"": ""cbfe5eb3-4ff2-4440-8ec8-8766e237bad0"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -45,51 +81,51 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SelectSkill"",
+                    ""action"": ""SelectSkill1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6d576dda-a68e-44dc-b663-1a97a51ca28f"",
+                    ""id"": ""39e66fb6-cd37-423a-8f21-316fd236417e"",
                     ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SelectSkill"",
+                    ""action"": ""SelectSkill2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""08d57dc0-9974-4e9e-9a0c-ecf1b3a66b9e"",
+                    ""id"": ""7dc53c74-d360-4427-a121-90ac7630a7c9"",
                     ""path"": ""<Keyboard>/3"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SelectSkill"",
+                    ""action"": ""SelectSkill3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1c9e0fa1-4b62-4cec-b3bd-6b8e32bd1edf"",
+                    ""id"": ""4ae9b943-0559-4274-9a4a-a1e3e223f455"",
                     ""path"": ""<Keyboard>/4"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SelectSkill"",
+                    ""action"": ""SelectSkill4"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ef08cd3d-06c7-4dd8-8f14-b1f840e980ba"",
+                    ""id"": ""69eea00a-882b-46ba-ba49-7eaa319c971b"",
                     ""path"": ""<Keyboard>/5"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SelectSkill"",
+                    ""action"": ""SelectSkill5"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -100,7 +136,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_SelectSkill = m_Player.FindAction("SelectSkill", throwIfNotFound: true);
+        m_Player_SelectSkill1 = m_Player.FindAction("SelectSkill1", throwIfNotFound: true);
+        m_Player_SelectSkill2 = m_Player.FindAction("SelectSkill2", throwIfNotFound: true);
+        m_Player_SelectSkill3 = m_Player.FindAction("SelectSkill3", throwIfNotFound: true);
+        m_Player_SelectSkill4 = m_Player.FindAction("SelectSkill4", throwIfNotFound: true);
+        m_Player_SelectSkill5 = m_Player.FindAction("SelectSkill5", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -160,12 +200,20 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_SelectSkill;
+    private readonly InputAction m_Player_SelectSkill1;
+    private readonly InputAction m_Player_SelectSkill2;
+    private readonly InputAction m_Player_SelectSkill3;
+    private readonly InputAction m_Player_SelectSkill4;
+    private readonly InputAction m_Player_SelectSkill5;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @SelectSkill => m_Wrapper.m_Player_SelectSkill;
+        public InputAction @SelectSkill1 => m_Wrapper.m_Player_SelectSkill1;
+        public InputAction @SelectSkill2 => m_Wrapper.m_Player_SelectSkill2;
+        public InputAction @SelectSkill3 => m_Wrapper.m_Player_SelectSkill3;
+        public InputAction @SelectSkill4 => m_Wrapper.m_Player_SelectSkill4;
+        public InputAction @SelectSkill5 => m_Wrapper.m_Player_SelectSkill5;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -175,22 +223,50 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
             {
-                @SelectSkill.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSkill;
-                @SelectSkill.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSkill;
-                @SelectSkill.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSkill;
+                @SelectSkill1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSkill1;
+                @SelectSkill1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSkill1;
+                @SelectSkill1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSkill1;
+                @SelectSkill2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSkill2;
+                @SelectSkill2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSkill2;
+                @SelectSkill2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSkill2;
+                @SelectSkill3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSkill3;
+                @SelectSkill3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSkill3;
+                @SelectSkill3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSkill3;
+                @SelectSkill4.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSkill4;
+                @SelectSkill4.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSkill4;
+                @SelectSkill4.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSkill4;
+                @SelectSkill5.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSkill5;
+                @SelectSkill5.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSkill5;
+                @SelectSkill5.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSkill5;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @SelectSkill.started += instance.OnSelectSkill;
-                @SelectSkill.performed += instance.OnSelectSkill;
-                @SelectSkill.canceled += instance.OnSelectSkill;
+                @SelectSkill1.started += instance.OnSelectSkill1;
+                @SelectSkill1.performed += instance.OnSelectSkill1;
+                @SelectSkill1.canceled += instance.OnSelectSkill1;
+                @SelectSkill2.started += instance.OnSelectSkill2;
+                @SelectSkill2.performed += instance.OnSelectSkill2;
+                @SelectSkill2.canceled += instance.OnSelectSkill2;
+                @SelectSkill3.started += instance.OnSelectSkill3;
+                @SelectSkill3.performed += instance.OnSelectSkill3;
+                @SelectSkill3.canceled += instance.OnSelectSkill3;
+                @SelectSkill4.started += instance.OnSelectSkill4;
+                @SelectSkill4.performed += instance.OnSelectSkill4;
+                @SelectSkill4.canceled += instance.OnSelectSkill4;
+                @SelectSkill5.started += instance.OnSelectSkill5;
+                @SelectSkill5.performed += instance.OnSelectSkill5;
+                @SelectSkill5.canceled += instance.OnSelectSkill5;
             }
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
     public interface IPlayerActions
     {
-        void OnSelectSkill(InputAction.CallbackContext context);
+        void OnSelectSkill1(InputAction.CallbackContext context);
+        void OnSelectSkill2(InputAction.CallbackContext context);
+        void OnSelectSkill3(InputAction.CallbackContext context);
+        void OnSelectSkill4(InputAction.CallbackContext context);
+        void OnSelectSkill5(InputAction.CallbackContext context);
     }
 }

@@ -26,16 +26,14 @@ public abstract class ItemSelectionManager<T> : Singleton<ItemSelectionManager<T
     
     public virtual void SelectItem(ItemDisplay<T> itemDisplay)
     {
-        if(GameManager.Instance.state == GameState.PlayerTurn) {
-            if (selectedItemDisplay is not null)
-            {
-                DeselectSelectedItem();
-            }
-            selectedItemDisplay = itemDisplay;
-            selectedItem = selectedItemDisplay.item.item;
-            selectedItemDisplay.SetFrameActive(true);
-            prevSelectedItemDisplay = selectedItemDisplay;
+        if (selectedItemDisplay is not null)
+        {
+            DeselectSelectedItem();
         }
+        selectedItemDisplay = itemDisplay;
+        selectedItem = selectedItemDisplay.item.item;
+        selectedItemDisplay.SetFrameActive(true);
+        prevSelectedItemDisplay = selectedItemDisplay;
     }
 
     public virtual void SelectItem(int index){ // Selects item by ItemDisplay sequence in the list 
