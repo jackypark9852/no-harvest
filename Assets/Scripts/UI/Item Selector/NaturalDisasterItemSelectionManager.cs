@@ -39,6 +39,7 @@ public class NaturalDisasterItemSelectionManager : ItemSelectionManager<NaturalD
         if(GameManager.Instance.state == GameState.PlayerTurn && !naturalDisasterDisplay.IsLocked()){
             base.SelectItem(itemDisplay);
             InputManager.Instance.NaturalDisasterType_ = naturalDisasterDisplay.item.item;
+            InputManager.Instance.UpdateHover();
         }
     }
     
