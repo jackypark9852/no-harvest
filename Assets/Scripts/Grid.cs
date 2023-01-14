@@ -132,13 +132,21 @@ public class Grid : MonoBehaviour
                     List<Tile> affectedTiles = TileUtil.GetAffectedTiles(centerTileCoordinate, shapeData);
                     List<Tile> tilesWithPlant = affectedTiles.Where(tile => tile.Plant != null).ToList();
                     await DisasterAnimationManager.Instance.PlayDisasterAnimation(naturalDisasterType, affectedTiles);
+
+                    int destroyedPlantsCount = 0;
                     foreach (Tile tile in tilesWithPlant)
                     {
                         if (tile.Plant is not null)
                         {
-                            tile.Plant.OnNaturalDisaster(naturalDisasterType);
+                            TileInput.EffectType effectType = tile.Plant.OnNaturalDisaster(naturalDisasterType);
+                            ScoreManager.Instance.IncreaseScoreFromSinglePlant(effectType);
+                            if (effectType == TileInput.EffectType.Destroyed)
+                            {
+                                destroyedPlantsCount++;
+                            }
                         }
                     }
+                    ScoreManager.Instance.IncreaseScoreFromComboAndUpdateCombo(destroyedPlantsCount, affectedTiles.Count);
                 } else
                 {
                     throw new Exception($"NaturalDisasterType not found: {naturalDisasterType.ToString()}"); 

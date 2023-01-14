@@ -90,7 +90,7 @@ public class InputManager : Singleton<InputManager>
         NaturalDisasterType confirmedNaturalDisasterType = actions[actions.Count - 1].naturalDisasterType;
         if (GetManaCost(confirmedNaturalDisasterType) < mana)
         {
-            Debug.Log("Not enough mana, display message");
+            // Debug.Log("Not enough mana, display message");
             return;
         }
         grid.ApplyConfirmedActionsOnTiles(actions);
