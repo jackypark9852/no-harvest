@@ -2425,6 +2425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverMenu: {fileID: 1244983329}
   scoreText: {fileID: 245246612}
+  scoreText2: {fileID: 2078908075}
 --- !u!1001 &424592797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7690,7 +7691,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 849.63, y: -22.5}
+  m_AnchoredPosition: {x: 798.6, y: -22.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1167256912
@@ -7747,7 +7748,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -14203,6 +14204,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8238857500272902372, guid: acb6ccad09a73c14f8293d06a4a17756, type: 3}
   m_PrefabInstance: {fileID: 2078908073}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2078908075 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4660135877465561052, guid: acb6ccad09a73c14f8293d06a4a17756, type: 3}
+  m_PrefabInstance: {fileID: 2078908073}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2095496489
 GameObject:
   m_ObjectHideFlags: 0
