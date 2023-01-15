@@ -17,6 +17,24 @@ public class InputManager : Singleton<InputManager>
         }
             
     }
+    private void OnSelectedtile(Tile value) {
+        if (GameManager.Instance.state != GameState.PlayerTurn) 
+        {
+            return;
+        }
+        if (selectedTile is not null) // 
+        {
+            grid.GetTileInput(selectedTile).isSelected = false;
+        }
+        selectedTile = value;
+        if (selectedTile is null)
+        {
+            return;
+        }
+        grid.GetTileInput(selectedTile).isSelected = true;
+        UpdateSelect();
+        EndTurn(); 
+    }
     Tile hoveredTile = null;
     public Tile HoveredTile
     {
@@ -29,6 +47,24 @@ public class InputManager : Singleton<InputManager>
             OnHoveredTile(value); 
         }
     }
+    private void OnHoveredTile(Tile value) {
+        if (GameManager.Instance.state != GameState.PlayerTurn)
+            {
+                return;
+            }
+            
+            if (hoveredTile is not null)
+            {
+                grid.GetTileInput(hoveredTile).isHovered = false;
+            }
+            hoveredTile = value;
+            if (hoveredTile is null)
+            {
+                return;
+            }
+            grid.GetTileInput(hoveredTile).isHovered = true;
+            UpdateHover();
+    }
     List<PlayerActionInfo> actions = new List<PlayerActionInfo>();
     NaturalDisasterType naturalDisasterType;
     public NaturalDisasterType NaturalDisasterType_
@@ -40,7 +76,7 @@ public class InputManager : Singleton<InputManager>
         set
         {
             naturalDisasterType = value;
-            UpdateSelect();
+            UpdateSelect(); // 
         }
     }
     Grid grid;
@@ -78,7 +114,6 @@ public class InputManager : Singleton<InputManager>
         }
         PlayerActionInfo action = new PlayerActionInfo(SelectedTile.GetCoords(), NaturalDisasterType_, ActionInputType.Selected);
         AddAction(action);
-        grid.ApplyConfirmedActionsOnTiles(actions);
     }
     private void Confirm()
     {
@@ -88,12 +123,6 @@ public class InputManager : Singleton<InputManager>
             return;
         }
         NaturalDisasterType confirmedNaturalDisasterType = actions[actions.Count - 1].naturalDisasterType;
-        if (GetManaCost(confirmedNaturalDisasterType) < mana)
-        {
-            // Debug.Log("Not enough mana, display message");
-            return;
-        }
-        grid.ApplyConfirmedActionsOnTiles(actions);
         SelectedTile = null;
     }
     private uint GetManaCost(NaturalDisasterType naturalDisasterType)
@@ -199,41 +228,5 @@ public class InputManager : Singleton<InputManager>
         }
         actions[actions.Count - 1] = new PlayerActionInfo(actions[actions.Count - 1].centerTileCoordinate, actions[actions.Count - 1].naturalDisasterType, ActionInputType.Confirmed);
         return true;
-    }
-    private void OnSelectedtile(Tile value) {
-        if (GameManager.Instance.state != GameState.PlayerTurn) 
-        {
-            return;
-        }
-        if (selectedTile is not null)
-        {
-            grid.GetTileInput(selectedTile).isSelected = false;
-        }
-        selectedTile = value;
-        if (selectedTile is null)
-        {
-            return;
-        }
-        grid.GetTileInput(selectedTile).isSelected = true;
-        UpdateSelect();
-    }
-
-    private void OnHoveredTile(Tile value) {
-        if (GameManager.Instance.state != GameState.PlayerTurn)
-            {
-                return;
-            }
-            
-            if (hoveredTile is not null)
-            {
-                grid.GetTileInput(hoveredTile).isHovered = false;
-            }
-            hoveredTile = value;
-            if (hoveredTile is null)
-            {
-                return;
-            }
-            grid.GetTileInput(hoveredTile).isHovered = true;
-            UpdateHover();
     }
 }

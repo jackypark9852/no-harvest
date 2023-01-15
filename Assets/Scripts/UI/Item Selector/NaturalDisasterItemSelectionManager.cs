@@ -12,11 +12,6 @@ public class NaturalDisasterItemSelectionManager : ItemSelectionManager<NaturalD
         base.Awake();
     }
 
-    void Start()
-    {
-        // InitNaturalDisasterUnlocks()
-    }
-
     public void InitNaturalDisasterUnlocks()
     {
         if (RoundManager.Instance.roundNum != 0)  // Hard-coded
