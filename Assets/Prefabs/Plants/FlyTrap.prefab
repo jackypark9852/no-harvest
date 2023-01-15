@@ -67,10 +67,6 @@ PrefabInstance:
       propertyPath: immuneTextGO
       value: 
       objectReference: {fileID: 2928546605546220267, guid: acdb7cb88688bf443a3edd6eb1b2f8dc, type: 3}
-    - target: {fileID: 8198704157190294550, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
-      propertyPath: immuneSpriteGO
-      value: 
-      objectReference: {fileID: 7681433847927477682, guid: d2303c450cd13d64c848b888ca1a201b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
 --- !u!114 &248342461958887407 stripped

@@ -140,6 +140,8 @@ MonoBehaviour:
   blinkCount: 3
   blinkIntervalMillieSecond: 100
   startingRotationZ: 0
+  immuneSpriteGO: {fileID: 7681433847927477682, guid: d2303c450cd13d64c848b888ca1a201b, type: 3}
+  scoreSpriteGO: {fileID: 4325413744277586887, guid: 366620c158982134d8875322bf2b9ace, type: 3}
 --- !u!114 &-1193869687621825968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,4 +348,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  immuneSpriteGO: {fileID: 7681433847927477682, guid: d2303c450cd13d64c848b888ca1a201b, type: 3}

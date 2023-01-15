@@ -22,8 +22,11 @@ public class PlantAnimation : MonoBehaviour
     public int blinkCount = 2;
     public int blinkIntervalMillieSecond = 50;
     public float startingRotationZ;
+    int score = 100; 
 
     [SerializeField] GameObject immuneSpriteGO;
+
+    [SerializeField] GameObject scoreSpriteGO; 
 
     private void Awake()
     {
@@ -60,10 +63,17 @@ public class PlantAnimation : MonoBehaviour
             spriteRenderer.material = original;
             await UniTask.Delay(blinkIntervalMillieSecond); 
         }
+        InstantiateScoreSprite(100); 
     }
 
     public void InstantiateImmuneSprite()
     {
         Instantiate(immuneSpriteGO, transform.position, immuneSpriteGO.transform.rotation);
+
+    }
+
+    public void InstantiateScoreSprite(int score)
+    {
+        GameObject scoreSprite = Instantiate(scoreSpriteGO, transform.position, scoreSpriteGO.transform.rotation); 
     }
 }

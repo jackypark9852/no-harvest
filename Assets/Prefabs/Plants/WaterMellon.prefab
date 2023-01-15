@@ -63,10 +63,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 8198704157190294550, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
-      propertyPath: immuneSpriteGO
-      value: 
-      objectReference: {fileID: 7681433847927477682, guid: d2303c450cd13d64c848b888ca1a201b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1677f598d31a3e3449c811f8e59cbe3a, type: 3}
 --- !u!1 &3435170134047640610 stripped
