@@ -8,7 +8,7 @@ public abstract class ItemSelectionManager<T> : Singleton<ItemSelectionManager<T
     public T selectedItem { get; private set; }
 
     ItemDisplay<T> selectedItemDisplay;
-    [SerializeField] ItemDisplay<T> defaultSelectedItemDisplay;
+    [SerializeField] protected ItemDisplay<T> defaultSelectedItemDisplay;
     ItemDisplay<T> prevSelectedItemDisplay;
     
     [SerializeField] Transform itemDisplaysParent;

@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class NaturalDisasterItemSelectionManager : ItemSelectionManager<NaturalDisasterType>
 {
@@ -14,7 +12,7 @@ public class NaturalDisasterItemSelectionManager : ItemSelectionManager<NaturalD
 
     public void InitNaturalDisasterUnlocks()
     {
-        if (RoundManager.Instance.roundNum != 0)  // Hard-coded
+        if (RoundManager.Instance.roundNum != 1)  // Hard-coded
         {
             return;
         }
@@ -26,9 +24,13 @@ public class NaturalDisasterItemSelectionManager : ItemSelectionManager<NaturalD
         {
             UnlockNaturalDisasterType(naturalDisasterType);
         }
+
+        if(defaultSelectedItemDisplay is not null) {
+            SelectItem(defaultSelectedItemDisplay); // Select item and activate item frame
+        }
     }
 
-    public override void SelectItem(ItemDisplay<NaturalDisasterType> itemDisplay)
+    public override void SelectItem(ItemDisplay<NaturalDisasterType> itemDisplay) 
     { 
         NaturalDisasterDisplay naturalDisasterDisplay = itemDisplay as NaturalDisasterDisplay; // Polymorphism to access locked property
         if(GameManager.Instance.state == GameState.PlayerTurn && !naturalDisasterDisplay.IsLocked()){
