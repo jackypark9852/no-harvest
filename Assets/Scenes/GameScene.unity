@@ -1333,6 +1333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 143186809}
   - component: {fileID: 143186810}
+  - component: {fileID: 143186811}
   m_Layer: 0
   m_Name: ScoreManager
   m_TagString: Untagged
@@ -1402,6 +1403,19 @@ MonoBehaviour:
   comboIncrement: 0.5
   minProportionToIncrementCombo: 0.7
   plantDestroyedScore: 100
+--- !u!114 &143186811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143186808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19e04f13c0b7f2145834c498ae059fc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comboSpritePrefab: {fileID: 4325413744277586887, guid: 541b399acc8c52848b699b98cd572cdf, type: 3}
 --- !u!1 &145097965
 GameObject:
   m_ObjectHideFlags: 0

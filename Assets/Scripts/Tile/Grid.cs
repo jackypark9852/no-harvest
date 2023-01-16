@@ -131,6 +131,7 @@ public class Grid : MonoBehaviour
                     ShapeData shapeData = NaturalDisasterUtil.Instance.NaturalDisasterTypeToData[naturalDisasterType].shapeData;
                     List<Tile> affectedTiles = TileUtil.GetAffectedTiles(centerTileCoordinate, shapeData);
                     List<Tile> tilesWithPlant = affectedTiles.Where(tile => tile.Plant != null).ToList();
+                    List<Tile> tilesWithDestroyedPlant = new List<Tile>();
                     await DisasterAnimationManager.Instance.PlayDisasterAnimation(naturalDisasterType, affectedTiles);
 
                     int destroyedPlantsCount = 0;
@@ -139,15 +140,22 @@ public class Grid : MonoBehaviour
                         if (tile.Plant is not null)
                         {
                             TileInput.EffectType effectType = tile.Plant.OnNaturalDisaster(naturalDisasterType);
-                            int plantScore = ScoreManager.Instance.IncreaseScoreFromSinglePlant(effectType); 
+                            int plantScore = ScoreManager.Instance.IncreaseScoreFromSinglePlant(effectType);  
                             tile.PlantAnimation.SetScore(plantScore); // For visual effect, make score earned appear on top of plant 
                             if (effectType == TileInput.EffectType.Destroyed)
                             {
+                                tilesWithDestroyedPlant.Add(tile);
                                 destroyedPlantsCount++;
                             }
                         }
                     }
+                    float prevComboMultiplier = ScoreManager.Instance.comboMultiplier; // Play combo animation if combo multiplier increased
                     ScoreManager.Instance.IncreaseScoreFromComboAndUpdateCombo(destroyedPlantsCount, affectedTiles.Count);
+                    float currentComboMultiplier = ScoreManager.Instance.comboMultiplier;
+                    if(currentComboMultiplier > prevComboMultiplier) {
+                    Vector3 destroyedPlantsCenter = new Vector3(TileUtil.GetCenterXCoord(tilesWithDestroyedPlant), TileUtil.GetCenterYCoord(tilesWithDestroyedPlant), 0);
+                    ScoreManager.Instance.comboAnimation.Play(destroyedPlantsCenter, ScoreManager.Instance.comboMultiplier); 
+                    }
                 } else
                 {
                     throw new Exception($"NaturalDisasterType not found: {naturalDisasterType.ToString()}"); 
