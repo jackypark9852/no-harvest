@@ -1,5 +1,3 @@
-A Ludum Dare 52 Gamejam Entry 
-
 # No Harvest
 ![Title](https://user-images.githubusercontent.com/81858354/211456802-1207da7b-c4bc-431d-b118-0b0c774029e2.gif)
 
