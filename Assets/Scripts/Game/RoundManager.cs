@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RoundManager : Singleton<RoundManager>
 {
@@ -95,9 +96,12 @@ public class RoundManager : Singleton<RoundManager>
         new RoundInfo(new List<int> {1, 2, 3}, new List<NaturalDisasterType> {}),
     };
 
+    [SerializeField] UnityEvent OnRoundChange;
+
     public void IncrementRound()
     {
         roundNum++;
+        OnRoundChange.Invoke();
     }
 }
 
