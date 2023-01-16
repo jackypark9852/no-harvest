@@ -5,6 +5,7 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     private Plant plant = null;
+    private PlantAnimation plantAnimation = null; 
     public Plant Plant
     {
         get { return plant; }
@@ -17,6 +18,20 @@ public class Tile : MonoBehaviour
                 throw new System.Exception("Tile is not plantable");
             }
             plant = value;
+        }
+    }
+    public PlantAnimation PlantAnimation
+    {
+        get { return plantAnimation; }
+        private set {
+            if (plant is not null)
+            {
+                throw new System.Exception("Tile already has a plant");
+            } else if (plantable == false)
+            {
+                throw new System.Exception("Tile is not plantable");
+            }
+            plantAnimation = value;
         }
     }
     
@@ -36,7 +51,9 @@ public class Tile : MonoBehaviour
             return;
         }
         GameObject plantPrefab = PlantUtil.Instance.PlantTypeToPrefab(plantType);
-        plant = Object.Instantiate(plantPrefab, transform.position, Quaternion.identity).GetComponent<Plant>();
+        GameObject plantObject = Object.Instantiate(plantPrefab, transform.position, Quaternion.identity); 
+        plant = plantObject.GetComponent<Plant>(); 
+        plantAnimation = plantObject.GetComponent<PlantAnimation>(); 
         plant.gameObject.transform.parent = gameObject.transform; 
         plant.PlantDestroyed.AddListener(OnPlantDestroyed);
     }

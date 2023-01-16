@@ -139,7 +139,8 @@ public class Grid : MonoBehaviour
                         if (tile.Plant is not null)
                         {
                             TileInput.EffectType effectType = tile.Plant.OnNaturalDisaster(naturalDisasterType);
-                            ScoreManager.Instance.IncreaseScoreFromSinglePlant(effectType);
+                            int plantScore = ScoreManager.Instance.IncreaseScoreFromSinglePlant(effectType); 
+                            tile.PlantAnimation.SetScore(plantScore); // For visual effect, make score earned appear on top of plant 
                             if (effectType == TileInput.EffectType.Destroyed)
                             {
                                 destroyedPlantsCount++;

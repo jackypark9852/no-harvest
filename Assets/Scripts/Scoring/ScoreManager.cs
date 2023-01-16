@@ -27,14 +27,16 @@ public class ScoreManager : Singleton<ScoreManager>
         { 0f, 0 },
     };
 
-    private void IncreaseScoreByRawAmount(int incAmt)
+    private int IncreaseScoreByRawAmount(int incAmt)
     {
         int prevScore = score;
-        score += Mathf.RoundToInt(incAmt * comboMultiplier);
+        int incAmtWithCombo = Mathf.RoundToInt(incAmt * comboMultiplier);
+        score += incAmtWithCombo;
         if (score != prevScore)
         {
             OnScoreChange.Invoke();
         }
+        return incAmtWithCombo;  
     }
 
     private void UpdateCombo(float plantsDestroyedProportion)
@@ -74,15 +76,14 @@ public class ScoreManager : Singleton<ScoreManager>
         return a > b - tolerance;
     }
 
-    public void IncreaseScoreFromSinglePlant(TileInput.EffectType effectType)
+    public int IncreaseScoreFromSinglePlant(TileInput.EffectType effectType)
     {
         switch (effectType)
         {
             case TileInput.EffectType.Destroyed:
-                IncreaseScoreByRawAmount(plantDestroyedScore);
-                return;
+                return IncreaseScoreByRawAmount(plantDestroyedScore);
             default:
-                return;
+                return 0;
         }
     }
 }

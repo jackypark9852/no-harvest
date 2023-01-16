@@ -27,6 +27,7 @@ public class PlantAnimation : MonoBehaviour
     [SerializeField] GameObject immuneSpriteGO;
 
     [SerializeField] GameObject scoreSpriteGO; 
+    [SerializeField] float scoreSpriteYOffset = 1f; 
 
     private void Awake()
     {
@@ -63,7 +64,7 @@ public class PlantAnimation : MonoBehaviour
             spriteRenderer.material = original;
             await UniTask.Delay(blinkIntervalMillieSecond); 
         }
-        InstantiateScoreSprite(100); 
+        InstantiateScoreSprite(score); 
     }
 
     public void InstantiateImmuneSprite()
@@ -74,6 +75,11 @@ public class PlantAnimation : MonoBehaviour
 
     public void InstantiateScoreSprite(int score)
     {
-        GameObject scoreSprite = Instantiate(scoreSpriteGO, transform.position, scoreSpriteGO.transform.rotation); 
+        GameObject scoreSpriteObject = Instantiate(scoreSpriteGO, transform.position + new Vector3(0, scoreSpriteYOffset, 0), scoreSpriteGO.transform.rotation); 
+        ScoreSpriteAnimation scoreSpriteAnimation = scoreSpriteObject.GetComponentInChildren<ScoreSpriteAnimation>(); 
+        scoreSpriteAnimation.SetScore(score); 
+    }
+    public void SetScore(int score){ 
+        this.score = score;
     }
 }
