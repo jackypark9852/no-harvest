@@ -1,13 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ComboAnimation : MonoBehaviour
 {
+    [SerializeField] Grid grid;
     [SerializeField] GameObject comboSpritePrefab;  
-    public void Play(Vector3 position, float comboMultiplier) {
-        GameObject comboSpriteObj = Instantiate(comboSpritePrefab, position, comboSpritePrefab.transform.rotation);
+    [SerializeField] float comboSpriteXOffset = 0f;
+    [SerializeField] float comboSpriteYOffset = 1f;
+
+    private void Awake() {
+        GameObject gridObj = GameObject.FindWithTag("Grid");
+        grid = gridObj.GetComponent<Grid>(); // TODO: Find a better way to do this
+    }
+
+    public void Play() {
+        Vector3 comboSpritePos = grid.destroyedPlantsCenter + new Vector3(comboSpriteXOffset, comboSpriteYOffset);
+        GameObject comboSpriteObj = Instantiate(comboSpritePrefab, comboSpritePos, comboSpritePrefab.transform.rotation);
         TMPro.TextMeshPro text = comboSpriteObj.GetComponentInChildren<TMPro.TextMeshPro>(); 
-        text.text = $"COMBO {comboMultiplier.ToString()}X"; 
+        text.text = $"COMBO {ScoreManager.Instance.comboMultiplier.ToString()}X"; 
     }
 }

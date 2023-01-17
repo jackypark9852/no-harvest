@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-//using System.Threading.Tasks;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 
@@ -13,7 +12,7 @@ public class Grid : MonoBehaviour
         get { return tiles; }
     }
     Dictionary<Vector2Int, TileInput> tileInputs = new Dictionary<Vector2Int, TileInput>();
-
+    public Vector3 destroyedPlantsCenter {get; private set;}
     void Awake()
     {
         Tile[] tiles1D = GetComponentsInChildren<Tile>();
@@ -149,13 +148,8 @@ public class Grid : MonoBehaviour
                             }
                         }
                     }
-                    float prevComboMultiplier = ScoreManager.Instance.comboMultiplier; // Play combo animation if combo multiplier increased
+                    destroyedPlantsCenter = new Vector3(TileUtil.GetCenterXCoord(tilesWithDestroyedPlant), TileUtil.GetCenterYCoord(tilesWithDestroyedPlant), 0);
                     ScoreManager.Instance.IncreaseScoreFromComboAndUpdateCombo(destroyedPlantsCount, affectedTiles.Count);
-                    float currentComboMultiplier = ScoreManager.Instance.comboMultiplier;
-                    if(currentComboMultiplier > prevComboMultiplier) {
-                    Vector3 destroyedPlantsCenter = new Vector3(TileUtil.GetCenterXCoord(tilesWithDestroyedPlant), TileUtil.GetCenterYCoord(tilesWithDestroyedPlant), 0);
-                    ScoreManager.Instance.comboAnimation.Play(destroyedPlantsCenter, ScoreManager.Instance.comboMultiplier); 
-                    }
                 } else
                 {
                     throw new Exception($"NaturalDisasterType not found: {naturalDisasterType.ToString()}"); 

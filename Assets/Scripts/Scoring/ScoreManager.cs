@@ -10,6 +10,7 @@ public class ScoreManager : Singleton<ScoreManager>
 {
     [SerializeField] UnityEvent OnScoreChange;
     [SerializeField] UnityEvent OnComboChange;
+    [SerializeField] UnityEvent OnComboIncrease;
 
     public int score { get; private set; } = 0;
 
@@ -50,6 +51,7 @@ public class ScoreManager : Singleton<ScoreManager>
         {
             comboMultiplier += comboIncrement;
             comboMultiplier = Mathf.Min(comboMultiplier, comboMax);
+            OnComboIncrease.Invoke();
         }
         else
         {
