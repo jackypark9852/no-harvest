@@ -5,10 +5,12 @@ using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(ComboAnimation))] 
 public class ScoreManager : Singleton<ScoreManager>
 {
     [SerializeField] UnityEvent OnScoreChange;
     [SerializeField] UnityEvent OnComboChange;
+    [SerializeField] UnityEvent OnComboIncrease;
 
     public int score { get; private set; } = 0;
 
@@ -17,15 +19,18 @@ public class ScoreManager : Singleton<ScoreManager>
     [SerializeField] float comboMax = 5;
     [SerializeField] float comboIncrement = 0.5f;
     [SerializeField] float minProportionToIncrementCombo = 0.7f;
-
     [SerializeField] int plantDestroyedScore = 100;
-    [SerializeField]
     Dictionary<float, int> comboProportionScores = new Dictionary<float, int>
     {
         { 1f, 500 },
         { 0.7f, 300 },
         { 0f, 0 },
     };
+
+    public ComboAnimation comboAnimation {get; private set; }
+    private void Awake() {
+        comboAnimation = GetComponent<ComboAnimation>(); 
+    }
 
     private int IncreaseScoreByRawAmount(int incAmt)
     {
@@ -46,6 +51,7 @@ public class ScoreManager : Singleton<ScoreManager>
         {
             comboMultiplier += comboIncrement;
             comboMultiplier = Mathf.Min(comboMultiplier, comboMax);
+            OnComboIncrease.Invoke();
         }
         else
         {

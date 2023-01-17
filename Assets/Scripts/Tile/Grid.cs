@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-//using System.Threading.Tasks;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 
@@ -13,7 +12,7 @@ public class Grid : MonoBehaviour
         get { return tiles; }
     }
     Dictionary<Vector2Int, TileInput> tileInputs = new Dictionary<Vector2Int, TileInput>();
-
+    public Vector3 destroyedPlantsCenter {get; private set;}
     void Awake()
     {
         Tile[] tiles1D = GetComponentsInChildren<Tile>();
@@ -131,6 +130,7 @@ public class Grid : MonoBehaviour
                     ShapeData shapeData = NaturalDisasterUtil.Instance.NaturalDisasterTypeToData[naturalDisasterType].shapeData;
                     List<Tile> affectedTiles = TileUtil.GetAffectedTiles(centerTileCoordinate, shapeData);
                     List<Tile> tilesWithPlant = affectedTiles.Where(tile => tile.Plant != null).ToList();
+                    List<Tile> tilesWithDestroyedPlant = new List<Tile>();
                     await DisasterAnimationManager.Instance.PlayDisasterAnimation(naturalDisasterType, affectedTiles);
 
                     int destroyedPlantsCount = 0;
@@ -139,14 +139,16 @@ public class Grid : MonoBehaviour
                         if (tile.Plant is not null)
                         {
                             TileInput.EffectType effectType = tile.Plant.OnNaturalDisaster(naturalDisasterType);
-                            int plantScore = ScoreManager.Instance.IncreaseScoreFromSinglePlant(effectType); 
+                            int plantScore = ScoreManager.Instance.IncreaseScoreFromSinglePlant(effectType);  
                             tile.PlantAnimation.SetScore(plantScore); // For visual effect, make score earned appear on top of plant 
                             if (effectType == TileInput.EffectType.Destroyed)
                             {
+                                tilesWithDestroyedPlant.Add(tile);
                                 destroyedPlantsCount++;
                             }
                         }
                     }
+                    destroyedPlantsCenter = new Vector3(TileUtil.GetCenterXCoord(tilesWithDestroyedPlant), TileUtil.GetCenterYCoord(tilesWithDestroyedPlant), 0);
                     ScoreManager.Instance.IncreaseScoreFromComboAndUpdateCombo(destroyedPlantsCount, affectedTiles.Count);
                 } else
                 {
