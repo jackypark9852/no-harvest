@@ -12,8 +12,7 @@ public class RoundNumberText : MonoBehaviour
         text = GetComponent<TMP_Text>();
     }
 
-    // TODO: instead update this from GameManager UnityEvent
-    void Update()
+    public void UpdateRoundNumberText()
     {
         text.text = $"DAY {RoundManager.Instance.roundNum}";
     }
