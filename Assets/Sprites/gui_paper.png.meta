@@ -210,7 +210,7 @@ TextureImporter:
         height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 16, y: 8, z: 15, w: 5}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -940,12 +940,12 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 161
-        y: 101
-        width: 26
-        height: 22
+        y: 97
+        width: 30
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 4, y: 0, z: 0, w: 0}
+      border: {x: 4, y: 4, z: 4, w: 4}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -1233,9 +1233,9 @@ TextureImporter:
       name: gui_paper_53
       rect:
         serializedVersion: 2
-        x: 392
+        x: 389
         y: 34
-        width: 20
+        width: 23
         height: 27
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1433,6 +1433,7 @@ TextureImporter:
       gui_paper_20: 498559497
       gui_paper_32: -1197143207
       gui_paper_35: -690328870
+      gui_paper_60: -153307940
       gui_paper_13: -355887548
       gui_paper_4: -930638226
       gui_paper_25: -1408766101
