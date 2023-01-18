@@ -28,7 +28,6 @@ public abstract class ItemDisplay<T> : MonoBehaviour
 
     public void SetFrameActive(bool active)
     {
-        Debug.Log("Set frame active");
         frameImage.gameObject.SetActive(active);
     }
 }

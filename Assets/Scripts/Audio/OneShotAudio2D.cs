@@ -5,15 +5,24 @@ public class OneShotAudio2D : MonoBehaviour
 {
     public AudioSource audioSource; 
     float clipLengthSeconds = 0f;
+    bool destroyed = false;
+
+    private void OnDestroy() {
+        destroyed = true;
+    }
 
     async void PlayClipAndDestroy()
     {
         audioSource.spatialBlend = 0f; 
         audioSource.Play();
         await UniTask.Delay(Mathf.RoundToInt(clipLengthSeconds * 1000));
-        Destroy(gameObject);
+        if(!destroyed) {
+            Destroy(gameObject);
+        }
         return; 
     }
+
+
 
     public void SetClip(AudioClip clip)
     {

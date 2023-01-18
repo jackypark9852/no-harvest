@@ -54,7 +54,8 @@ public class LeaderboardController : MonoBehaviour
 
                 for (int i = 0; i < scoreTexts.Length; i++)
                 {
-                    scoreTexts[i].text = scores[i].member_id + " " + scores[i].score;
+                    string text = string.Format("{0: -7} {1,-11} {2,-5}", (i + 1).ToString() + '.', scores[i].member_id, scores[i].score);
+                    scoreTexts[i].text = text; 
                 }
             }
             else
