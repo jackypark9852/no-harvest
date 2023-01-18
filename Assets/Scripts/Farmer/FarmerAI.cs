@@ -37,6 +37,12 @@ public class FarmerAI : MonoBehaviour
     }
     Vector2Int FindOptimalPlacementCoordinate(ShapeData shapeData)
     {
+        HashSet<Vector2Int> previouslyChosenTileCoords = new HashSet<Vector2Int>();
+        return FindOptimalPlacementCoordinate(shapeData, ref previouslyChosenTileCoords);
+    }
+
+    Vector2Int FindOptimalPlacementCoordinate(ShapeData shapeData, ref HashSet<Vector2Int> previouslyChosenTileCoords)
+    {
         List<Vector2Int> emptyTileCoordinates = GetEmptyTileCoordinates();
 
         // randomize the order of elements in emptyTileCoordinates 
@@ -52,7 +58,7 @@ public class FarmerAI : MonoBehaviour
         Vector2Int optimalPlacementCoordinate = new Vector2Int(0, 0); 
         // find coordinate with largest Placeable Tile Count
         foreach(Vector2Int coordinate in emptyTileCoordinates){
-            int placeableTileCount = GetPlaceableTileCount(shapeData, coordinate, emptyTileCoordinates);
+            int placeableTileCount = GetPlaceableTileCount(shapeData, coordinate, emptyTileCoordinates, previouslyChosenTileCoords);
             // check if current coordinate has larger Placeable Tile Count than maxPlaceableTileCount
             if (placeableTileCount> maxPlaceableTileCount)
             {
@@ -62,16 +68,23 @@ public class FarmerAI : MonoBehaviour
                 optimalPlacementCoordinate = coordinate;
             }
         }
+
+        Vector2Int[] affectedTiles = shapeData.affectedTiles;
+        foreach (Vector2Int affectedTile in affectedTiles)
+        {
+            Vector2Int tileCoordinate = optimalPlacementCoordinate + affectedTile;
+            previouslyChosenTileCoords.Add(tileCoordinate);
+        }
         return optimalPlacementCoordinate; 
     }
-    int GetPlaceableTileCount(ShapeData shapeData, Vector2Int placementCoordinate, List<Vector2Int> emptyTileCoordinates)
+    int GetPlaceableTileCount(ShapeData shapeData, Vector2Int placementCoordinate, List<Vector2Int> emptyTileCoordinates, HashSet<Vector2Int> previouslyChosenTileCoords)
     {
         int placeableTileCount = 0;
         Vector2Int[] affectedTiles = shapeData.affectedTiles;
         foreach (Vector2Int affectedTile in affectedTiles)
         {
             Vector2Int tileCoordinate = placementCoordinate + affectedTile;
-            if (emptyTileCoordinates.Contains(tileCoordinate))
+            if (emptyTileCoordinates.Contains(tileCoordinate) && !previouslyChosenTileCoords.Contains(tileCoordinate))
             {
                 placeableTileCount++;
             }
@@ -100,10 +113,12 @@ public class FarmerAI : MonoBehaviour
             FarmerActionInfo farmerActionInfo2 = new FarmerActionInfo(new Vector2Int(6, 2), shapeData, plantsToPlant[1]);
             return new List<FarmerActionInfo> { farmerActionInfo1, farmerActionInfo2 };
         }
+        HashSet<Vector2Int> previouslyChosenTileCoords = new HashSet<Vector2Int>();
         foreach (PlantType plant in plantsToPlant)
         {
             ShapeData shapeData = GetRandomShapeData();
-            Vector2Int centerTileCoordinate = FindOptimalPlacementCoordinate(shapeData);
+            Vector2Int centerTileCoordinate = FindOptimalPlacementCoordinate(shapeData, ref previouslyChosenTileCoords);
+            previouslyChosenTileCoords = new HashSet<Vector2Int>();
             FarmerActionInfo farmerActionInfo = new FarmerActionInfo(centerTileCoordinate, shapeData, plant);
             farmerActionInfos.Add(farmerActionInfo);
         }
