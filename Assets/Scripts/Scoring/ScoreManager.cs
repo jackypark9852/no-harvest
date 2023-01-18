@@ -27,9 +27,12 @@ public class ScoreManager : Singleton<ScoreManager>
         { 0f, 0 },
     };
 
+    private float prevComboMultiplier;
+
     public ComboAnimation comboAnimation {get; private set; }
     private void Awake() {
-        comboAnimation = GetComponent<ComboAnimation>(); 
+        comboAnimation = GetComponent<ComboAnimation>();
+        prevComboMultiplier = comboMultiplier;
     }
 
     private int IncreaseScoreByRawAmount(int incAmt)
@@ -61,6 +64,7 @@ public class ScoreManager : Singleton<ScoreManager>
         {
             OnComboChange.Invoke();
         }
+        this.prevComboMultiplier = comboMultiplier;
     }
 
     public void IncreaseScoreFromComboAndUpdateCombo(int plantsDestroyedCount, int disasterTileCount)
@@ -91,5 +95,10 @@ public class ScoreManager : Singleton<ScoreManager>
             default:
                 return 0;
         }
+    }
+
+    public bool WasComboPreviouslyMaxed()
+    {
+        return prevComboMultiplier == comboMax;
     }
 }

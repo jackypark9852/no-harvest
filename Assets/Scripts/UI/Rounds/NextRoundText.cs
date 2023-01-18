@@ -15,6 +15,6 @@ public class NextRoundText : MonoBehaviour
 
     public void UpdateNextRoundText()
     {
-        text.text = $"Up to {RoundManager.Instance.roundInfos[RoundManager.Instance.roundNum].plantsToPlant.Count * plantCountPerPlantShape} plants spawn next round";
+        text.text = $"Up to <color=#c80000>{RoundManager.Instance.roundInfos[RoundManager.Instance.roundNum].plantsToPlant.Count * plantCountPerPlantShape}</color> plants spawn next round";
     }
 }
