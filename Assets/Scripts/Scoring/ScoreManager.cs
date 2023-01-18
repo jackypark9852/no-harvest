@@ -1,11 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.Events;
-
-[RequireComponent(typeof(ComboAnimation))] 
 public class ScoreManager : Singleton<ScoreManager>
 {
     [SerializeField] UnityEvent OnScoreChange;
@@ -26,11 +22,6 @@ public class ScoreManager : Singleton<ScoreManager>
         { 0.7f, 300 },
         { 0f, 0 },
     };
-
-    public ComboAnimation comboAnimation {get; private set; }
-    private void Awake() {
-        comboAnimation = GetComponent<ComboAnimation>(); 
-    }
 
     private int IncreaseScoreByRawAmount(int incAmt)
     {
