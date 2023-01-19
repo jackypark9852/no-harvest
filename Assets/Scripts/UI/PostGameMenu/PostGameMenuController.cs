@@ -9,13 +9,11 @@ public class PostGameMenuController : MonoBehaviour
 
     public void ShowGameOver()
     {
-        Debug.Log("ShowGameOver");
         DisableAllPostGameMenus();
         gameOverMenu.SetActive(true); // Show the gameOver menu
     }
 
     public void showSubmitScoreMenu(){
-        Debug.Log("showSubmitScoreMenu");
         DisableAllPostGameMenus();
         leaderBoardMenu.SetActive(true); // Show the leaderboard
     }
