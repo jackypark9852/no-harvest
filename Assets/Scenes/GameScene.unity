@@ -3495,6 +3495,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: cbfe5eb3-4ff2-4440-8ec8-8766e237bad0
     m_ActionName: Player/SelectSkill5[/Keyboard/5]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 840699964}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: ToggleAreRedGreenColorblindColorsOn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ddecfd79-2d54-4217-8cc8-3c8c9e2a9c06
+    m_ActionName: Player/ToggleColorblindMode[/Keyboard/slash]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

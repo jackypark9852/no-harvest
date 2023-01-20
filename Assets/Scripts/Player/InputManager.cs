@@ -82,6 +82,9 @@ public class InputManager : Singleton<InputManager>
     Grid grid;
     public int mana { get; private set; }
     [SerializeField] int manaIncreasePerTurn = 1;  // May not be constant per turn?
+    
+    public bool areRedGreenColorblindColorsOn { get; private set; } = false;
+
 
     void Awake()
     {
@@ -228,5 +231,10 @@ public class InputManager : Singleton<InputManager>
         }
         actions[actions.Count - 1] = new PlayerActionInfo(actions[actions.Count - 1].centerTileCoordinate, actions[actions.Count - 1].naturalDisasterType, ActionInputType.Confirmed);
         return true;
+    }
+
+    public void ToggleAreRedGreenColorblindColorsOn()
+    {
+        areRedGreenColorblindColorsOn = !areRedGreenColorblindColorsOn;
     }
 }

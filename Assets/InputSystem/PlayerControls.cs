@@ -71,6 +71,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleColorblindMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""ddecfd79-2d54-4217-8cc8-3c8c9e2a9c06"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -128,6 +137,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""SelectSkill5"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""01510936-5447-413a-b171-78994b1a4909"",
+                    ""path"": ""<Keyboard>/slash"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleColorblindMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -141,6 +161,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_SelectSkill3 = m_Player.FindAction("SelectSkill3", throwIfNotFound: true);
         m_Player_SelectSkill4 = m_Player.FindAction("SelectSkill4", throwIfNotFound: true);
         m_Player_SelectSkill5 = m_Player.FindAction("SelectSkill5", throwIfNotFound: true);
+        m_Player_ToggleColorblindMode = m_Player.FindAction("ToggleColorblindMode", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -205,6 +226,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SelectSkill3;
     private readonly InputAction m_Player_SelectSkill4;
     private readonly InputAction m_Player_SelectSkill5;
+    private readonly InputAction m_Player_ToggleColorblindMode;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -214,6 +236,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @SelectSkill3 => m_Wrapper.m_Player_SelectSkill3;
         public InputAction @SelectSkill4 => m_Wrapper.m_Player_SelectSkill4;
         public InputAction @SelectSkill5 => m_Wrapper.m_Player_SelectSkill5;
+        public InputAction @ToggleColorblindMode => m_Wrapper.m_Player_ToggleColorblindMode;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -238,6 +261,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @SelectSkill5.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSkill5;
                 @SelectSkill5.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSkill5;
                 @SelectSkill5.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSkill5;
+                @ToggleColorblindMode.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleColorblindMode;
+                @ToggleColorblindMode.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleColorblindMode;
+                @ToggleColorblindMode.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleColorblindMode;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -257,6 +283,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @SelectSkill5.started += instance.OnSelectSkill5;
                 @SelectSkill5.performed += instance.OnSelectSkill5;
                 @SelectSkill5.canceled += instance.OnSelectSkill5;
+                @ToggleColorblindMode.started += instance.OnToggleColorblindMode;
+                @ToggleColorblindMode.performed += instance.OnToggleColorblindMode;
+                @ToggleColorblindMode.canceled += instance.OnToggleColorblindMode;
             }
         }
     }
@@ -268,5 +297,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnSelectSkill3(InputAction.CallbackContext context);
         void OnSelectSkill4(InputAction.CallbackContext context);
         void OnSelectSkill5(InputAction.CallbackContext context);
+        void OnToggleColorblindMode(InputAction.CallbackContext context);
     }
 }
