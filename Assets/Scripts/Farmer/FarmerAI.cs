@@ -118,7 +118,6 @@ public class FarmerAI : MonoBehaviour
         {
             ShapeData shapeData = GetRandomShapeData();
             Vector2Int centerTileCoordinate = FindOptimalPlacementCoordinate(shapeData, ref previouslyChosenTileCoords);
-            previouslyChosenTileCoords = new HashSet<Vector2Int>();
             FarmerActionInfo farmerActionInfo = new FarmerActionInfo(centerTileCoordinate, shapeData, plant);
             farmerActionInfos.Add(farmerActionInfo);
         }
