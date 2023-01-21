@@ -52,28 +52,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leaderboardKey: player_leaderboard
+  scoreRowsParent: {fileID: 1344169485513300332}
+  scoreRowsPrefab: {fileID: 2322206061799814620, guid: 27ce9ee721a79624cba17aaff1399674, type: 3}
+  maxRows: 500
   playerIDInputField: {fileID: 8164519316845874743}
-  scoreRows:
-  - rank: {fileID: 0}
-    name: {fileID: 0}
-    score: {fileID: 0}
-  - rank: {fileID: 0}
-    name: {fileID: 0}
-    score: {fileID: 0}
-  - rank: {fileID: 0}
-    name: {fileID: 0}
-    score: {fileID: 0}
-  - rank: {fileID: 0}
-    name: {fileID: 0}
-    score: {fileID: 0}
-  - rank: {fileID: 0}
-    name: {fileID: 0}
-    score: {fileID: 0}
-  - rank: {fileID: 0}
-    name: {fileID: 0}
-    score: {fileID: 0}
   submitScorePanel: {fileID: 3044513702071872113}
-  leaderBoardPanel: {fileID: 0}
+  leaderBoardPanel: {fileID: 2520256050108420402}
 --- !u!1001 &6171352693045104923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81,10 +65,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1901830357910327321}
     m_Modifications:
-    - target: {fileID: 5116792407818111094, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6257784650764061955, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -413,8 +393,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scrollable Leaderboard
       objectReference: {fileID: 0}
+    - target: {fileID: 8600946295125262377, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+--- !u!1 &1344169485513300332 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5116792407818111095, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+  m_PrefabInstance: {fileID: 6171352693045104923}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2520256050108420402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8600946295125262377, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+  m_PrefabInstance: {fileID: 6171352693045104923}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2520256050108420403 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8600946295125262376, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}

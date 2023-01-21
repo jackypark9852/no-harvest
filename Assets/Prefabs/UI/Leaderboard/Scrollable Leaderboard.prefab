@@ -1204,10 +1204,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8600946295125262376}
     m_Modifications:
-    - target: {fileID: 8054050222915109487, guid: 90f7ae88fd704274e83e62b29f891286, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8054050223075549555, guid: 90f7ae88fd704274e83e62b29f891286, type: 3}
       propertyPath: m_Name
       value: ScrollableScoresPanel

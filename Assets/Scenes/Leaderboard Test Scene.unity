@@ -951,17 +951,17 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    - target: {fileID: 1344169485513300333, guid: f83c64d22c7f6b44e8c64c1c1f040aaf, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1901830357910327321, guid: f83c64d22c7f6b44e8c64c1c1f040aaf, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 3044513702071872113, guid: f83c64d22c7f6b44e8c64c1c1f040aaf, type: 3}
+    - target: {fileID: 2520256050108420402, guid: f83c64d22c7f6b44e8c64c1c1f040aaf, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3044513702071872113, guid: f83c64d22c7f6b44e8c64c1c1f040aaf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4913154785849595082, guid: f83c64d22c7f6b44e8c64c1c1f040aaf, type: 3}
       propertyPath: m_IsActive
