@@ -2152,11 +2152,6 @@ RectTransform:
   m_AnchoredPosition: {x: 78.40381, y: -85}
   m_SizeDelta: {x: 1183.1924, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &593519178 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7582332236190537514, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
-  m_PrefabInstance: {fileID: 3249015911581073634}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &598179539
 GameObject:
   m_ObjectHideFlags: 0
@@ -4904,11 +4899,6 @@ MonoBehaviour:
   fireDespawnDelaySeconds: 1.1
   meteoriteFallSpeed: 20
   blizzardFallSpeed: 12
---- !u!1 &1265202505 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 528781345527146897, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
-  m_PrefabInstance: {fileID: 3249015911581073634}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1291549000
 GameObject:
   m_ObjectHideFlags: 0
@@ -6200,28 +6190,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558424030}
   m_CullTransparentMesh: 1
---- !u!1 &1568144535 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3300828309909884386, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
-  m_PrefabInstance: {fileID: 3249015911581073634}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1568144538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1568144535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43fa8bb3a0599ad428bf8f65feefbb42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leaderboardKey: player_leaderboard
-  playerIDInputField: {fileID: 0}
-  scoreRows: []
-  submitScorePanel: {fileID: 1265202505}
-  leaderBoardPanel: {fileID: 593519178}
 --- !u!1 &1594698427
 GameObject:
   m_ObjectHideFlags: 0
@@ -7891,6 +7859,62 @@ PrefabInstance:
     - target: {fileID: 535582700691504375, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441285826875688036, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441285826875688036, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 320158008}
+    - target: {fileID: 1441285826875688036, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 809362615}
+    - target: {fileID: 1441285826875688036, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441285826875688036, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayUISelected
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441285826875688036, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneMenuManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441285826875688036, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: AudioManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904273690781544625, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904273690781544625, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 320158008}
+    - target: {fileID: 2904273690781544625, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 809362615}
+    - target: {fileID: 2904273690781544625, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904273690781544625, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayUISelected
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904273690781544625, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneMenuManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904273690781544625, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: AudioManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3249015911666766792, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
       propertyPath: m_Name
