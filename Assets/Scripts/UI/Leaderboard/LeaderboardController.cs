@@ -68,7 +68,6 @@ public class LeaderboardController : MonoBehaviour
     }
 
     public void DisplayTopScores() {
-        Debug.Log("Displaying top scores");
         LootLockerSDKManager.GetScoreList(leaderboardKey, maxRows, (response) =>
         {
             if (response.statusCode == 200)
@@ -114,13 +113,6 @@ public class LeaderboardController : MonoBehaviour
         float scoreRowHeight = totalHeight / rankCount; // The height of each score row 
         float scrollableHeight = totalHeight - viewportHeight; // The total height of the scroll view minus the height of the viewport
         float scrollPosition =  1 - Mathf.Min((((float)rank - 0.7f) * scoreRowHeight) / scrollableHeight, 1f); // The normalized scroll position of the viewport 
-
-        Debug.Log("rank: " + rank);
-        Debug.Log("viewportHeight: " + viewportHeight);
-        Debug.Log("scoreRowHeight: " + scoreRowHeight);
-        Debug.Log("totalHeight: " + totalHeight);
-        Debug.Log("scrollableHeight: " + scrollableHeight);
-        Debug.Log("scrollPosition: " + scrollPosition);
         return scrollPosition;
     }
 }
