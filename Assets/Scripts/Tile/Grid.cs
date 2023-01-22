@@ -149,7 +149,7 @@ public class Grid : MonoBehaviour
                         }
                     }
                     destroyedPlantsCenter = new Vector3(TileUtil.GetCenterXCoord(tilesWithDestroyedPlant), TileUtil.GetCenterYCoord(tilesWithDestroyedPlant), 0);
-                    ScoreManager.Instance.IncreaseScoreFromComboAndUpdateCombo(destroyedPlantsCount, affectedTiles.Count);
+                    ScoreManager.Instance.IncreaseScoreFromComboAndUpdateCombo(destroyedPlantsCount, shapeData.affectedTiles.Length);
                 } else
                 {
                     throw new Exception($"NaturalDisasterType not found: {naturalDisasterType.ToString()}"); 
