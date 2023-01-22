@@ -616,9 +616,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   comboMin: 1
-  comboMax: 5
-  comboIncrement: 0.5
-  minProportionToIncrementCombo: 0.7
+  comboMax: 3
   plantDestroyedScore: 100
 --- !u!114 &143186811
 MonoBehaviour:
@@ -845,7 +843,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 25/50 PLANTED
+  m_text: 30/60 PLANTED
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1ccc58f44c7264844b11a4c585627a0e, type: 2}
   m_sharedMaterial: {fileID: 4107726967131990416, guid: 1ccc58f44c7264844b11a4c585627a0e, type: 2}
@@ -1498,7 +1496,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 648.1, y: 467.5}
+  m_AnchoredPosition: {x: 637.4, y: 467.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &508332782
@@ -2364,7 +2362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3992a86db7bf8fa408e37e541606adce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  losingFarmValue: 50
+  losingFarmValue: 60
   progressBar: {fileID: 114769783145686002}
   grid: {fileID: 1205131718}
 --- !u!1 &768462219
@@ -5097,7 +5095,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1.0x
+  m_text: 1.00x
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1ccc58f44c7264844b11a4c585627a0e, type: 2}
   m_sharedMaterial: {fileID: 4107726967131990416, guid: 1ccc58f44c7264844b11a4c585627a0e, type: 2}
@@ -8314,6 +8312,10 @@ PrefabInstance:
     - target: {fileID: 8988079092455190687, guid: efc19a5e9ade3b64a92697123f366bc9, type: 3}
       propertyPath: BarColor.r
       value: 0.25200406
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988079092455190687, guid: efc19a5e9ade3b64a92697123f366bc9, type: 3}
+      propertyPath: losingFarmValue
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8988414311759104811, guid: efc19a5e9ade3b64a92697123f366bc9, type: 3}
       propertyPath: m_Color.a
