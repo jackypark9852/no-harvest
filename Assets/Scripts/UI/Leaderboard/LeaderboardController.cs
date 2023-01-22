@@ -1,19 +1,35 @@
-using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
+using System.Collections;
 using LootLocker.Requests;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class LeaderboardController : MonoBehaviour
 {
+    [Header("LootLocker API Settings")] 
     [SerializeField] string leaderboardKey = "player_leaderboard"; // This is the leaderboard ID from the LootLockers's dashboard
+
+
+    [Header("Score Display Settings")]
+    [SerializeField] int maxRows = 1000;
+    [SerializeField] float scrollDelaysSeconds = 0.5f; // The delay before scrolling to the player's score
+    [SerializeField] float scrollSpeed = 0.1f; // The speed of the scroll
+    [SerializeField] Color playerScoreColor = Color.red; // The color of the player's score
+
+
+    [Header("UI References")]
     [SerializeField] TMPro.TMP_InputField playerIDInputField; 
-    [SerializeField] List<ScoreRow> scoreRows; 
     [SerializeField] GameObject submitScorePanel;
     [SerializeField] GameObject leaderBoardPanel;
-    int score = 0; 
-    string member_id = null; 
+    [SerializeField] GameObject viewport; 
+    [SerializeField] TMPro.TMP_Text scoreText;
+    [Tooltip("This is the scroll rect that contains the leaderboard content")]
+    [SerializeField] ScrollRect leaderboardScrollRect; 
 
+    int score = 0; 
+    string playerID = null; 
+    int playerRank = -1;
+    float viewportHeight; 
     void Start()
     {
         
@@ -22,21 +38,22 @@ public class LeaderboardController : MonoBehaviour
             if (!response.success)
             {
                 // Debug.Log("error starting LootLocker session");
-
                 return;
             }
 
             // Debug.Log("successfully started LootLocker session");
         });
+        
     }
 
     public void SubmitScore()
     {
         score = ScoreManager.Instance.score; 
-        member_id = playerIDInputField.text;
+        playerID = playerIDInputField.text;
         LootLockerSDKManager.SubmitScore(playerIDInputField.text, score, leaderboardKey, (response) =>
         {
             if (response.statusCode == 200) {
+                playerRank = response.rank;
                 // Debug.Log("Successful");
             } else {
                 Debug.Log("failed: " + response.Error);
@@ -47,25 +64,25 @@ public class LeaderboardController : MonoBehaviour
     public void DisplayScores() {
         submitScorePanel.SetActive(false);
         leaderBoardPanel.SetActive(true);
-        DisplayTopScores(scoreRows.GetRange(0, scoreRows.Count - 1));
-        DisplayPlayerScore(scoreRows[scoreRows.Count - 1]); 
-        
+        DisplayTopScores();
     }
 
-    public void DisplayTopScores(List<ScoreRow> scoreRows) {
-        LootLockerSDKManager.GetScoreList(leaderboardKey, scoreRows.Count, (response) =>
+    public void DisplayTopScores() {
+        LootLockerSDKManager.GetScoreList(leaderboardKey, maxRows, (response) =>
         {
             if (response.statusCode == 200)
             {
                 LootLockerLeaderboardMember[] scores = response.items;
-
-                for (int i = 0; i < scoreRows.Count; i++) 
+                scoreText.text = "";
+                for (int i = 0; i < scores.Length; i++) 
                 {
-                    ScoreRow scoreRow = scoreRows[i]; 
-                    scoreRow.rank.text  = string.Format("{0}.", i + 1); 
-                    scoreRow.name.text = scores[i].member_id;
-                    scoreRow.score.text = string.Format("{0}", scores[i].score);
+                    string newText = string.Format("{0,4}.{1,-12}{2,8}\n", scores[i].rank, scores[i].member_id, scores[i].score);
+                    if (scores[i].member_id == playerID) {
+                        newText = string.Format("<color=#{0}>{1}</color>", ColorUtility.ToHtmlStringRGB(playerScoreColor) ,newText); // Highlight the player's score
+                    }
+                    scoreText.text += newText;
                 }
+                StartCoroutine(ScrollToPlayerScore(playerRank, response.items.Length));
             }
             else
             {
@@ -74,31 +91,28 @@ public class LeaderboardController : MonoBehaviour
         });
     }
 
-    public void DisplayPlayerScore(ScoreRow scoreRow) {
-        if(member_id != null) {
-            // This is to get the rank of the player
-            LootLockerSDKManager.GetMemberRank(leaderboardKey, member_id, (response) =>
-            {
-                if (response.statusCode == 200) {
-                    scoreRow.rank.text = string.Format("{0}.", response.rank);
-                    scoreRow.name.text = member_id;
-                    scoreRow.score.text = string.Format("{0}", response.score);
-                } else {
-                    Debug.LogError("Failed to retrieve player rank: " + response.Error);
-                }
-            });
-        } else { // If the player hasn't submitted a score yet
-            scoreRow.rank.text = "";
-            scoreRow.name.text = "";
-            scoreRow.score.text = "";
+    // This method will scroll the leaderboard to the player's score
+    IEnumerator ScrollToPlayerScore(int playerRank, int rankCount) {
+        if(playerRank == -1) {
+            throw new System.Exception("Player rank not set, please make sure player rank is set before calling this method");
         }
+        yield return new WaitForSeconds(scrollDelaysSeconds); // Wait for the score text to be updated and rect transform to be updated
+        float targetVerticalScrollPosition = CalculateVerticalScrollPosition(playerRank, rankCount);
+        
+        while(Mathf.Abs(leaderboardScrollRect.verticalNormalizedPosition - targetVerticalScrollPosition) > 0.001f) {
+            leaderboardScrollRect.verticalNormalizedPosition = Mathf.SmoothStep(leaderboardScrollRect.verticalNormalizedPosition, targetVerticalScrollPosition, scrollSpeed);
+            yield return new WaitForEndOfFrame();
+        }
+        // Debug.Log("Scrolling to position: " + targetVerticalScrollPosition);
     }
-}
 
-
-[System.Serializable]
-public struct ScoreRow {
-    public TMPro.TMP_Text rank;
-    public TMPro.TMP_Text name;
-    public TMPro.TMP_Text score;
+    // This method will calculate the normalized scroll position of the viewport
+    float CalculateVerticalScrollPosition(int rank, int rankCount) {
+        float viewportHeight = viewport.GetComponent<RectTransform>().rect.height; // The height of the viewport
+        float totalHeight = scoreText.GetComponent<RectTransform>().rect.height; // The height of each score row
+        float scoreRowHeight = totalHeight / rankCount; // The height of each score row 
+        float scrollableHeight = totalHeight - viewportHeight; // The total height of the scroll view minus the height of the viewport
+        float scrollPosition =  1 - Mathf.Min((((float)rank - 0.7f) * scoreRowHeight) / scrollableHeight, 1f); // The normalized scroll position of the viewport 
+        return scrollPosition;
+    }
 }
