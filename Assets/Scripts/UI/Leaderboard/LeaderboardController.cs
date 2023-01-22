@@ -14,6 +14,7 @@ public class LeaderboardController : MonoBehaviour
     [SerializeField] int maxRows = 1000;
     [SerializeField] float scrollDelaysSeconds = 0.5f; // The delay before scrolling to the player's score
     [SerializeField] float scrollSpeed = 0.1f; // The speed of the scroll
+    [SerializeField] Color playerScoreColor = Color.red; // The color of the player's score
 
 
     [Header("UI References")]
@@ -77,6 +78,9 @@ public class LeaderboardController : MonoBehaviour
                 for (int i = 0; i < scores.Length; i++) 
                 {
                     string newText = string.Format("{0,4}.{1,-12}{2,8}\n", scores[i].rank, scores[i].member_id, scores[i].score);
+                    if (scores[i].member_id == playerID) {
+                        newText = string.Format("<color=#{0}>{1}</color>", ColorUtility.ToHtmlStringRGB(playerScoreColor) ,newText); // Highlight the player's score
+                    }
                     scoreText.text += newText;
                 }
                 StartCoroutine(ScrollToPlayerScore(playerRank, response.items.Length));
@@ -96,7 +100,7 @@ public class LeaderboardController : MonoBehaviour
         yield return new WaitForSeconds(scrollDelaysSeconds); // Wait for the score text to be updated and rect transform to be updated
         float targetVerticalScrollPosition = CalculateVerticalScrollPosition(playerRank, rankCount);
         
-        while(Mathf.Abs(leaderboardScrollRect.verticalNormalizedPosition - targetVerticalScrollPosition) > 0.01f) {
+        while(Mathf.Abs(leaderboardScrollRect.verticalNormalizedPosition - targetVerticalScrollPosition) > 0.001f) {
             leaderboardScrollRect.verticalNormalizedPosition = Mathf.SmoothStep(leaderboardScrollRect.verticalNormalizedPosition, targetVerticalScrollPosition, scrollSpeed);
             yield return new WaitForEndOfFrame();
         }

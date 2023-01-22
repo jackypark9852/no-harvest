@@ -393,10 +393,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Over Menu
       objectReference: {fileID: 0}
-    - target: {fileID: 8238857500272902373, guid: acb6ccad09a73c14f8293d06a4a17756, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acb6ccad09a73c14f8293d06a4a17756, type: 3}
 --- !u!1 &438333106
@@ -673,14 +669,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1901830357910327321, guid: f83c64d22c7f6b44e8c64c1c1f040aaf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2520256050108420402, guid: f83c64d22c7f6b44e8c64c1c1f040aaf, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8498636764888457508, guid: f83c64d22c7f6b44e8c64c1c1f040aaf, type: 3}
-      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

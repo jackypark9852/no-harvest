@@ -55,6 +55,7 @@ MonoBehaviour:
   maxRows: 500
   scrollDelaysSeconds: 1
   scrollSpeed: 0.05
+  playerScoreColor: {r: 1, g: 0.90588236, b: 0.19607843, a: 1}
   playerIDInputField: {fileID: 8164519316845874743}
   submitScorePanel: {fileID: 3044513702071872113}
   leaderBoardPanel: {fileID: 2520256050108420402}
@@ -70,7 +71,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2329545798152024127, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 386.15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5116792406989174733, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
       propertyPath: m_Content
