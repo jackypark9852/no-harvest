@@ -250,7 +250,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8054050222133329362}
   - component: {fileID: 8054050222133329364}
-  - component: {fileID: 8054050222133329365}
   m_Layer: 5
   m_Name: ScrollArea
   m_TagString: Untagged
@@ -310,7 +309,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8054050222133329365}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ScrollAreaDebug, Assembly-CSharp
         m_MethodName: OnScrollAreaChanged
         m_Mode: 0
@@ -322,18 +321,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
---- !u!114 &8054050222133329365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8054050222133329361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4573cff6b1b4299499c108966ba6caaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8054050222367880484
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding: {x: 0, y: 0, z: 0, w: 0}
-  m_Softness: {x: 0, y: 0}
+  m_Softness: {x: 10, y: 10}
 --- !u!1 &8054050223075549555
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,7 +527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3436501690590197218, guid: 0683485973958e245a2df83b8842a7a2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.000014305
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3436501690590197218, guid: 0683485973958e245a2df83b8842a7a2, type: 3}
       propertyPath: m_AnchoredPosition.y
