@@ -77,10 +77,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1901830357910327321}
     m_Modifications:
+    - target: {fileID: 431989966709080976, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 431989966709080976, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 431989966709080976, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1079284954064339788, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8958438289575307906}
+    - target: {fileID: 2329545798152024127, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5258976777523588179, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -234,6 +250,10 @@ PrefabInstance:
     - target: {fileID: 268070339597557717, guid: c8ec90453ffa6f8409f9ac12d14ec31c, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 268070339597557717, guid: c8ec90453ffa6f8409f9ac12d14ec31c, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 1669250335398884746, guid: c8ec90453ffa6f8409f9ac12d14ec31c, type: 3}
       propertyPath: m_RootOrder

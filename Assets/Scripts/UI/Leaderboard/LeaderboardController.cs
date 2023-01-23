@@ -160,7 +160,7 @@ public class LeaderboardController : MonoBehaviour
         yield return new WaitForSeconds(scrollDelaysSeconds); // Wait for the score text to be updated and rect transform to be updated
         float targetVerticalScrollPosition = CalculateVerticalScrollPosition(playerRank, rankCount);
         
-        while(Mathf.Abs(leaderboardScrollRect.verticalNormalizedPosition - targetVerticalScrollPosition) > 0.01f) {
+        while(Mathf.Abs(leaderboardScrollRect.verticalNormalizedPosition - targetVerticalScrollPosition) > 0.005f) {
             leaderboardScrollRect.verticalNormalizedPosition = Mathf.SmoothStep(leaderboardScrollRect.verticalNormalizedPosition, targetVerticalScrollPosition, scrollSpeed);
             yield return new WaitForEndOfFrame();
         }
@@ -170,7 +170,7 @@ public class LeaderboardController : MonoBehaviour
     float CalculateVerticalScrollPosition(int rank, int rankCount) {
         float viewportHeight = viewport.GetComponent<RectTransform>().rect.height; // The height of the viewport
         float totalHeight = leaderboardScoresText.GetComponent<RectTransform>().rect.height; // The height of each score row
-        float scoreRowHeight = totalHeight / rankCount; // The height of each score row 
+        float scoreRowHeight = totalHeight / (rankCount + 1); // The height of each score row, +1 accounts for the column labels
         float scrollableHeight = totalHeight - viewportHeight; // The total height of the scroll view minus the height of the viewport
         // The normalized scroll position of the viewport
         float scrollPosition =  1 - Mathf.Min((((float)rank + scrollYoffset) * scoreRowHeight) / scrollableHeight, 1f); 
