@@ -62,7 +62,7 @@ public class LeaderboardController : MonoBehaviour
     {
         if(playerIDInputField.text == "") { // Hardcoded for now
             // generate a random uid for playerID limited to 12 characters 
-            playerIDInputField.text = System.Guid.NewGuid().ToString().Substring(0,12);
+            playerIDInputField.text = System.Guid.NewGuid().ToString().Substring(0,8);
         }
 
         playerScoreDict.Add(leaderboardType.SCORES, ScoreManager.Instance.score);
