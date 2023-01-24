@@ -63,6 +63,7 @@ MonoBehaviour:
   _scrollDelaysSeconds: 0.5
   _scrollSpeed: 0.1
   _columnLabelColor: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
+  _sortColumnLabelColor: {r: 1, g: 0.9333334, b: 0, a: 1}
   _playerScoreColor: {r: 1, g: 0.73182636, b: 0, a: 1}
   _playerIDInputField: {fileID: 8164519316845874743}
   _submitScorePanel: {fileID: 3044513702071872113}

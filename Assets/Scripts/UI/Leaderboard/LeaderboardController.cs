@@ -19,6 +19,7 @@ public class LeaderboardController : MonoBehaviour
     [SerializeField] private float _scrollDelaysSeconds = 0.5f; // The delay before scrolling to the player's score
     [SerializeField] private float _scrollSpeed = 0.1f; // The speed of the scroll
     [SerializeField] private Color _columnLabelColor = Color.gray; // The color of the column labels
+    [SerializeField] private Color _sortColumnLabelColor = Color.yellow; // The color of the column labels
     [SerializeField] private Color _playerScoreColor = Color.red; // The color of the player's score
  
 
@@ -128,7 +129,20 @@ public class LeaderboardController : MonoBehaviour
     // This method will generate the leaderboard text
     string GenerateText(leaderboardType type, LootLockerLeaderboardMember[] scores) {
         string colorHex = ColorUtility.ToHtmlStringRGB(_columnLabelColor);
-        string leaderboardText = string.Format("<color=#{0}> RANK  PLAYER ID     DAY   SCORE\n</color>", colorHex); // Hardcoded for now
+        string sortColumnColorHex = ColorUtility.ToHtmlStringRGB(_sortColumnLabelColor);
+        string leaderboardText;
+        switch (type)
+        {
+            case leaderboardType.DayScore:
+                leaderboardText = string.Format("<color=#{0}> RANK  PLAYER ID     <color=#{1}>DAY</color>  SCORE\n</color>", colorHex, sortColumnColorHex);
+                break;
+            case leaderboardType.ScoreDay:
+                leaderboardText = string.Format("<color=#{0}> RANK  PLAYER ID     DAY  <color=#{1}>SCORE</color>\n</color>", colorHex, sortColumnColorHex);
+                break;
+            default:
+                leaderboardText = string.Format("<color=#{0}> RANK  PLAYER ID     DAY  SCORE\n</color>", colorHex); // Hardcoded for now
+                break;
+        }
         for (int i = 0; i < scores.Length; i++) 
         {
             string newText = ""; 
