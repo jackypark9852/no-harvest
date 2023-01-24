@@ -20,5 +20,6 @@ public enum ShapeType
     Diamond3Away,
     Diamond4Away,
     Checkerboard5x5,
+    SquareLargeOutline,
     Custom,
 }

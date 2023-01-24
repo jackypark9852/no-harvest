@@ -12,21 +12,26 @@ public class ScoreManager : Singleton<ScoreManager>
 
     public float comboMultiplier { get; private set; } = 1f;
     [SerializeField] float comboMin = 1;
-    [SerializeField] float comboMax = 5;
-    [SerializeField] float comboIncrement = 0.5f;
-    [SerializeField] float minProportionToIncrementCombo = 0.7f;
+    [SerializeField] float comboMax = 3;
+    Dictionary<float, float> comboProportionComboIncrements = new Dictionary<float, float>
+    {
+        { 1f, 0.5f },
+        { 0.7f, 0.25f },
+        { 0f, -0.5f },
+    };
     [SerializeField] int plantDestroyedScore = 100;
     Dictionary<float, int> comboProportionScores = new Dictionary<float, int>
     {
-        { 1f, 500 },
-        { 0.7f, 300 },
+        // { 1f, 500 },
+        // { 0.7f, 300 },
         { 0f, 0 },
     };
 
     private float prevComboMultiplier;
 
-    public ComboAnimation comboAnimation {get; private set; }
-    private void Awake() {
+    public ComboAnimation comboAnimation { get; private set; }
+    private void Awake()
+    {
         comboAnimation = GetComponent<ComboAnimation>();
         prevComboMultiplier = comboMultiplier;
     }
@@ -40,22 +45,25 @@ public class ScoreManager : Singleton<ScoreManager>
         {
             OnScoreChange.Invoke();
         }
-        return incAmtWithCombo;  
+        return incAmtWithCombo;
     }
 
     private void UpdateCombo(float plantsDestroyedProportion)
     {
         float prevComboMultiplier = comboMultiplier;
-        if (isGreaterThanOrAlmostEqual(plantsDestroyedProportion, minProportionToIncrementCombo))
+
+        float closestKey = comboProportionComboIncrements.Keys.Where(x => isGreaterThanOrAlmostEqual(plantsDestroyedProportion, x)).Max();
+        comboMultiplier += comboProportionComboIncrements[closestKey];
+        if (comboProportionComboIncrements[closestKey] > 0f)
         {
-            comboMultiplier += comboIncrement;
             comboMultiplier = Mathf.Min(comboMultiplier, comboMax);
             OnComboIncrease.Invoke();
         }
         else
         {
-            comboMultiplier = comboMin;
+            comboMultiplier = Mathf.Max(comboMultiplier, comboMin);
         }
+
         if (comboMultiplier != prevComboMultiplier)
         {
             OnComboChange.Invoke();

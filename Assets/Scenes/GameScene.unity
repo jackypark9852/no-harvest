@@ -616,9 +616,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   comboMin: 1
-  comboMax: 5
-  comboIncrement: 0.5
-  minProportionToIncrementCombo: 0.7
+  comboMax: 3
   plantDestroyedScore: 100
 --- !u!114 &143186811
 MonoBehaviour:
@@ -1498,7 +1496,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 648.1, y: 467.5}
+  m_AnchoredPosition: {x: 637.4, y: 467.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &508332782
@@ -5097,7 +5095,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1.0x
+  m_text: 1.00x
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1ccc58f44c7264844b11a4c585627a0e, type: 2}
   m_sharedMaterial: {fileID: 4107726967131990416, guid: 1ccc58f44c7264844b11a4c585627a0e, type: 2}
@@ -7142,7 +7140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Up to <color=#c80000>8</color> plants spawn next round
+  m_text: <color=#c80000>8</color> plants spawn next round
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1ccc58f44c7264844b11a4c585627a0e, type: 2}
   m_sharedMaterial: {fileID: 4107726967131990416, guid: 1ccc58f44c7264844b11a4c585627a0e, type: 2}
