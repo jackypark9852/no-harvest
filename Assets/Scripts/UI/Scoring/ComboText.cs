@@ -16,6 +16,6 @@ public class ComboText : MonoBehaviour
 
     public void UpdateScoreText()
     {
-        text.text = $"{string.Format("{0:0.0}", ScoreManager.Instance.comboMultiplier)}x";
+        text.text = $"{string.Format("{0:0.00}", ScoreManager.Instance.comboMultiplier)}x";
     }
 }
