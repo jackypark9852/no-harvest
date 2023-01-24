@@ -5647,16 +5647,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Plants like:       are immune to:
+  m_text: 'Plants like:       are <color=#009400>immune</color> to:
 
 
 
-    Plants like:       are immune
-    to:
+    Plants
+    like:       are <color=#009400>immune</color> to:
 
 
 
-    Plants like:       are immune to:'
+    Plants like:       are
+    <color=#009400>immune</color> to:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 876a57b04fdb5b24894a47739a56b8b4, type: 2}
   m_sharedMaterial: {fileID: 4107726967131990416, guid: 876a57b04fdb5b24894a47739a56b8b4, type: 2}
@@ -6851,10 +6852,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "To Destroy them: \r\n1. SELECT A DISASTER \r\n2. CLICK ON THE FIELD \r\n3.
-    CLICK \"OK\"\r\nBUT!\r\nWatch out for elemental immunities! A <color=#009400>green</color>
-    highlight means a plant is immune and may spawn additional plants nearby if hit
-    by that disaster."
+  m_text: "To destroy them: \r\n1. SELECT A DISASTER \r\n2. CLICK ON THE FIELD \r\n\nBUT!\r\nWatch
+    out for elemental immunities! A <color=#009400>green</color> highlight means
+    a plant is immune and may spawn additional plants nearby if hit by that disaster."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 876a57b04fdb5b24894a47739a56b8b4, type: 2}
   m_sharedMaterial: {fileID: 4107726967131990416, guid: 876a57b04fdb5b24894a47739a56b8b4, type: 2}
