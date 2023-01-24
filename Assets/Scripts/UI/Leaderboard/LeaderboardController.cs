@@ -134,13 +134,13 @@ public class LeaderboardController : MonoBehaviour
         switch (type)
         {
             case leaderboardType.DayScore:
-                leaderboardText = string.Format("<color=#{0}> RANK  PLAYER ID     <color=#{1}>DAY</color>  SCORE\n</color>", colorHex, sortColumnColorHex);
+                leaderboardText = string.Format("<color=#{0}> RANK  PLAYER ID     SCORE  <color=#{1}>DAY</color>\n</color>", colorHex, sortColumnColorHex);
                 break;
             case leaderboardType.ScoreDay:
-                leaderboardText = string.Format("<color=#{0}> RANK  PLAYER ID     DAY  <color=#{1}>SCORE</color>\n</color>", colorHex, sortColumnColorHex);
+                leaderboardText = string.Format("<color=#{0}> RANK  PLAYER ID     <color=#{1}>SCORE</color>  DAY\n</color>", colorHex, sortColumnColorHex);
                 break;
             default:
-                leaderboardText = string.Format("<color=#{0}> RANK  PLAYER ID     DAY  SCORE\n</color>", colorHex); // Hardcoded for now
+                leaderboardText = string.Format("<color=#{0}> RANK  PLAYER ID     SCORE  DAY\n</color>", colorHex); // Hardcoded for now
                 break;
         }
         for (int i = 0; i < scores.Length; i++) 
@@ -148,10 +148,10 @@ public class LeaderboardController : MonoBehaviour
             string newText = ""; 
             switch(type) {
                 case leaderboardType.DayScore:
-                    newText = string.Format("{0,4}.  {1,-13} {2,3} {3,6}\n", scores[i].rank, scores[i].member_id, scores[i].score/_dayScoreMultiplier, scores[i].score%_dayScoreMultiplier);
+                    newText = string.Format("{0,4}.  {1,-13}{3,6}  {2,3}\n", scores[i].rank, scores[i].member_id, scores[i].score/_dayScoreMultiplier, scores[i].score%_dayScoreMultiplier);
                     break;
                 case leaderboardType.ScoreDay:
-                    newText = string.Format("{0,4}.  {1,-13} {2,3} {3,6}\n", scores[i].rank, scores[i].member_id, scores[i].score%_scoreDayMultiplier, scores[i].score/_scoreDayMultiplier);
+                    newText = string.Format("{0,4}.  {1,-13}{3,6}  {2,3}\n", scores[i].rank, scores[i].member_id, scores[i].score%_scoreDayMultiplier, scores[i].score/_scoreDayMultiplier);
                     break;
                 default:
                     throw new System.Exception("Leaderboard type not set");
