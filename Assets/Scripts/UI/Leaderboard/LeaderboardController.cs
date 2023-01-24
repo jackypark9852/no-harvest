@@ -13,6 +13,8 @@ public class LeaderboardController : MonoBehaviour
     Dictionary<leaderboardType, string> leaderboardKeyDict = new Dictionary<leaderboardType, string>();
 
     [Header("Score Display Settings")]
+    [SerializeField] int dayScoreMultiplier = 1000000; // The multiplier for the day score
+    [SerializeField] int scoreDayMultiplier = 100; // The multiplier for the score day
     [SerializeField] int maxRows = 1000;
     [SerializeField] float scrollYoffset = 0.7f; // The offset of the scroll rect from the player's score
     [SerializeField] float scrollDelaysSeconds = 0.5f; // The delay before scrolling to the player's score
@@ -32,9 +34,10 @@ public class LeaderboardController : MonoBehaviour
 
     // cached values, used to scroll to the player's score
     string playerID = null; 
+    int playerScore = -1;  
+    int playerDay = -1; // The number of days survived by the player
     float viewportHeight; 
     Dictionary<leaderboardType,string> leaderboardTextDict = new Dictionary<leaderboardType, string>();
-    Dictionary<leaderboardType, int> playerScoreDict = new Dictionary<leaderboardType, int>(); 
     Dictionary<leaderboardType, int> playerRankDict = new Dictionary<leaderboardType, int>(); 
     Coroutine scrollCoroutine = null;
     
@@ -60,59 +63,50 @@ public class LeaderboardController : MonoBehaviour
     // Submits score, days, and game result to leaderboards
     public void SubmitScore()
     {
-        if(playerIDInputField.text == "") { // Hardcoded for now
-            // generate a random uid for playerID limited to 12 characters 
-            playerIDInputField.text = System.Guid.NewGuid().ToString().Substring(0,8);
-        }
-
-        playerScoreDict.Add(leaderboardType.SCORES, ScoreManager.Instance.score);
         playerID = playerIDInputField.text;
-        LootLockerSDKManager.SubmitScore(playerIDInputField.text, playerScoreDict[leaderboardType.SCORES], leaderboardKeyDict[leaderboardType.SCORES], (System.Action<LootLockerSubmitScoreResponse>)((response) =>
+        if(playerID == "") { // Hardcoded for now
+            // generate a random uid for playerID limited to 12 characters 
+            playerID = System.Guid.NewGuid().ToString().Substring(0,8);
+        }
+        playerScore = ScoreManager.Instance.score; 
+        playerDay = RoundManager.Instance.roundNum;
+
+        int day_score = playerDay*dayScoreMultiplier + playerScore; 
+        LootLockerSDKManager.SubmitScore(playerID, day_score, leaderboardKeyDict[leaderboardType.DAY_SCORE], (System.Action<LootLockerSubmitScoreResponse>)((response) =>
         {
             if (response.statusCode == 200) {
-                playerRankDict.Add(leaderboardType.SCORES,response.rank); 
+                playerRankDict[leaderboardType.DAY_SCORE] = response.rank; // Cache the player's rank in the leaderboard
                 // Debug.Log("Successful");
             } else {
                 Debug.Log("failed: " + response.Error);
             }
         }));
 
-        playerScoreDict[leaderboardType.DAYS] = RoundManager.Instance.roundNum;
-        LootLockerSDKManager.SubmitScore(playerIDInputField.text, playerScoreDict[leaderboardType.DAYS], leaderboardKeyDict[leaderboardType.DAYS], (System.Action<LootLockerSubmitScoreResponse>)((response) =>
+        int score_day = playerScore*scoreDayMultiplier + playerDay; 
+        LootLockerSDKManager.SubmitScore(playerID, score_day, leaderboardKeyDict[leaderboardType.SCORE_DAY], (System.Action<LootLockerSubmitScoreResponse>)((response) =>
         {
             if (response.statusCode == 200) {
-                playerRankDict.Add(leaderboardType.DAYS,response.rank); 
+                playerRankDict[leaderboardType.SCORE_DAY] = response.rank; // Cache the player's rank in the leaderboard
                 // Debug.Log("Successful");
             } else {
                 Debug.Log("failed: " + response.Error);
             }
         }));
-
-        // Submit days and score to leaderboard for analytics
-        // Generate a random UID for memberid to avoid duplicate submissions
-        string memberUID = System.Guid.NewGuid().ToString();
-        string gameResultData = string.Format("{{\"score\":{0},\"days\":{1}}}", playerScoreDict[leaderboardType.SCORES], playerScoreDict[leaderboardType.DAYS]); // submitted as metadata field in LootLocker API
-        LootLockerSDKManager.SubmitScore(memberUID, 0, leaderboardKeyDict[leaderboardType.DAYS_SCORES], gameResultData, (System.Action<LootLockerSubmitScoreResponse>)((response) =>
-        {
-            if (response.statusCode == 200) {
-                // Debug.Log("Successful");
-            } else {
-                Debug.Log("failed: " + response.Error);
-            }
-        }));
-    
     }
     public void SwitchToLeaderboardPanel() {
         submitScorePanel.SetActive(false);
         leaderBoardPanel.SetActive(true);
-        DisplayScoresLeaderboard();
+        DisplayScoreDayLeaderboard();
     }
-    public void DisplayScoresLeaderboard() {
-        DisplayLeaderboard(leaderboardType.SCORES);
+
+    public void DisplayScoreDayLeaderboard() {
+        DisplayLeaderboard(leaderboardType.SCORE_DAY);
     }
-    public void DisplayDaysLeaderboard() {
-        DisplayLeaderboard(leaderboardType.DAYS);
+
+    public void DisplayDayScoreLeaderboard() {
+        DisplayLeaderboard(leaderboardType.DAY_SCORE);
     }
+
     void DisplayLeaderboard(leaderboardType type) {
         if(scrollCoroutine != null) {
             StopCoroutine(scrollCoroutine); // Stop scrolling to player's score if it's still scrolling
@@ -128,7 +122,7 @@ public class LeaderboardController : MonoBehaviour
             if (response.statusCode == 200)
             {
                 LootLockerLeaderboardMember[] scores = response.items;
-                leaderboardScoresText.text = GetLeaderboardText(scores, type.ToString());
+                leaderboardScoresText.text = GetLeaderboardText(type, scores);
                 leaderboardTextDict[type] = leaderboardScoresText.text;
                 scrollCoroutine = StartCoroutine(ScrollToPlayerScore(playerRankDict[type], response.items.Length, leaderboardScrollRect));
             }
@@ -139,12 +133,23 @@ public class LeaderboardController : MonoBehaviour
         }));
     }
     // This method will generate the leaderboard text
-    string GetLeaderboardText(LootLockerLeaderboardMember[] scores, string scoreColumnLabel) {
+    string GetLeaderboardText(leaderboardType type, LootLockerLeaderboardMember[] scores) {
         string colorHex = ColorUtility.ToHtmlStringRGB(columnlabelColor);
-        string leaderboardText = string.Format("<color=#{0}>{1,4}. {2,-12}{3,8}\n</color>", colorHex, "RANK", "PLAYER ID", scoreColumnLabel); // Set the column labels
+        string leaderboardText = string.Format("<color=#{0}> RANK  PLAYER ID     DAY   SCORE\n</color>", colorHex); // Hardcoded for now
         for (int i = 0; i < scores.Length; i++) 
         {
-            string newText = string.Format("{0,4}. {1,-12}{2,8}\n", scores[i].rank, scores[i].member_id, scores[i].score);
+            string newText = ""; 
+            switch(type) {
+                case leaderboardType.DAY_SCORE:
+                    newText = string.Format("{0,4}.  {1,-13} {2,3} {3,6}\n", scores[i].rank, scores[i].member_id, scores[i].score/dayScoreMultiplier, scores[i].score%dayScoreMultiplier);
+                    break;
+                case leaderboardType.SCORE_DAY:
+                    newText = string.Format("{0,4}.  {1,-13} {2,3} {3,6}\n", scores[i].rank, scores[i].member_id, scores[i].score%scoreDayMultiplier, scores[i].score/scoreDayMultiplier);
+                    break;
+                default:
+                    throw new System.Exception("Leaderboard type not set");
+            }
+            
             if (scores[i].member_id == playerID) {
                 newText = string.Format("<color=#{0}>{1}</color>", ColorUtility.ToHtmlStringRGB(playerScoreColor) ,newText); // Highlight the player's score
             }
@@ -179,8 +184,7 @@ public class LeaderboardController : MonoBehaviour
 }
 
 public enum leaderboardType{
-    SCORES, 
-    DAYS,
-    DAYS_SCORES,
+    DAY_SCORE,
+    SCORE_DAY,
     UNINITIALIZED,
 }

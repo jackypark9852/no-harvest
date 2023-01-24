@@ -7932,14 +7932,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5855830604437186914, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
-      propertyPath: scrollSpeed
-      value: 0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 5855830604437186914, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
-      propertyPath: scrollDelaysSeconds
-      value: 0.7
-      objectReference: {fileID: 0}
     - target: {fileID: 6863661749683034849, guid: 36badde95b374444f8869cd87884ff6c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

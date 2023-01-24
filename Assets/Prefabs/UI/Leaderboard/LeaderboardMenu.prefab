@@ -53,11 +53,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leaderboardKeys:
   - Item1: 0
-    Item2: score_leaderboard
+    Item2: day_score_leaderboard
   - Item1: 1
-    Item2: days_leaderboard
-  - Item1: 2
-    Item2: days_scores_leaderboard
+    Item2: score_day_leaderboard
+  dayScoreMultiplier: 1000000
+  scoreDayMultiplier: 100
   maxRows: 500
   scrollYoffset: 0.1
   scrollDelaysSeconds: 1
@@ -79,28 +79,77 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 431989966709080976, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 431989966709080976, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.9999999
       objectReference: {fileID: 0}
     - target: {fileID: 431989966709080976, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.31110904
       objectReference: {fileID: 0}
     - target: {fileID: 1079284954064339788, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8958438289575307906}
+    - target: {fileID: 1079284954064339788, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayDayScoreLeaderboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 2329545798152024127, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 519.53
+      objectReference: {fileID: 0}
     - target: {fileID: 2329545798152024127, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 333.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 2329545798152024127, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2938532325779448284, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+      propertyPath: m_HorizontalFit
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116792408213433194, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116792408213433197, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 650
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116792408432738108, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 5258976777523588179, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8958438289575307906}
+    - target: {fileID: 5258976777523588179, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayScoreDayLeaderboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 5353341745342982941, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+      propertyPath: m_text
+      value: " RANK  PLAYERID      DAY   SCORE\n   1.  LOADING...    000  000000\n  
+        2.  LOADING...    000  000000\n   3.  LOADING...    000  000000\n   4.  LOADING...   
+        000  000000\n   5.  LOADING...    000  000000\n   5.  LOADING...    000 
+        000000\n   5.  LOADING...    000  000000\n   5.  LOADING...    000  000000\n  
+        5.  LOADING...    000  000000\n   5.  LOADING...    000  000000\n   5.  LOADING...   
+        000  000000\n   5.  LOADING...    000  000000\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919506245773285143, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+      propertyPath: m_Size
+      value: 0.6888909
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919506245773285143, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+      propertyPath: m_Value
+      value: 0.9999997
+      objectReference: {fileID: 0}
     - target: {fileID: 8600946295125262376, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -188,6 +237,10 @@ PrefabInstance:
     - target: {fileID: 8600946295125262377, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
       propertyPath: m_Name
       value: Scrollable Leaderboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 8600946295125262377, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}

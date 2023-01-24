@@ -346,7 +346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4113663408153888644, guid: f83c64d22c7f6b44e8c64c1c1f040aaf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RestartGame
+      value: GoToMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 4113663408153888644, guid: f83c64d22c7f6b44e8c64c1c1f040aaf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -415,6 +415,18 @@ PrefabInstance:
     - target: {fileID: 8958438289575307906, guid: f83c64d22c7f6b44e8c64c1c1f040aaf, type: 3}
       propertyPath: scrollDelaysSeconds
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8958438289575307906, guid: f83c64d22c7f6b44e8c64c1c1f040aaf, type: 3}
+      propertyPath: leaderboardKeys.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8958438289575307906, guid: f83c64d22c7f6b44e8c64c1c1f040aaf, type: 3}
+      propertyPath: leaderboardKeys.Array.data[0].Item2
+      value: day_score_leaderboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 8958438289575307906, guid: f83c64d22c7f6b44e8c64c1c1f040aaf, type: 3}
+      propertyPath: leaderboardKeys.Array.data[1].Item2
+      value: score_day_leaderboard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f83c64d22c7f6b44e8c64c1c1f040aaf, type: 3}
