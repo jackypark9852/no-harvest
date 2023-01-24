@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Meteorite
   m_EditorClassIdentifier: 
   type: 1
-  shapeData: {fileID: 11400000, guid: 855d1aee7d5777a4684f39c35d6a45ac, type: 2}
+  shapeData: {fileID: 11400000, guid: d1e76183dfc41f24da74a820412cfd7f, type: 2}
   manaCost: 1
