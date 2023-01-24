@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
 using LootLocker.Requests;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,37 +8,36 @@ using UnityEngine.UI;
 public class LeaderboardController : MonoBehaviour
 {
     [Header("LootLocker API Settings")] 
-    [SerializeField] List<Tuple<leaderboardType, string>> leaderboardKeys = new List<Tuple<leaderboardType, string>>(); // This is the leaderboard ID from the LootLockers's dashboard
-    Dictionary<leaderboardType, string> leaderboardKeyDict = new Dictionary<leaderboardType, string>();
+    [SerializeField] private List<Tuple<leaderboardType, string>> _keys = new List<Tuple<leaderboardType, string>>(); // This is the leaderboard ID from the LootLockers's dashboard
+    private Dictionary<leaderboardType, string> _keysDict = new Dictionary<leaderboardType, string>();
 
     [Header("Score Display Settings")]
-    [SerializeField] int dayScoreMultiplier = 1000000; // The multiplier for the day score
-    [SerializeField] int scoreDayMultiplier = 100; // The multiplier for the score day
-    [SerializeField] int maxRows = 1000;
-    [SerializeField] float scrollYoffset = 0.7f; // The offset of the scroll rect from the player's score
-    [SerializeField] float scrollDelaysSeconds = 0.5f; // The delay before scrolling to the player's score
-    [SerializeField] float scrollSpeed = 0.1f; // The speed of the scroll
-    [SerializeField] Color columnlabelColor = Color.gray; // The color of the column labels
-    [SerializeField] Color playerScoreColor = Color.red; // The color of the player's score
+    [SerializeField] private int _dayScoreMultiplier = 1000000; // The multiplier for the day score
+    [SerializeField] private int _scoreDayMultiplier = 100; // The multiplier for the score day
+    [SerializeField] private int _maxRows = 1000;
+    [SerializeField] private float _scrollYoffset = 0.7f; // The offset of the scroll rect from the player's score
+    [SerializeField] private float _scrollDelaysSeconds = 0.5f; // The delay before scrolling to the player's score
+    [SerializeField] private float _scrollSpeed = 0.1f; // The speed of the scroll
+    [SerializeField] private Color _columnLabelColor = Color.gray; // The color of the column labels
+    [SerializeField] private Color _playerScoreColor = Color.red; // The color of the player's score
  
 
     [Header("UI References")]
-    [SerializeField] TMPro.TMP_InputField playerIDInputField; 
-    [SerializeField] GameObject submitScorePanel;
-    [SerializeField] GameObject leaderBoardPanel;
-    [SerializeField] GameObject viewport; 
-    [SerializeField] TMPro.TMP_Text leaderboardScoresText;
+    [SerializeField] private TMPro.TMP_InputField _playerIDInputField; 
+    [SerializeField] private GameObject _submitScorePanel;
+    [SerializeField] private GameObject _leaderBoardPanel;
+    [SerializeField] private GameObject _viewport; 
+    [SerializeField] private TMPro.TMP_Text _scoresText;
     [Tooltip("This is the scroll rect that contains the leaderboard content")]
-    [SerializeField] ScrollRect leaderboardScrollRect; 
+    [SerializeField] private ScrollRect _scrollRect; 
 
     // cached values, used to scroll to the player's score
-    string playerID = null; 
-    int playerScore = -1;  
-    int playerDay = -1; // The number of days survived by the player
-    float viewportHeight; 
-    Dictionary<leaderboardType,string> leaderboardTextDict = new Dictionary<leaderboardType, string>();
-    Dictionary<leaderboardType, int> playerRankDict = new Dictionary<leaderboardType, int>(); 
-    Coroutine scrollCoroutine = null;
+    private string _playerID = null; 
+    private int _playerScore = -1;  
+    private int _playerDay = -1; // The number of days survived by the player
+    private Dictionary<leaderboardType,string> _scoresTextDict = new Dictionary<leaderboardType, string>();
+    private Dictionary<leaderboardType, int> _playerRankDict = new Dictionary<leaderboardType, int>(); 
+    private Coroutine _scrollCoroutine; 
     
     void Start()
     {
@@ -47,84 +45,79 @@ public class LeaderboardController : MonoBehaviour
         {
             if (!response.success)
             {
-                // Debug.Log("error starting LootLocker session");
                 return;
             }
-
-            // Debug.Log("successfully started LootLocker session");
         });
         initializeLeaderboardKeyDict();
     }
     void initializeLeaderboardKeyDict() {
-        foreach(Tuple<leaderboardType, string> leaderboardKey in leaderboardKeys) {
-            leaderboardKeyDict.Add(leaderboardKey.Item1, leaderboardKey.Item2);
+        foreach(Tuple<leaderboardType, string> leaderboardKey in _keys) {
+            _keysDict.Add(leaderboardKey.Item1, leaderboardKey.Item2);
         }
     }
     // Submits score, days, and game result to leaderboards
     public void SubmitScore()
     {
-        playerID = playerIDInputField.text;
-        if(playerID == "") { // Hardcoded for now
+        _playerID = _playerIDInputField.text;
+        if(_playerID == "") { // Hardcoded for now
             // generate a random uid for playerID limited to 12 characters 
-            playerID = System.Guid.NewGuid().ToString().Substring(0,8);
+            _playerID = System.Guid.NewGuid().ToString().Substring(0,8);
         }
-        playerScore = ScoreManager.Instance.score; 
-        playerDay = RoundManager.Instance.roundNum;
+        _playerScore = ScoreManager.Instance.score; 
+        _playerDay = RoundManager.Instance.roundNum;
 
-        int day_score = playerDay*dayScoreMultiplier + playerScore; 
-        LootLockerSDKManager.SubmitScore(playerID, day_score, leaderboardKeyDict[leaderboardType.DAY_SCORE], (System.Action<LootLockerSubmitScoreResponse>)((response) =>
+        int day_score = _playerDay*_dayScoreMultiplier + _playerScore; 
+        LootLockerSDKManager.SubmitScore(_playerID, day_score, _keysDict[leaderboardType.DayScore], (System.Action<LootLockerSubmitScoreResponse>)((response) =>
         {
             if (response.statusCode == 200) {
-                playerRankDict[leaderboardType.DAY_SCORE] = response.rank; // Cache the player's rank in the leaderboard
-                // Debug.Log("Successful");
+                _playerRankDict[leaderboardType.DayScore] = response.rank; // Cache the player's rank in the leaderboard
             } else {
                 Debug.Log("failed: " + response.Error);
             }
         }));
 
-        int score_day = playerScore*scoreDayMultiplier + playerDay; 
-        LootLockerSDKManager.SubmitScore(playerID, score_day, leaderboardKeyDict[leaderboardType.SCORE_DAY], (System.Action<LootLockerSubmitScoreResponse>)((response) =>
+        int score_day = _playerScore*_scoreDayMultiplier + _playerDay; 
+        LootLockerSDKManager.SubmitScore(_playerID, score_day, _keysDict[leaderboardType.ScoreDay], (System.Action<LootLockerSubmitScoreResponse>)((response) =>
         {
             if (response.statusCode == 200) {
-                playerRankDict[leaderboardType.SCORE_DAY] = response.rank; // Cache the player's rank in the leaderboard
-                // Debug.Log("Successful");
+                _playerRankDict[leaderboardType.ScoreDay] = response.rank; // Cache the player's rank in the leaderboard
             } else {
                 Debug.Log("failed: " + response.Error);
             }
         }));
     }
     public void SwitchToLeaderboardPanel() {
-        submitScorePanel.SetActive(false);
-        leaderBoardPanel.SetActive(true);
-        DisplayScoreDayLeaderboard();
+        _submitScorePanel.SetActive(false);
+        _leaderBoardPanel.SetActive(true);
+        DisplayScoreDay();
     }
 
-    public void DisplayScoreDayLeaderboard() {
-        DisplayLeaderboard(leaderboardType.SCORE_DAY);
+    public void DisplayScoreDay() {
+        Display(leaderboardType.ScoreDay);
     }
 
-    public void DisplayDayScoreLeaderboard() {
-        DisplayLeaderboard(leaderboardType.DAY_SCORE);
+    public void DisplayDayScore() {
+        Display(leaderboardType.DayScore);
     }
 
-    void DisplayLeaderboard(leaderboardType type) {
-        if(scrollCoroutine != null) {
-            StopCoroutine(scrollCoroutine); // Stop scrolling to player's score if it's still scrolling
+    void Display(leaderboardType type) {
+        if(_scrollCoroutine != null) {
+            StopCoroutine(_scrollCoroutine); // Stop scrolling to player's score if it's still scrolling
         }
 
-        if(leaderboardTextDict.ContainsKey(type)) { // If the leaderboard text is already cached, display it
-            leaderboardScoresText.text = leaderboardTextDict[type];
+        if(_scoresTextDict.ContainsKey(type)) { // If the leaderboard text is already cached, display it
+            _scoresText.text = _scoresTextDict[type];
             return;
         }
 
-        LootLockerSDKManager.GetScoreList(leaderboardKeyDict[type], maxRows, (System.Action<LootLockerGetScoreListResponse>)((response) =>
+        LootLockerSDKManager.GetScoreList(_keysDict[type], _maxRows, (System.Action<LootLockerGetScoreListResponse>)((response) =>
         {
             if (response.statusCode == 200)
             {
                 LootLockerLeaderboardMember[] scores = response.items;
-                leaderboardScoresText.text = GetLeaderboardText(type, scores);
-                leaderboardTextDict[type] = leaderboardScoresText.text;
-                scrollCoroutine = StartCoroutine(ScrollToPlayerScore(playerRankDict[type], response.items.Length, leaderboardScrollRect));
+                _scoresText.text = GenerateText(type, scores);
+                _scoresTextDict[type] = _scoresText.text;
+                _scrollCoroutine = StartCoroutine(ScrollToPlayerScore(_playerRankDict[type], response.items.Length, _scrollRect));
             }
             else
             {
@@ -133,25 +126,25 @@ public class LeaderboardController : MonoBehaviour
         }));
     }
     // This method will generate the leaderboard text
-    string GetLeaderboardText(leaderboardType type, LootLockerLeaderboardMember[] scores) {
-        string colorHex = ColorUtility.ToHtmlStringRGB(columnlabelColor);
+    string GenerateText(leaderboardType type, LootLockerLeaderboardMember[] scores) {
+        string colorHex = ColorUtility.ToHtmlStringRGB(_columnLabelColor);
         string leaderboardText = string.Format("<color=#{0}> RANK  PLAYER ID     DAY   SCORE\n</color>", colorHex); // Hardcoded for now
         for (int i = 0; i < scores.Length; i++) 
         {
             string newText = ""; 
             switch(type) {
-                case leaderboardType.DAY_SCORE:
-                    newText = string.Format("{0,4}.  {1,-13} {2,3} {3,6}\n", scores[i].rank, scores[i].member_id, scores[i].score/dayScoreMultiplier, scores[i].score%dayScoreMultiplier);
+                case leaderboardType.DayScore:
+                    newText = string.Format("{0,4}.  {1,-13} {2,3} {3,6}\n", scores[i].rank, scores[i].member_id, scores[i].score/_dayScoreMultiplier, scores[i].score%_dayScoreMultiplier);
                     break;
-                case leaderboardType.SCORE_DAY:
-                    newText = string.Format("{0,4}.  {1,-13} {2,3} {3,6}\n", scores[i].rank, scores[i].member_id, scores[i].score%scoreDayMultiplier, scores[i].score/scoreDayMultiplier);
+                case leaderboardType.ScoreDay:
+                    newText = string.Format("{0,4}.  {1,-13} {2,3} {3,6}\n", scores[i].rank, scores[i].member_id, scores[i].score%_scoreDayMultiplier, scores[i].score/_scoreDayMultiplier);
                     break;
                 default:
                     throw new System.Exception("Leaderboard type not set");
             }
             
-            if (scores[i].member_id == playerID) {
-                newText = string.Format("<color=#{0}>{1}</color>", ColorUtility.ToHtmlStringRGB(playerScoreColor) ,newText); // Highlight the player's score
+            if (scores[i].member_id == _playerID) {
+                newText = string.Format("<color=#{0}>{1}</color>", ColorUtility.ToHtmlStringRGB(_playerScoreColor) ,newText); // Highlight the player's score
             }
             leaderboardText += newText;
         }
@@ -162,29 +155,30 @@ public class LeaderboardController : MonoBehaviour
         if(playerRank == -1) {
             throw new System.Exception("Player rank not set, please make sure player rank is set before calling this method");
         }
-        yield return new WaitForSeconds(scrollDelaysSeconds); // Wait for the score text to be updated and rect transform to be updated
+        yield return new WaitForSeconds(_scrollDelaysSeconds); // Wait for the score text to be updated and rect transform to be updated
         float targetVerticalScrollPosition = CalculateVerticalScrollPosition(playerRank, rankCount);
         
-        while(Mathf.Abs(leaderboardScrollRect.verticalNormalizedPosition - targetVerticalScrollPosition) > 0.005f) {
-            leaderboardScrollRect.verticalNormalizedPosition = Mathf.SmoothStep(leaderboardScrollRect.verticalNormalizedPosition, targetVerticalScrollPosition, scrollSpeed);
+        while(Mathf.Abs(leaderboardScrollRect.verticalNormalizedPosition - targetVerticalScrollPosition) > 0.01f) {
+            leaderboardScrollRect.verticalNormalizedPosition = Mathf.SmoothStep(leaderboardScrollRect.verticalNormalizedPosition, targetVerticalScrollPosition, _scrollSpeed);
             yield return new WaitForEndOfFrame();
         }
+        _scrollCoroutine = null; 
         // Debug.Log("Scrolling to position: " + targetVerticalScrollPosition);
     }
     // This method will calculate the normalized scroll position of the viewport
     float CalculateVerticalScrollPosition(int rank, int rankCount) {
-        float viewportHeight = viewport.GetComponent<RectTransform>().rect.height; // The height of the viewport
-        float totalHeight = leaderboardScoresText.GetComponent<RectTransform>().rect.height; // The height of each score row
+        float viewportHeight = _viewport.GetComponent<RectTransform>().rect.height; // The height of the viewport
+        float totalHeight = _scoresText.GetComponent<RectTransform>().rect.height; // The height of each score row
         float scoreRowHeight = totalHeight / (rankCount + 1); // The height of each score row, +1 accounts for the column labels
         float scrollableHeight = totalHeight - viewportHeight; // The total height of the scroll view minus the height of the viewport
         // The normalized scroll position of the viewport
-        float scrollPosition =  1 - Mathf.Min((((float)rank + scrollYoffset) * scoreRowHeight) / scrollableHeight, 1f); 
+        float scrollPosition =  1 - Mathf.Min((((float)rank + _scrollYoffset) * scoreRowHeight) / scrollableHeight, 1f); 
         return scrollPosition;
     }
 }
 
 public enum leaderboardType{
-    DAY_SCORE,
-    SCORE_DAY,
-    UNINITIALIZED,
+    DayScore,
+    ScoreDay,
+    Uninitialized,
 }

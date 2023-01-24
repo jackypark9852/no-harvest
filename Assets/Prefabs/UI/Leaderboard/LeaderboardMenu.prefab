@@ -51,25 +51,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43fa8bb3a0599ad428bf8f65feefbb42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leaderboardKeys:
+  _keys:
   - Item1: 0
     Item2: day_score_leaderboard
   - Item1: 1
     Item2: score_day_leaderboard
-  dayScoreMultiplier: 1000000
-  scoreDayMultiplier: 100
-  maxRows: 500
-  scrollYoffset: 0.1
-  scrollDelaysSeconds: 1
-  scrollSpeed: 0.07
-  columnlabelColor: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
-  playerScoreColor: {r: 1, g: 0.90588236, b: 0.19607843, a: 1}
-  playerIDInputField: {fileID: 8164519316845874743}
-  submitScorePanel: {fileID: 3044513702071872113}
-  leaderBoardPanel: {fileID: 2520256050108420402}
-  viewport: {fileID: 1344169484920221222}
-  leaderboardScoresText: {fileID: 2301321164446415366}
-  leaderboardScrollRect: {fileID: 1344169484148795094}
+  _dayScoreMultiplier: 1000000
+  _scoreDayMultiplier: 100
+  _maxRows: 1000
+  _scrollYoffset: 0
+  _scrollDelaysSeconds: 0.5
+  _scrollSpeed: 0.1
+  _columnLabelColor: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
+  _playerScoreColor: {r: 1, g: 0.73182636, b: 0, a: 1}
+  _playerIDInputField: {fileID: 8164519316845874743}
+  _submitScorePanel: {fileID: 3044513702071872113}
+  _leaderBoardPanel: {fileID: 2520256050108420402}
+  _viewport: {fileID: 1344169484920221222}
+  _scoresText: {fileID: 2301321164446415366}
+  _scrollRect: {fileID: 1344169484148795094}
 --- !u!1001 &6171352693045104923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -95,7 +95,7 @@ PrefabInstance:
       objectReference: {fileID: 8958438289575307906}
     - target: {fileID: 1079284954064339788, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DisplayDayScoreLeaderboard
+      value: DisplayDayScore
       objectReference: {fileID: 0}
     - target: {fileID: 2329545798152024127, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
       propertyPath: m_SizeDelta.x
@@ -131,7 +131,7 @@ PrefabInstance:
       objectReference: {fileID: 8958438289575307906}
     - target: {fileID: 5258976777523588179, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DisplayScoreDayLeaderboard
+      value: DisplayScoreDay
       objectReference: {fileID: 0}
     - target: {fileID: 5353341745342982941, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
       propertyPath: m_text
@@ -244,12 +244,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+--- !u!1 &1344169484148795091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5116792406989174728, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
+  m_PrefabInstance: {fileID: 6171352693045104923}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &839874421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344169484148795091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4573cff6b1b4299499c108966ba6caaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  verticalNormalizedPosition: 0
 --- !u!114 &1344169484148795094 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5116792406989174733, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
   m_PrefabInstance: {fileID: 6171352693045104923}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1344169484148795091}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
