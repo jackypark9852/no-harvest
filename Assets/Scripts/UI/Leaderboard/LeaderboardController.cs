@@ -169,10 +169,10 @@ public class LeaderboardController : MonoBehaviour
             string newText = ""; 
             switch(type) {
                 case leaderboardType.DayScore:
-                    newText = string.Format("{0,4}.  {1,-13}{3,6}  {2,3}\n", scores[i].rank, metadata.PlayerID, metadata.Score, metadata.Day);
+                    newText = string.Format("{0,4}.  {1,-13}{3,6}  {2,3}\n", scores[i].rank, metadata.PlayerID, metadata.Day, metadata.Score);
                     break;
                 case leaderboardType.ScoreDay:
-                    newText = string.Format("{0,4}.  {1,-13}{3,6}  {2,3}\n", scores[i].rank, metadata.PlayerID, metadata.Score, metadata.Day);
+                    newText = string.Format("{0,4}.  {1,-13}{3,6}  {2,3}\n", scores[i].rank, metadata.PlayerID, metadata.Day, metadata.Score);
                     break;
                 default:
                     throw new System.Exception("Leaderboard type not set");
