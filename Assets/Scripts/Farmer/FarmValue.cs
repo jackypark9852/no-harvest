@@ -11,7 +11,11 @@ public class FarmValue : MonoBehaviour
     [SerializeField] Grid grid;
 
     [SerializeField] int dangerValue;
-    public static event Action OnDangerValueReached;
+    [SerializeField] int safetyValue;
+    public static event Action OnDangerValueEntered;
+    public static event Action OnSafetyValueEntered;
+
+    int prevFarmValue = 0;
 
     public int GetFarmValue(Grid grid)
     {
@@ -42,12 +46,17 @@ public class FarmValue : MonoBehaviour
         }
         else
         {
-            if (farmValue >= dangerValue)
+            if (farmValue >= dangerValue && prevFarmValue < dangerValue)
             {
-                OnDangerValueReached?.Invoke();
+                OnDangerValueEntered?.Invoke();
+            }
+            else if (farmValue <= safetyValue && prevFarmValue > safetyValue)
+            {
+                OnSafetyValueEntered?.Invoke();
             }
             GameManager.Instance.EndRoundTransition();
         }
+        prevFarmValue = farmValue;
     }
     
     public void UpdateFarmValueProgressBar()

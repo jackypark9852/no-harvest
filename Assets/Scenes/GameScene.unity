@@ -2378,6 +2378,7 @@ MonoBehaviour:
   progressBar: {fileID: 114769783145686002}
   grid: {fileID: 1205131718}
   dangerValue: 40
+  safetyValue: 39
 --- !u!1 &768462219
 GameObject:
   m_ObjectHideFlags: 0

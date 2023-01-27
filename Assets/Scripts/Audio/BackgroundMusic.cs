@@ -17,19 +17,26 @@ public class BackgroundMusic : MonoBehaviour
 
     void OnEnable()
     {
-        FarmValue.OnDangerValueReached += IncreasePitch;
+        FarmValue.OnDangerValueEntered += SetIncreasedPitch;
+        FarmValue.OnSafetyValueEntered += SetNormalPitch;
     }
 
     void OnDisable()
     {
-        FarmValue.OnDangerValueReached -= IncreasePitch;
+        FarmValue.OnDangerValueEntered -= SetIncreasedPitch;
+        FarmValue.OnSafetyValueEntered -= SetNormalPitch;
     }
 
-    private void IncreasePitch()
+    private void SetIncreasedPitch()
     {
         source.pitch = dangerFarmValuePitch;
     }
-    
+
+    private void SetNormalPitch()
+    {
+        source.pitch = 1f;
+    }
+
     public void StopMusic()
     {
         StartCoroutine(AudioFadeOut.FadeOut(source, audioFadeOutTime));
