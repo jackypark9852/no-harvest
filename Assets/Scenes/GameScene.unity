@@ -2832,7 +2832,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3a1c182a7ed36bc409869adafa6424b3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2c6e8da7c52dfc044ab941f86486cc81, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -4909,7 +4909,7 @@ MonoBehaviour:
     prefab: {fileID: 7392957512477289785, guid: 0c4fac633d04a5144841e3b51a2666af, type: 3}
   - type: 4
     prefab: {fileID: 3406779260114486931, guid: 8aa6df27fbd4bb044ad3c263a638cc7f, type: 3}
-  tsunamiTravelSpeed: 75
+  tsunamiTravelSpeed: 90
   fireDespawnDelaySeconds: 1.1
   meteoriteFallSpeed: 20
   blizzardFallSpeed: 12
