@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,9 @@ public class FarmValue : MonoBehaviour
     [SerializeField] int losingFarmValue = 50;
     [SerializeField] ProgressBar progressBar;
     [SerializeField] Grid grid;
+
+    [SerializeField] int dangerValue;
+    public static event Action OnDangerValueReached;
 
     public int GetFarmValue(Grid grid)
     {
@@ -31,11 +35,17 @@ public class FarmValue : MonoBehaviour
 
     public void CheckGameEnd()
     {
-        if (GetFarmValue(grid) >= losingFarmValue)
+        int farmValue = GetFarmValue(grid);
+        if (farmValue >= losingFarmValue)
         {
             GameManager.Instance.EndGame(); 
-        } else
+        }
+        else
         {
+            if (farmValue >= dangerValue)
+            {
+                OnDangerValueReached?.Invoke();
+            }
             GameManager.Instance.EndRoundTransition();
         }
     }

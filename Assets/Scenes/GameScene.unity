@@ -1290,6 +1290,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 809362616}
+        m_TargetAssemblyTypeName: BackgroundMusic, Assembly-CSharp
+        m_MethodName: StopMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   StateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2365,6 +2377,7 @@ MonoBehaviour:
   losingFarmValue: 50
   progressBar: {fileID: 114769783145686002}
   grid: {fileID: 1205131718}
+  dangerValue: 40
 --- !u!1 &768462219
 GameObject:
   m_ObjectHideFlags: 0
@@ -2797,6 +2810,7 @@ GameObject:
   m_Component:
   - component: {fileID: 809362611}
   - component: {fileID: 809362615}
+  - component: {fileID: 809362616}
   - component: {fileID: 809362612}
   - component: {fileID: 809362614}
   - component: {fileID: 809362613}
@@ -3124,6 +3138,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiChoosing: {fileID: 809362614}
   uiSelected: {fileID: 809362613}
+--- !u!114 &809362616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809362610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fd5042e1af3dab41bcf06703b5d8597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dangerFarmValuePitch: 1.2599211
+  audioFadeOutTime: 5
 --- !u!1 &817222899
 GameObject:
   m_ObjectHideFlags: 0
