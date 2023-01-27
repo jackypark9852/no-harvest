@@ -95,9 +95,8 @@ public class Grid : MonoBehaviour
             {
                 if (tile.plantable && tile.Plant == null)
                 {
-                    // generate random value between 400 to 1000
-                    int delaySeconds = UnityEngine.Random.Range(400, 1000);
-                    plantTasks.Add(Plant(tile, plantType, delaySeconds));
+                    int delayMs = UnityEngine.Random.Range(2000, 3000);
+                    plantTasks.Add(Plant(tile, plantType, delayMs));
                 }
             }
         }
@@ -105,6 +104,22 @@ public class Grid : MonoBehaviour
         await UniTask.WhenAll(plantTasks);
 
         GameManager.Instance.EndFarming();
+    }
+
+    public async UniTask PlantOnEveryTile()
+    {
+        List<UniTask> plantTasks = new List<UniTask>();
+        foreach (Tile tile in GetTiles())
+        {
+            if (tile.plantable && tile.Plant == null)
+            {
+                int delayMs = UnityEngine.Random.Range(400, 1000);
+                PlantType randomPlant = (PlantType)UnityEngine.Random.Range(0, Enum.GetNames(typeof(PlantType)).Length);
+                plantTasks.Add(Plant(tile, randomPlant, delayMs));
+            }
+        }
+
+        await UniTask.WhenAll(plantTasks);
     }
     
     private async UniTask Plant(Tile tile, PlantType plantType, int delayMillieSeconds) 

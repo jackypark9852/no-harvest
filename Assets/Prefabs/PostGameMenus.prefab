@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverMenu: {fileID: 6863661751126990510}
   leaderBoardMenu: {fileID: 3300828309909884386}
+  gameOverDelayMs: 500
 --- !u!1001 &3249015910056877643
 PrefabInstance:
   m_ObjectHideFlags: 0

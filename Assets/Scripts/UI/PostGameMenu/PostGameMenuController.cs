@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +8,19 @@ public class PostGameMenuController : MonoBehaviour
     [SerializeField] GameObject gameOverMenu;
     [SerializeField] GameObject leaderBoardMenu;
 
-    public void ShowGameOver()
+    [SerializeField] int gameOverDelayMs = 500;
+    Grid grid;
+
+    void Start()
+    {
+        grid = FindObjectOfType<Grid>();
+    }
+
+    public async void ShowGameOver()
     {
         DisableAllPostGameMenus();
+        await grid.PlantOnEveryTile();
+        await UniTask.Delay(gameOverDelayMs);
         gameOverMenu.SetActive(true); // Show the gameOver menu
     }
 
