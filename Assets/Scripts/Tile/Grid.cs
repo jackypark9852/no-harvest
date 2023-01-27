@@ -95,7 +95,7 @@ public class Grid : MonoBehaviour
             {
                 if (tile.plantable && tile.Plant == null)
                 {
-                    int delayMs = UnityEngine.Random.Range(2000, 3000);
+                    int delayMs = UnityEngine.Random.Range(400, 1000);
                     plantTasks.Add(Plant(tile, plantType, delayMs));
                 }
             }
@@ -113,7 +113,7 @@ public class Grid : MonoBehaviour
         {
             if (tile.plantable && tile.Plant == null)
             {
-                int delayMs = UnityEngine.Random.Range(400, 1000);
+                int delayMs = UnityEngine.Random.Range(1000, 2000);
                 PlantType randomPlant = (PlantType)UnityEngine.Random.Range(0, Enum.GetNames(typeof(PlantType)).Length);
                 plantTasks.Add(Plant(tile, randomPlant, delayMs));
             }

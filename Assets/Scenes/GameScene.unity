@@ -2374,7 +2374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3992a86db7bf8fa408e37e541606adce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  losingFarmValue: 12
+  losingFarmValue: 50
   progressBar: {fileID: 114769783145686002}
   grid: {fileID: 1205131718}
   dangerValue: 40
