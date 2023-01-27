@@ -56,8 +56,6 @@ MonoBehaviour:
     Item2: day_score_leaderboard
   - Item1: 1
     Item2: score_day_leaderboard
-  _dayScoreMultiplier: 1000000
-  _scoreDayMultiplier: 100
   _maxRows: 1000
   _scrollYoffset: 0
   _scrollDelaysSeconds: 0.5
@@ -212,7 +210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8600946295125262376, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -24.08
       objectReference: {fileID: 0}
     - target: {fileID: 8600946295125262376, guid: 9b4b3f6660b92dc429347ec6559baea4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
